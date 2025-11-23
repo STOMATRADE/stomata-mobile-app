@@ -52,5 +52,16 @@
 		<string>safe</string>
 		<string>rainbow</string>
 	</array>
+	
+	<!-- Universal Links -->
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>NSUserActivityTypeBrowsingWeb</string>
+	</array>
+
+	<key>CFBundleAssociatedDomains</key>
+	<array>
+		<string>applinks:bandshare.cloud</string>
+	</array>
 </dict>
 </plist>
