@@ -358,6 +358,21 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.0.0"
+  flutter_otp_text_field:
+    dependency: transitive
+    description:
+      name: flutter_otp_text_field
+      sha256: e7e589dc51cde120d63da6db55f3cef618f5d013d12adba76137ca1a51ce1390
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.5.1+1"
+  flutter_package:
+    dependency: "direct main"
+    description:
+      path: "package/flutter-package"
+      relative: true
+    source: path
+    version: "1.0.1"
   flutter_secure_storage:
     dependency: transitive
     description:
@@ -407,7 +422,7 @@ packages:
     source: hosted
     version: "3.1.2"
   flutter_svg:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_svg
       sha256: "87fbd7c534435b6c5d9d98b01e1fd527812b82e68ddd8bd35fc45ed0fa8f0a95"
@@ -448,6 +463,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "8.3.0"
+  get_storage:
+    dependency: "direct main"
+    description:
+      name: get_storage
+      sha256: "39db1fffe779d0c22b3a744376e86febe4ade43bf65e06eab5af707dc84185a2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
+  google_fonts:
+    dependency: "direct main"
+    description:
+      name: google_fonts
+      sha256: "517b20870220c48752eafa0ba1a797a092fb22df0d89535fd9991e86ee2cdd9c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.3.2"
   http:
     dependency: transitive
     description:
@@ -496,6 +527,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  keyboard_actions:
+    dependency: transitive
+    description:
+      name: keyboard_actions
+      sha256: "5155a158c0d22c3a2f4a2192040445fe84977620cf0eeb29f6148a1dcb5835fa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.1"
   leak_tracker:
     dependency: transitive
     description:
@@ -974,7 +1013,7 @@ packages:
     source: hosted
     version: "1.4.0"
   url_launcher:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher
       sha256: f6a7e5c4835bb4e3026a04793a4199ca2d14c739ec378fdfe23fc8075d0439f8

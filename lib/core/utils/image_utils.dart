@@ -1,0 +1,12 @@
+class ImageUtils {
+  static const String _assets = "assets/";
+  static const String _icons = '${_assets}icon/';
+  static const String _background = '${_assets}background/';
+
+  // ICONS
+  // static const String brandLogo = '${_icons}stomata-logo.svg';
+  static const String brandLogo = '${_icons}stomata-logo.png';
+
+  // BACKGROUNDS
+  static const String background = '${_background}background.png';
+}

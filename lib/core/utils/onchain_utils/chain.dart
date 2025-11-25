@@ -1,5 +1,5 @@
 import 'package:reown_appkit/appkit_modal.dart';
-import 'package:stomata_app/core/utils/function/logging.dart';
+import 'package:stomata_app/core/utils/logging.dart';
 
 class ChainNetwork {
   // Definisi chain-ReownAppKitModalNetworkInfo yang ada dengan chainId dalam bentuk string angka

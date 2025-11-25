@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:reown_appkit/reown_appkit.dart';
-import 'package:stomata_app/core/utils/function/url_launcher.dart';
+import 'package:stomata_app/core/utils/url_launcher.dart';
 import 'package:stomata_app/core/utils/onchain_utils/chain.dart';
 import 'package:stomata_app/core/utils/onchain_utils/deeplink_app_controller.dart';
-import 'package:stomata_app/core/utils/function/logging.dart';
+import 'package:stomata_app/core/utils/logging.dart';
 
 class ThirdAppController {
   static late ReownAppKit appKit;
