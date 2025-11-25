@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/splashscreen/controller/splash_screen_controller.dart';
@@ -10,7 +9,8 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut<SplashScreenController>(() => SplashScreenController());
+    // Get.lazyPut<SplashScreenController>(() => SplashScreenController());
+    Get.put(SplashScreenController());
 
     return BaseWidgetContainer(
       body: Stack(

@@ -31,19 +31,19 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        primaryColor: ColorsUtils.primaryColors,
-        scaffoldBackgroundColor: ColorsUtils.bgColors,
+        primaryColor: ColorUtils.primaryColors,
+        scaffoldBackgroundColor: ColorUtils.bgColors,
         // textTheme: TextTheme(
-        //   bodyLarge: TextStyle(color: ColorsUtils.secondaryColors),
-        //   bodyMedium: TextStyle(color: ColorsUtils.secondaryColors),
+        //   bodyLarge: TextStyle(color: ColorUtils.secondaryColors),
+        //   bodyMedium: TextStyle(color: ColorUtils.secondaryColors),
         //   titleLarge: TextStyle(
-        //     color: ColorsUtils.secondaryColors,
+        //     color: ColorUtils.secondaryColors,
         //     fontWeight: FontWeight.bold,
         //   ),
         // ),
         textTheme: GoogleFonts.poppinsTextTheme(textTheme).apply(
-          bodyColor: ColorsUtils.secondaryColors,
-          displayColor: ColorsUtils.secondaryColors,
+          bodyColor: ColorUtils.secondaryColors,
+          displayColor: ColorUtils.secondaryColors,
         ),
         useMaterial3: true,
       ),

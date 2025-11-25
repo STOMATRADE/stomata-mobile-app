@@ -6,6 +6,7 @@ class ImageUtils {
   // ICONS
   // static const String brandLogo = '${_icons}stomata-logo.svg';
   static const String brandLogo = '${_icons}stomata-logo.png';
+  static const String googleLogo = '${_icons}google-logo.png';
 
   // BACKGROUNDS
   static const String background = '${_background}background.png';
