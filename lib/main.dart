@@ -33,6 +33,9 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         primaryColor: ColorUtils.primaryColors,
         scaffoldBackgroundColor: ColorUtils.bgColors,
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: ColorUtils.secondaryBgColors,
+        ),
         // textTheme: TextTheme(
         //   bodyLarge: TextStyle(color: ColorUtils.secondaryColors),
         //   bodyMedium: TextStyle(color: ColorUtils.secondaryColors),

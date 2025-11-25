@@ -3,7 +3,6 @@ import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_input_component.dart';
 import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/auth/controller/login_controller.dart';
@@ -13,7 +12,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.lazyPut<LoginController>(() => LoginController());
+    var _controller = Get.put(LoginController());
 
     return BaseWidgetContainer(
       body: Stack(
@@ -38,8 +37,12 @@ class LoginScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 50),
                 CustomButton(
-                  onPressed: () {},
-                  preffixIcons: Image.asset(ImageUtils.googleLogo, scale: 300),
+                  onPressed: _controller.gotoHome,
+                  preffixIcons: Image.asset(
+                    ImageUtils.googleLogo,
+                    height: 20,
+                    width: 20,
+                  ),
                   titleButton: "Login With Google",
                   borderRadius: 20,
                   backgroundColors: ColorUtils.primaryColors,
