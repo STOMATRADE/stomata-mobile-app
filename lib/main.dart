@@ -36,18 +36,13 @@ class MyApp extends StatelessWidget {
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: ColorUtils.secondaryBgColors,
         ),
-        // textTheme: TextTheme(
-        //   bodyLarge: TextStyle(color: ColorUtils.secondaryColors),
-        //   bodyMedium: TextStyle(color: ColorUtils.secondaryColors),
-        //   titleLarge: TextStyle(
-        //     color: ColorUtils.secondaryColors,
-        //     fontWeight: FontWeight.bold,
-        //   ),
-        // ),
-        textTheme: GoogleFonts.poppinsTextTheme(textTheme).apply(
-          bodyColor: ColorUtils.secondaryColors,
-          displayColor: ColorUtils.secondaryColors,
+        navigationBarTheme: NavigationBarThemeData(
+          backgroundColor: Colors.black, // <-- Force background
+          indicatorColor: Colors.white24,
         ),
+        textTheme: GoogleFonts.poppinsTextTheme(
+          textTheme,
+        ).apply(bodyColor: ColorUtils.white, displayColor: ColorUtils.white),
         useMaterial3: true,
       ),
       home: const SplashScreen(),
