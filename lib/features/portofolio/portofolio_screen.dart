@@ -1,0 +1,245 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_package/source/base_widget_container.dart';
+import 'package:flutter_package/source/ctext_component.dart';
+import 'package:flutter_package/source/custom_button.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:stomata_app/core/utils/colors_utils.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
+import 'package:stomata_app/core/utils/image_utils.dart';
+import 'package:stomata_app/features/portofolio/controller/portofolio_controller.dart';
+
+class PortofolioScreen extends StatelessWidget {
+  const PortofolioScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var _controller = Get.put(PortofolioController());
+    return BaseWidgetContainer(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                Image.asset(ImageUtils.brandLogo, scale: 20),
+                Text(
+                  "Stomatrade",
+                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
+            Card(
+              color: ColorUtils.thirdBgColors,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CText(
+                      text: "Cumulative Total Aset",
+                      fontSize: 15,
+                      textColor: ColorUtils.white,
+                    ),
+                    SizedBox(height: 8),
+                    CText(
+                      text: Helpers.formatRupiah(_controller.totalAsset.value),
+                      fontSize: 24,
+                      textColor: ColorUtils.white,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(height: 8),
+                    Divider(),
+                    SizedBox(height: 8),
+                    Row(
+                      children: [
+                        CText(
+                          text: "Return",
+                          fontSize: 12,
+                          textColor: ColorUtils.white,
+                        ),
+                        SizedBox(width: 5),
+                        CText(
+                          text:
+                              "+${Helpers.formatRupiah(_controller.totalReturn.value)} (+20%)",
+                          fontSize: 12,
+                          textColor: ColorUtils.primaryColors,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 30),
+            CText(
+              text: "Your Portofolio",
+              fontSize: 24,
+              textColor: ColorUtils.white,
+              fontWeight: FontWeight.bold,
+            ),
+            SizedBox(height: 12),
+            Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(30),
+              ),
+              color: ColorUtils.thirdBgColors,
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: [
+                    Icon(Icons.search, color: Colors.white),
+                    SizedBox(width: 5),
+                    CText(
+                      text: "Search Project...",
+                      fontWeight: FontWeight.bold,
+                      textColor: ColorUtils.white,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.all(0),
+                shrinkWrap: true,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Card(
+                      color: ColorUtils.secondaryBgColors,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.network(
+                              'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Pengiriman Kopi Lampung",
+                                  style: TextStyle(fontSize: 24),
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                  "PT. Makmur Sejahtera",
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                SizedBox(height: 10),
+                                CustomButton(
+                                  onPressed: () {},
+                                  titleButton: "See Detail",
+                                  backgroundColors: ColorUtils.primaryColors,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Card(
+                      color: ColorUtils.secondaryBgColors,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.network(
+                              'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Pengiriman Kopi Lampung",
+                                  style: TextStyle(fontSize: 24),
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                  "PT. Makmur Sejahtera",
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                SizedBox(height: 10),
+                                CustomButton(
+                                  onPressed: () {},
+                                  titleButton: "See Detail",
+                                  backgroundColors: ColorUtils.primaryColors,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Card(
+                      color: ColorUtils.secondaryBgColors,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: Image.network(
+                              'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Pengiriman Kopi Lampung",
+                                  style: TextStyle(fontSize: 24),
+                                ),
+                                SizedBox(height: 8),
+                                Text(
+                                  "PT. Makmur Sejahtera",
+                                  style: TextStyle(fontSize: 15),
+                                ),
+                                SizedBox(height: 10),
+                                CustomButton(
+                                  onPressed: () {},
+                                  titleButton: "See Detail",
+                                  backgroundColors: ColorUtils.primaryColors,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
