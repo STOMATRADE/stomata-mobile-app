@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
-import 'package:flutter_package/source/ctext_input_component.dart';
 import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';

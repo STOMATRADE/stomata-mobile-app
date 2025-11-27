@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_package/source/ctext_component.dart';
-import 'package:flutter_package/source/custom_button.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 

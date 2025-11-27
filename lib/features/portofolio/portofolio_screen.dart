@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
-import 'package:stomata_app/core/global_widget/card_item.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
