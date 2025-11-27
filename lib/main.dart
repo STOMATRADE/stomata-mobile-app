@@ -28,16 +28,16 @@ class MyApp extends StatelessWidget {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         primaryColor: ColorUtils.primaryColors,
         scaffoldBackgroundColor: ColorUtils.bgColors,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: ColorUtils.secondaryBgColors,
         ),
         navigationBarTheme: NavigationBarThemeData(
-          backgroundColor: Colors.black, // <-- Force background
+          backgroundColor: Colors.black,
           indicatorColor: Colors.white24,
         ),
         textTheme: GoogleFonts.poppinsTextTheme(

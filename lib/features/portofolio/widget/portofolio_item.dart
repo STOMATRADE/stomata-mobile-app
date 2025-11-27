@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_package/source/ctext_component.dart';
-import 'package:flutter_package/source/custom_button.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 
-class CardItem extends StatelessWidget {
+class PortofolioItem extends StatelessWidget {
   final String? imageUrl;
   final String? projectName;
   final String? releaserName;
   final VoidCallback onTap;
 
-  const CardItem({
+  const PortofolioItem({
     super.key,
+    this.imageUrl,
     this.projectName,
     this.releaserName,
-    this.imageUrl,
     required this.onTap,
   });
 
@@ -87,7 +85,7 @@ class CardItem extends StatelessWidget {
                         Text("Price", style: TextStyle(fontSize: 15)),
                         Expanded(child: const SizedBox()),
                         Text(
-                          "Rp. 10.000.000.000",
+                          "Rp 10.000.000.000",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -98,10 +96,10 @@ class CardItem extends StatelessWidget {
                     SizedBox(height: 8),
                     Row(
                       children: [
-                        Text("Total Investor", style: TextStyle(fontSize: 15)),
+                        Text("Total Asset", style: TextStyle(fontSize: 15)),
                         Expanded(child: const SizedBox()),
                         Text(
-                          "12",
+                          "Rp 500.000.000",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -138,11 +136,51 @@ class CardItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // CustomButton(
-                    //   onPressed: () {},
-                    //   titleButton: "See Detail",
-                    //   backgroundColors: ColorUtils.primaryColors,
-                    // ),
+                    const SizedBox(height: 8),
+                    const Divider(),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Text("Return", style: TextStyle(fontSize: 15)),
+                        Expanded(child: const SizedBox()),
+                        Text(
+                          "Rp 250.000.000 (+50%)",
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: ColorUtils.primaryColors,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        Text(
+                          "Cumulative Return",
+                          style: TextStyle(fontSize: 15),
+                        ),
+                        Expanded(child: const SizedBox()),
+                        Card(
+                          margin: const EdgeInsets.all(0),
+                          color: ColorUtils.thirdBgColors,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 8,
+                              right: 8,
+                              top: 2,
+                              bottom: 2,
+                            ),
+                            child: Text(
+                              "Rp 750.000.000",
+                              style: TextStyle(fontSize: 15),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

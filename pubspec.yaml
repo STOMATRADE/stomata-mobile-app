@@ -49,6 +49,7 @@ dependencies:
   flutter_svg: ^2.2.3
   google_fonts: ^6.3.2
   intl: ^0.20.2
+  linear_progress_bar: ^1.2.0
 
 dev_dependencies:
   flutter_test:

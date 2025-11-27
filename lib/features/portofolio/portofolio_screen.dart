@@ -7,6 +7,7 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/portofolio/controller/portofolio_controller.dart';
+import 'package:stomata_app/features/portofolio/widget/portofolio_item.dart';
 
 class PortofolioScreen extends StatelessWidget {
   const PortofolioScreen({super.key});
@@ -55,7 +56,7 @@ class PortofolioScreen extends StatelessWidget {
                     Row(
                       children: [
                         CText(
-                          text: "Return",
+                          text: "Cumulative Total Return",
                           fontSize: 12,
                           textColor: ColorUtils.white,
                         ),
@@ -93,7 +94,7 @@ class PortofolioScreen extends StatelessWidget {
                     Icon(Icons.search, color: Colors.white),
                     SizedBox(width: 5),
                     CText(
-                      text: "Search Project...",
+                      text: "Search Portofolio...",
                       fontWeight: FontWeight.bold,
                       textColor: ColorUtils.white,
                     ),
@@ -107,21 +108,28 @@ class PortofolioScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(0),
                 shrinkWrap: true,
                 children: [
-                  CardItem(
+                  PortofolioItem(
                     onTap: () {},
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
-                  CardItem(
+                  PortofolioItem(
                     onTap: () {},
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
-                  CardItem(
+                  PortofolioItem(
+                    onTap: () {},
+                    imageUrl:
+                        'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
+                    projectName: "Pengiriman Kopi Lampung",
+                    releaserName: "PT. Makmur Sejahtera",
+                  ),
+                  PortofolioItem(
                     onTap: () {},
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',

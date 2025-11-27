@@ -49,8 +49,8 @@ class MainScreen extends StatelessWidget {
                 label: 'Project',
               ),
               NavigationDestination(
-                icon: Icon(Icons.shopping_basket_outlined),
-                selectedIcon: Icon(Icons.shopping_basket_rounded),
+                icon: Icon(Icons.shopping_cart_checkout_rounded),
+                selectedIcon: Icon(Icons.shopping_cart_checkout_rounded),
                 label: 'Portofolio',
               ),
               NavigationDestination(

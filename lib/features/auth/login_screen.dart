@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: Image.asset(ImageUtils.background),
+            child: Image.asset(ImageUtils.backgroundSecondary),
           ),
           Padding(
             padding: const EdgeInsets.all(40.0),

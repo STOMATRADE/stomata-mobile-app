@@ -19,7 +19,7 @@ class SplashScreen extends StatelessWidget {
             top: 0,
             left: 0,
             right: 0,
-            child: Image.asset(ImageUtils.background),
+            child: Image.asset(ImageUtils.backgroundSecondary),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
