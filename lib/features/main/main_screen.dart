@@ -16,39 +16,50 @@ class MainScreen extends StatelessWidget {
           _controller.selectedWidget.value,
         ),
       ),
-      bottomNavigationBar: Obx(
-        () => NavigationBar(
-          backgroundColor: ColorUtils.secondaryBgColors,
-          indicatorColor: Colors.white12,
-          selectedIndex: _controller.selectedWidget.value,
-          onDestinationSelected: (index) {
-            _controller.selectedWidget.value = index;
-          },
-          labelTextStyle: WidgetStateProperty.all(
-            TextStyle(color: Colors.white),
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          iconTheme: WidgetStateProperty.resolveWith((states) {
+            if (states.contains(WidgetState.selected)) {
+              return const IconThemeData(color: Colors.white);
+            }
+            return const IconThemeData(color: Colors.grey);
+          }),
+        ),
+        child: Obx(
+          () => NavigationBar(
+            backgroundColor: ColorUtils.secondaryBgColors,
+            indicatorColor: ColorUtils.primaryColors,
+
+            selectedIndex: _controller.selectedWidget.value,
+            onDestinationSelected: (index) {
+              _controller.selectedWidget.value = index;
+            },
+            labelTextStyle: WidgetStateProperty.all(
+              TextStyle(color: Colors.white),
+            ),
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(Icons.home_outlined),
+                selectedIcon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.shopping_basket_outlined),
+                selectedIcon: Icon(Icons.shopping_basket_rounded),
+                label: 'Project',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.shopping_basket_outlined),
+                selectedIcon: Icon(Icons.shopping_basket_rounded),
+                label: 'Portofolio',
+              ),
+              NavigationDestination(
+                icon: Icon(Icons.people_alt_outlined),
+                selectedIcon: Icon(Icons.people_alt),
+                label: 'Profile',
+              ),
+            ],
           ),
-          destinations: const [
-            NavigationDestination(
-              icon: Icon(Icons.home_outlined),
-              selectedIcon: Icon(Icons.home),
-              label: 'Home',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.shopping_basket_outlined),
-              selectedIcon: Icon(Icons.shopping_basket_rounded),
-              label: 'Project',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.shopping_basket_outlined),
-              selectedIcon: Icon(Icons.shopping_basket_rounded),
-              label: 'Portofolio',
-            ),
-            NavigationDestination(
-              icon: Icon(Icons.people_alt_outlined),
-              selectedIcon: Icon(Icons.people_alt),
-              label: 'Profile',
-            ),
-          ],
         ),
       ),
     );
