@@ -50,6 +50,7 @@ dependencies:
   google_fonts: ^6.3.2
   intl: ^0.20.2
   linear_progress_bar: ^1.2.0
+  sliding_up_panel2: ^3.3.0+1
 
 dev_dependencies:
   flutter_test:

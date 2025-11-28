@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/custom_button.dart';
+import 'package:get/get.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
+import 'package:stomata_app/features/project_detail/controller/project_detail_controller.dart';
 
 class ProjectDetailScreen extends StatelessWidget {
   const ProjectDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var _controller = Get.put(ProjectDetailController());
     return BaseWidgetContainer(
       appBar: AppBar(
         elevation: 0,
@@ -72,40 +75,44 @@ class ProjectDetailScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Icon(Icons.corporate_fare, color: ColorUtils.white),
-                          Container(
-                            decoration: BoxDecoration(shape: BoxShape.circle),
-                            child: Image.network(
-                              "https://bcassetcdn.com/public/blog/wp-content/uploads/2023/06/21145200/Costa-Coffee-1024x640.png",
-                              fit: BoxFit.cover,
-                              scale: 15,
+                      InkWell(
+                        onTap: () => _controller.showCompanyDetail(context),
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // Icon(Icons.corporate_fare, color: ColorUtils.white),
+                            Container(
+                              decoration: BoxDecoration(shape: BoxShape.circle),
+                              child: Image.network(
+                                "https://bcassetcdn.com/public/blog/wp-content/uploads/2023/06/21145200/Costa-Coffee-1024x640.png",
+                                fit: BoxFit.cover,
+                                scale: 15,
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 8),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "PT. Makmur Sejahtera",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold,
+                            const SizedBox(width: 8),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "PT. Makmur Sejahtera",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                "Lampung",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: ColorUtils.primaryColors,
+                                const SizedBox(height: 2),
+                                Text(
+                                  "Lampung",
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    color: ColorUtils.primaryColors,
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                       const SizedBox(height: 28),
                       Column(
@@ -330,23 +337,6 @@ class ProjectDetailScreen extends StatelessWidget {
                                   ),
                                   Text(
                                     "Rp. 500.000.000",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Text(
-                                    "Return Investment",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  Expanded(child: const SizedBox()),
-                                  Text(
-                                    "25%",
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: ColorUtils.primaryColors,
