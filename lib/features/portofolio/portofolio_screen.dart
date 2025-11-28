@@ -108,28 +108,28 @@ class PortofolioScreen extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   PortofolioItem(
-                    onTap: () {},
+                    onTap: _controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   PortofolioItem(
-                    onTap: () {},
+                    onTap: _controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   PortofolioItem(
-                    onTap: () {},
+                    onTap: _controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   PortofolioItem(
-                    onTap: () {},
+                    onTap: _controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",

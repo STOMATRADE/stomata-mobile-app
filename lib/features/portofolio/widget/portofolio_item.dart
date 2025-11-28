@@ -169,7 +169,7 @@ class PortofolioItem extends StatelessWidget {
                         Text("Return", style: TextStyle(fontSize: 15)),
                         Expanded(child: const SizedBox()),
                         Text(
-                          "Rp 250.000.000 (+50%)",
+                          "Rp 250.000.000 (+25%)",
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -182,7 +182,7 @@ class PortofolioItem extends StatelessWidget {
                     Row(
                       children: [
                         Text(
-                          "Cumulative Return",
+                          "Cumulative Asset Value",
                           style: TextStyle(fontSize: 15),
                         ),
                         Expanded(child: const SizedBox()),

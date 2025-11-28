@@ -1,11 +1,10 @@
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stomata_app/core/global_widget/company_detail_content.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
-import 'package:stomata_app/core/global_widget/company_detail_content.dart';
 
-class ProjectDetailController extends GetxController {
+class PortofolioDetailController extends GetxController {
   void showCompanyDetail(context) {
     Get.bottomSheet(
       Container(
