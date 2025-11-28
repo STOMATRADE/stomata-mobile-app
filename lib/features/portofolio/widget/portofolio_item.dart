@@ -35,16 +35,41 @@ class PortofolioItem extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(projectName ?? "", style: TextStyle(fontSize: 24)),
-                    SizedBox(height: 8),
-                    Text(releaserName ?? "", style: TextStyle(fontSize: 15)),
-                    SizedBox(height: 12),
+                    Text(
+                      projectName ?? "",
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(shape: BoxShape.circle),
+                          child: Image.network(
+                            "https://bcassetcdn.com/public/blog/wp-content/uploads/2023/06/21145200/Costa-Coffee-1024x640.png",
+                            fit: BoxFit.cover,
+                            scale: 30,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          releaserName ?? "",
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12),
                     // const Divider(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +93,7 @@ class PortofolioItem extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 8),
+                        const SizedBox(height: 8),
                         LinearProgressBar(
                           maxSteps: 1000000000,
                           progressType: LinearProgressBar.progressTypeLinear,
@@ -79,7 +104,7 @@ class PortofolioItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                     Row(
                       children: [
                         Text("Price", style: TextStyle(fontSize: 15)),
@@ -93,7 +118,7 @@ class PortofolioItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         Text("Total Asset", style: TextStyle(fontSize: 15)),
@@ -107,7 +132,7 @@ class PortofolioItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         Text("Margin", style: TextStyle(fontSize: 15)),
@@ -147,6 +172,7 @@ class PortofolioItem extends StatelessWidget {
                           "Rp 250.000.000 (+50%)",
                           style: TextStyle(
                             fontSize: 15,
+                            fontWeight: FontWeight.bold,
                             color: ColorUtils.primaryColors,
                           ),
                         ),
@@ -175,7 +201,10 @@ class PortofolioItem extends StatelessWidget {
                             ),
                             child: Text(
                               "Rp 750.000.000",
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),

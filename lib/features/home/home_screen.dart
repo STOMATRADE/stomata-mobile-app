@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Card(
               color: ColorUtils.thirdBgColors,
               child: Padding(
@@ -42,14 +42,14 @@ class HomeScreen extends StatelessWidget {
                       fontSize: 15,
                       textColor: ColorUtils.white,
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     CText(
                       text: Helpers.formatRupiah(_controller.totalAsset.value),
                       fontSize: 24,
                       textColor: ColorUtils.white,
                       fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         CText(
@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                           fontSize: 12,
                           textColor: ColorUtils.white,
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         CText(
                           text:
                               "+${Helpers.formatRupiah(_controller.totalReturn.value)} (+20%)",
@@ -66,9 +66,9 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Divider(),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         Expanded(
@@ -80,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                                 fontSize: 15,
                                 textColor: ColorUtils.white,
                               ),
-                              SizedBox(height: 8),
+                              const SizedBox(height: 8),
                               CText(
                                 text: Helpers.formatRupiah(
                                   _controller.totalCash.value,
@@ -107,7 +107,7 @@ class HomeScreen extends StatelessWidget {
                                   Icons.add_circle_rounded,
                                   color: Colors.black,
                                 ),
-                                SizedBox(width: 5),
+                                const SizedBox(width: 5),
                                 CText(
                                   text: "Deposit",
                                   fontWeight: FontWeight.bold,
@@ -118,40 +118,40 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             CText(
               text: "Ongoing Projects",
               fontSize: 24,
               textColor: ColorUtils.white,
               fontWeight: FontWeight.bold,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(0),
                 shrinkWrap: true,
                 children: [
                   CardItem(
-                    onTap: () {},
+                    onTap: _controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   CardItem(
-                    onTap: () {},
+                    onTap: _controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   CardItem(
-                    onTap: () {},
+                    onTap: _controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",

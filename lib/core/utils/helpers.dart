@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Helpers {
@@ -8,5 +9,17 @@ class Helpers {
       decimalDigits: 0,
     );
     return formatter.format(number);
+  }
+
+  static double getFullHeight(context) {
+    double screenFullHeight = MediaQuery.of(context).size.height;
+
+    return screenFullHeight;
+  }
+
+  static double getFullWidth(context) {
+    double screenFullHeight = MediaQuery.of(context).size.width;
+
+    return screenFullHeight;
   }
 }

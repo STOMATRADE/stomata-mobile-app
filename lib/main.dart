@@ -34,7 +34,11 @@ class MyApp extends StatelessWidget {
         primaryColor: ColorUtils.primaryColors,
         scaffoldBackgroundColor: ColorUtils.bgColors,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: ColorUtils.bgColors,
+        ),
+        appBarTheme: AppBarTheme(
           backgroundColor: ColorUtils.secondaryBgColors,
+          foregroundColor: Colors.white,
         ),
         navigationBarTheme: NavigationBarThemeData(
           backgroundColor: Colors.black,

@@ -29,7 +29,7 @@ class PortofolioScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Card(
               color: ColorUtils.thirdBgColors,
               child: Padding(
@@ -42,16 +42,16 @@ class PortofolioScreen extends StatelessWidget {
                       fontSize: 15,
                       textColor: ColorUtils.white,
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     CText(
                       text: Helpers.formatRupiah(_controller.totalAsset.value),
                       fontSize: 24,
                       textColor: ColorUtils.white,
                       fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Divider(),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         CText(
@@ -59,7 +59,7 @@ class PortofolioScreen extends StatelessWidget {
                           fontSize: 12,
                           textColor: ColorUtils.white,
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         CText(
                           text:
                               "+${Helpers.formatRupiah(_controller.totalReturn.value)} (+20%)",
@@ -68,19 +68,19 @@ class PortofolioScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             CText(
               text: "Your Portofolio",
               fontSize: 24,
               textColor: ColorUtils.white,
               fontWeight: FontWeight.bold,
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
@@ -91,7 +91,7 @@ class PortofolioScreen extends StatelessWidget {
                 child: Row(
                   children: [
                     Icon(Icons.search, color: Colors.white),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     CText(
                       text: "Search Portofolio...",
                       fontWeight: FontWeight.bold,
@@ -101,7 +101,7 @@ class PortofolioScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(0),
