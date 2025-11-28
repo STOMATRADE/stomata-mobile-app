@@ -44,7 +44,7 @@ class PortofolioItem extends StatelessWidget {
                     Text(
                       projectName ?? "",
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -63,7 +63,7 @@ class PortofolioItem extends StatelessWidget {
                         Text(
                           releaserName ?? "",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -89,7 +89,7 @@ class PortofolioItem extends StatelessWidget {
                             ),
                             child: Text(
                               "Rp 500.000.000 / Rp 10.000.000.000",
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(fontSize: 12),
                             ),
                           ),
                         ),
@@ -107,8 +107,9 @@ class PortofolioItem extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Text("Price", style: TextStyle(fontSize: 15)),
-                        Expanded(child: const SizedBox()),
+                        Expanded(
+                          child: Text("Price", style: TextStyle(fontSize: 15)),
+                        ),
                         Text(
                           "Rp 10.000.000.000",
                           style: TextStyle(
@@ -121,8 +122,12 @@ class PortofolioItem extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        Text("Total Asset", style: TextStyle(fontSize: 15)),
-                        Expanded(child: const SizedBox()),
+                        Expanded(
+                          child: Text(
+                            "Total Asset",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        ),
                         Text(
                           "Rp 500.000.000",
                           style: TextStyle(
@@ -166,8 +171,9 @@ class PortofolioItem extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        Text("Return", style: TextStyle(fontSize: 15)),
-                        Expanded(child: const SizedBox()),
+                        Expanded(
+                          child: Text("Return", style: TextStyle(fontSize: 15)),
+                        ),
                         Text(
                           "Rp 250.000.000 (+25%)",
                           style: TextStyle(
@@ -181,11 +187,12 @@ class PortofolioItem extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Text(
-                          "Cumulative Asset Value",
-                          style: TextStyle(fontSize: 15),
+                        Expanded(
+                          child: Text(
+                            "Cumulative Asset Value",
+                            style: TextStyle(fontSize: 15),
+                          ),
                         ),
-                        Expanded(child: const SizedBox()),
                         Card(
                           margin: const EdgeInsets.all(0),
                           color: ColorUtils.thirdBgColors,

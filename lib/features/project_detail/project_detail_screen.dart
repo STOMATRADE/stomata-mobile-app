@@ -61,7 +61,7 @@ class ProjectDetailScreen extends StatelessWidget {
                               child: Text(
                                 "Kopi",
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 12,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -85,7 +85,7 @@ class ProjectDetailScreen extends StatelessWidget {
                           //     child: Text(
                           //       "On Your Portofolio",
                           //       style: TextStyle(
-                          //         fontSize: 15,
+                          //         fontSize: 12,
                           //         color: ColorUtils.white,
                           //         fontWeight: FontWeight.bold,
                           //       ),
@@ -98,7 +98,7 @@ class ProjectDetailScreen extends StatelessWidget {
                       Text(
                         "Pengiriman Kopi Lampung",
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -125,7 +125,7 @@ class ProjectDetailScreen extends StatelessWidget {
                                 Text(
                                   "PT. Makmur Sejahtera",
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -133,7 +133,7 @@ class ProjectDetailScreen extends StatelessWidget {
                                 Text(
                                   "Lampung",
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     color: ColorUtils.primaryColors,
                                   ),
                                 ),
@@ -161,7 +161,7 @@ class ProjectDetailScreen extends StatelessWidget {
                               ),
                               child: Text(
                                 "Rp 500.000.000 / Rp 10.000.000.000",
-                                style: TextStyle(fontSize: 15),
+                                style: TextStyle(fontSize: 12),
                               ),
                             ),
                           ),

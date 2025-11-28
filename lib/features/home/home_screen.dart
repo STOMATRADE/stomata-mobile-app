@@ -39,13 +39,13 @@ class HomeScreen extends StatelessWidget {
                   children: [
                     CText(
                       text: "Total Aset",
-                      fontSize: 15,
+                      fontSize: 12,
                       textColor: ColorUtils.white,
                     ),
                     const SizedBox(height: 8),
                     CText(
                       text: Helpers.formatRupiah(_controller.totalAsset.value),
-                      fontSize: 24,
+                      fontSize: 20,
                       textColor: ColorUtils.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                             children: [
                               CText(
                                 text: "Total Cash",
-                                fontSize: 15,
+                                fontSize: 12,
                                 textColor: ColorUtils.white,
                               ),
                               const SizedBox(height: 8),
@@ -85,7 +85,7 @@ class HomeScreen extends StatelessWidget {
                                 text: Helpers.formatRupiah(
                                   _controller.totalCash.value,
                                 ),
-                                fontSize: 24,
+                                fontSize: 20,
                                 textColor: ColorUtils.white,
                                 fontWeight: FontWeight.bold,
                               ),

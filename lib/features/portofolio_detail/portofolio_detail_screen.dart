@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/instance_manager.dart';
-import 'package:get/state_manager.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/features/portofolio_detail/controller/portofolio_detail_controller.dart';
@@ -62,7 +61,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                               child: Text(
                                 "Kopi",
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 12,
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -86,7 +85,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                               child: Text(
                                 "On Your Portofolio",
                                 style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: 12,
                                   color: ColorUtils.white,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -99,7 +98,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                       Text(
                         "Pengiriman Kopi Lampung",
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -126,7 +125,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                                 Text(
                                   "PT. Makmur Sejahtera",
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -134,7 +133,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                                 Text(
                                   "Lampung",
                                   style: TextStyle(
-                                    fontSize: 15,
+                                    fontSize: 12,
                                     color: ColorUtils.primaryColors,
                                   ),
                                 ),
@@ -162,7 +161,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                               ),
                               child: Text(
                                 "Rp 500.000.000 / Rp 10.000.000.000",
-                                style: TextStyle(fontSize: 15),
+                                style: TextStyle(fontSize: 12),
                               ),
                             ),
                           ),
@@ -233,11 +232,12 @@ class PortofolioDetailScreen extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Text(
-                                    "Your Asset",
-                                    style: TextStyle(fontSize: 15),
+                                  Expanded(
+                                    child: Text(
+                                      "Your Asset",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
                                   ),
-                                  Expanded(child: const SizedBox()),
                                   Text(
                                     "Rp 500.000.000",
                                     style: TextStyle(
@@ -250,11 +250,12 @@ class PortofolioDetailScreen extends StatelessWidget {
                               const SizedBox(height: 8),
                               Row(
                                 children: [
-                                  Text(
-                                    "Return Rate",
-                                    style: TextStyle(fontSize: 15),
+                                  Expanded(
+                                    child: Text(
+                                      "Return Rate",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
                                   ),
-                                  Expanded(child: const SizedBox()),
                                   Text(
                                     "25%",
                                     style: TextStyle(
@@ -270,11 +271,12 @@ class PortofolioDetailScreen extends StatelessWidget {
                               const SizedBox(height: 8),
                               Row(
                                 children: [
-                                  Text(
-                                    "Return",
-                                    style: TextStyle(fontSize: 15),
+                                  Expanded(
+                                    child: Text(
+                                      "Return",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
                                   ),
-                                  Expanded(child: const SizedBox()),
                                   Text(
                                     "Rp 250.000.000 (+25%)",
                                     style: TextStyle(
@@ -288,11 +290,12 @@ class PortofolioDetailScreen extends StatelessWidget {
                               const SizedBox(height: 12),
                               Row(
                                 children: [
-                                  Text(
-                                    "Cumulative Asset Value",
-                                    style: TextStyle(fontSize: 15),
+                                  Expanded(
+                                    child: Text(
+                                      "Cumulative Asset Value",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
                                   ),
-                                  Expanded(child: const SizedBox()),
                                   Card(
                                     margin: const EdgeInsets.all(0),
                                     color: ColorUtils.thirdBgColors,

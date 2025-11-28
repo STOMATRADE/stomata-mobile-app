@@ -44,7 +44,7 @@ class CardItem extends StatelessWidget {
                     Text(
                       projectName ?? "",
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -63,7 +63,7 @@ class CardItem extends StatelessWidget {
                         Text(
                           releaserName ?? "",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -89,7 +89,7 @@ class CardItem extends StatelessWidget {
                             ),
                             child: Text(
                               "Rp 500.000.000 / Rp 10.000.000.000",
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(fontSize: 12),
                             ),
                           ),
                         ),
@@ -107,8 +107,9 @@ class CardItem extends StatelessWidget {
                     const SizedBox(height: 12),
                     Row(
                       children: [
-                        Text("Price", style: TextStyle(fontSize: 15)),
-                        Expanded(child: const SizedBox()),
+                        Expanded(
+                          child: Text("Price", style: TextStyle(fontSize: 15)),
+                        ),
                         Text(
                           "Rp. 10.000.000.000",
                           style: TextStyle(
@@ -121,8 +122,12 @@ class CardItem extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        Text("Total Investor", style: TextStyle(fontSize: 15)),
-                        Expanded(child: const SizedBox()),
+                        Expanded(
+                          child: Text(
+                            "Total Investor",
+                            style: TextStyle(fontSize: 15),
+                          ),
+                        ),
                         Text(
                           "12",
                           style: TextStyle(
@@ -135,8 +140,9 @@ class CardItem extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        Text("Margin", style: TextStyle(fontSize: 15)),
-                        Expanded(child: const SizedBox()),
+                        Expanded(
+                          child: Text("Margin", style: TextStyle(fontSize: 15)),
+                        ),
                         Card(
                           margin: const EdgeInsets.all(0),
                           color: ColorUtils.primaryColors,
@@ -161,11 +167,6 @@ class CardItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // CustomButton(
-                    //   onPressed: () {},
-                    //   titleButton: "See Detail",
-                    //   backgroundColors: ColorUtils.primaryColors,
-                    // ),
                   ],
                 ),
               ),

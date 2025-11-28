@@ -39,13 +39,13 @@ class PortofolioScreen extends StatelessWidget {
                   children: [
                     CText(
                       text: "Cumulative Total Aset",
-                      fontSize: 15,
+                      fontSize: 12,
                       textColor: ColorUtils.white,
                     ),
                     const SizedBox(height: 8),
                     CText(
                       text: Helpers.formatRupiah(_controller.totalAsset.value),
-                      fontSize: 24,
+                      fontSize: 20,
                       textColor: ColorUtils.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -54,10 +54,12 @@ class PortofolioScreen extends StatelessWidget {
                     const SizedBox(height: 8),
                     Row(
                       children: [
-                        CText(
-                          text: "Cumulative Total Return",
-                          fontSize: 12,
-                          textColor: ColorUtils.white,
+                        Expanded(
+                          child: CText(
+                            text: "Cumulative Total Return",
+                            fontSize: 12,
+                            textColor: ColorUtils.white,
+                          ),
                         ),
                         const SizedBox(width: 5),
                         CText(
