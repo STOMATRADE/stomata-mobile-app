@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/config/blockchain/model/auth_privy_model.dart';
 import 'package:stomata_app/core/config/blockchain/privy_config.dart';
+import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/main/main_screen.dart';
 
 class LoginController extends GetxController {
@@ -32,8 +33,16 @@ class LoginController extends GetxController {
         textController.text,
       );
 
-      if (data.success == true) {}
+      printLog("data: ${data.message}");
+
+      if (data.success == true) {
+        printLog("is succes");
+      } else {
+        printLog("is failed");
+      }
     } catch (e) {
+      printLog("error screen: $e");
+
       isLoading.value = false;
     }
   }

@@ -50,6 +50,7 @@ class LoginScreen extends StatelessWidget {
                       inputBackgroundColors: ColorUtils.thirdBgColors,
                       keyboardType: TextInputType.number,
                       borderWidth: 1,
+                      maxLines: 1,
                       enableBorderColors: ColorUtils.primaryColors,
                       focusBorderColors: ColorUtils.primaryColors,
                       preffixIcon: Icon(
@@ -67,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 30),
                 Obx(
                   () => CustomButton(
-                    onPressed: _controller.loginPrivyEmail,
+                    onPressed: () => _controller.loginPrivyEmail(),
                     enableButton: _controller.enableButton.value,
                     titleButton: "Login",
                     backgroundDisableColors: ColorUtils.primaryColors.withAlpha(

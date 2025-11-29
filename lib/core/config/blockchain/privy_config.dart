@@ -6,50 +6,63 @@ import 'package:stomata_app/core/config/firebase/firebase_remote_config_utils.da
 import 'package:stomata_app/core/utils/logging.dart';
 
 class PrivyConfigUtils {
-  _setupPrivyConfig() async {
+  Future<PrivyConfig> _setupPrivyConfig() async {
     FirebaseRemoteConfig remoteConfigUtils = FirebaseRemoteConfigUtils()
         .getRemoteConfig();
 
     var privyConfig = PrivyConfig(
-      appClientId: remoteConfigUtils.getString("privyAppClientId"),
-      appId: remoteConfigUtils.getString("privyAppId"),
+      appClientId: "client-WY6TLxLxgY3eeVH4dPW8bNrkH399KSQifKcrz2QKAHjDy",
+      appId: "cmielo7me00hjl50dwzy9uy08",
       logLevel: PrivyLogLevel.verbose,
     );
+
+    printLog("privyAppId: ${privyConfig.appId}");
+    printLog("appClientId: ${privyConfig.appClientId}");
 
     return privyConfig;
   }
 
-  Privy _getPrivyConfig() {
-    final privy = Privy.init(config: _setupPrivyConfig());
+  Future<Privy> _getPrivyConfig() async {
+    var config = await _setupPrivyConfig();
+
+    final privy = Privy.init(config: config);
     return privy;
   }
 
   Future<AuthPrivyModel> loginWithEmail(String email) async {
     AuthPrivyModel data = AuthPrivyModel();
 
-    var privy = _getPrivyConfig();
-    final sendResult = await privy.email.sendCode(email);
-    sendResult.fold(
-      onSuccess: (ok) {
-        printLog("Code sent to $email");
-        data.message = "Success";
-        data.success = true;
-      },
-      onFailure: (err) {
-        printLog("Failed to send code: ${err.message}");
+    try {
+      var privy = await _getPrivyConfig();
+      final sendResult = await privy.email.sendCode(email);
+      sendResult.fold(
+        onSuccess: (ok) {
+          printLog("Code sent to $email");
+          data.message = "Success";
+          data.success = true;
+        },
+        onFailure: (err) {
+          printLog("Failed to send code: ${err.message}");
 
-        data.message = err.message;
-        data.success = false;
-      },
-    );
+          data.message = err.message;
+          data.success = false;
+        },
+      );
 
-    return data;
+      return data;
+    } catch (e) {
+      printLog("privy Error: $e");
+      data.message = e.toString();
+      data.success = false;
+
+      return data;
+    }
   }
 
   Future<VerifyPrivyModel> verifyCode(String email, String code) async {
     VerifyPrivyModel data = VerifyPrivyModel();
 
-    var privy = _getPrivyConfig();
+    var privy = await _getPrivyConfig();
     final loginResult = await privy.email.loginWithCode(
       email: email,
       code: code,
