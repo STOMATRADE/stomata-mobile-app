@@ -60,28 +60,37 @@ class PrivyConfigUtils {
   }
 
   Future<VerifyPrivyModel> verifyCode(String email, String code) async {
+    printLog("email: $email");
+    printLog("code: $code");
+
     VerifyPrivyModel data = VerifyPrivyModel();
 
-    var privy = await _getPrivyConfig();
-    final loginResult = await privy.email.loginWithCode(
-      email: email,
-      code: code,
-    );
-    loginResult.fold(
-      onSuccess: (privyUser) {
-        printLog("Login succeeded, user id: ${privyUser.id}");
+    try {
+      var privy = await _getPrivyConfig();
+      final loginResult = await privy.email.loginWithCode(
+        email: email,
+        code: code,
+      );
+      loginResult.fold(
+        onSuccess: (privyUser) {
+          printLog("Login succeeded, user id: ${privyUser.id}");
 
-        data.message = "success";
-        data.privyUser = privyUser;
-        data.success = true;
-      },
-      onFailure: (err) {
-        printLog("Login failed: ${err.message}");
+          data.message = "success";
+          data.privyUser = privyUser;
+          data.success = true;
+        },
+        onFailure: (err) {
+          printLog("Login failed: ${err.message}");
 
-        data.message = err.message;
-        data.success = false;
-      },
-    );
+          data.message = err.message;
+          data.success = false;
+        },
+      );
+    } catch (e) {
+      printLog("privy Error: $e");
+      data.message = e.toString();
+      data.success = false;
+    }
 
     return data;
   }

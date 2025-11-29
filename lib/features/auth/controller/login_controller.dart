@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:stomata_app/core/config/blockchain/model/auth_privy_model.dart';
 import 'package:stomata_app/core/config/blockchain/privy_config.dart';
 import 'package:stomata_app/core/utils/logging.dart';
+import 'package:stomata_app/features/auth/controller/otp_auth_controller.dart';
+import 'package:stomata_app/features/auth/otp_auth_screen.dart';
 import 'package:stomata_app/features/main/main_screen.dart';
 
 class LoginController extends GetxController {
@@ -28,7 +30,6 @@ class LoginController extends GetxController {
     PrivyConfigUtils privyConfigUtils = PrivyConfigUtils();
 
     try {
-      isLoading.value = false;
       AuthPrivyModel data = await privyConfigUtils.loginWithEmail(
         textController.text,
       );
@@ -36,8 +37,10 @@ class LoginController extends GetxController {
       printLog("data: ${data.message}");
 
       if (data.success == true) {
-        printLog("is succes");
+        isLoading.value = false;
+        Get.to(() => OtpAuthScreen(email: textController.text));
       } else {
+        isLoading.value = false;
         printLog("is failed");
       }
     } catch (e) {
@@ -47,10 +50,10 @@ class LoginController extends GetxController {
     }
   }
 
-  void gotoHome() async {
-    // Implement navigation to home screen
-    await Future.delayed(const Duration(seconds: 1));
-    isLoading = false.obs;
-    Get.offAll(() => const MainScreen());
-  }
+  // void gotoHome() async {
+  //   // Implement navigation to home screen
+  //   await Future.delayed(const Duration(seconds: 1));
+  //   isLoading = false.obs;
+  //   Get.offAll(() => const MainScreen());
+  // }
 }
