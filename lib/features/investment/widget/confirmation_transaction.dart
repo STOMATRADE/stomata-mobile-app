@@ -124,7 +124,7 @@ class ConfirmationTransaction extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "27 Jan 2026",
+                          "27 January 2026",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -142,7 +142,7 @@ class ConfirmationTransaction extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "27 Jan 2026",
+                          "27 January 2026",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,

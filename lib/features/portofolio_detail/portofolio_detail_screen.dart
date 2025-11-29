@@ -384,7 +384,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "Rp. 500.000.000",
+                                    "27 January 2026",
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: ColorUtils.primaryColors,
@@ -402,7 +402,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "Rp. 500.000.000",
+                                    "27 January 2026",
                                     style: TextStyle(
                                       fontSize: 15,
                                       color: ColorUtils.primaryColors,
