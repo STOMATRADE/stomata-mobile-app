@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart';
 import 'package:flutter_package/source/ctext_component.dart';
+import 'package:get/get.dart';
+import 'package:get/state_manager.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
+import 'package:stomata_app/features/profile/controller/profile_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var _controller = Get.put(ProfileController());
     return BaseWidgetContainer(
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
@@ -150,27 +154,32 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 40),
-            Card(
-              margin: const EdgeInsets.all(0),
-              color: ColorUtils.thirdBgColors,
-              child: Container(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Row(
-                        children: [
-                          Icon(Icons.logout, color: ColorUtils.white),
-                          const SizedBox(width: 8),
-                          Text(
-                            "Logout",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
+            GestureDetector(
+              onTap: () {
+                _controller.confirmLogout(context);
+              },
+              child: Card(
+                margin: const EdgeInsets.all(0),
+                color: ColorUtils.thirdBgColors,
+                child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Row(
+                          children: [
+                            Icon(Icons.logout, color: ColorUtils.white),
+                            const SizedBox(width: 8),
+                            Text(
+                              "Logout",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Icon(Icons.arrow_forward_ios, color: ColorUtils.white),
-                  ],
+                      Icon(Icons.arrow_forward_ios, color: ColorUtils.white),
+                    ],
+                  ),
                 ),
               ),
             ),
