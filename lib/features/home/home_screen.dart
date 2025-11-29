@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Card(
-              color: ColorUtils.thirdBgColors,
+              color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -92,30 +92,30 @@ class HomeScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: WidgetStateProperty.all<Color>(
-                                ColorUtils.primaryColors,
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.add_circle_rounded,
-                                  color: Colors.black,
-                                ),
-                                const SizedBox(width: 5),
-                                CText(
-                                  text: "Deposit",
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(right: 10),
+                        //   child: ElevatedButton(
+                        //     onPressed: () {},
+                        //     style: ButtonStyle(
+                        //       backgroundColor: WidgetStateProperty.all<Color>(
+                        //         ColorUtils.primaryColors,
+                        //       ),
+                        //     ),
+                        //     child: Row(
+                        //       children: [
+                        //         Icon(
+                        //           Icons.add_circle_rounded,
+                        //           color: Colors.black,
+                        //         ),
+                        //         const SizedBox(width: 5),
+                        //         CText(
+                        //           text: "Deposit",
+                        //           fontWeight: FontWeight.bold,
+                        //         ),
+                        //       ],
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                     const SizedBox(height: 8),

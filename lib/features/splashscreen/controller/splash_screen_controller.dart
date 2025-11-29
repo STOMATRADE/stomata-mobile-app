@@ -12,7 +12,7 @@ class SplashScreenController extends GetxController with CacheManager {
 
   splasScreenStart() async {
     bool loginStatus = await getLoginStatus();
-    await Future.delayed(const Duration(milliseconds: 300));
+    await Future.delayed(const Duration(milliseconds: 500));
 
     if (loginStatus) {
       // Get.offAll(() => const Homepage());

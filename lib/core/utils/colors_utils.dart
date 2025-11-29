@@ -4,6 +4,7 @@ class ColorUtils {
   static const Color bgColors = Color(0xff0E0E0E);
   static const Color secondaryBgColors = Color(0xff171717);
   static const Color thirdBgColors = Color.fromARGB(255, 61, 61, 61);
-  static const Color primaryColors = Color(0xff4ADE80);
+  static const Color primaryColors = Color(0xff00C427);
+  static const Color secondaryGreenColors = Color(0xff006923);
   static const Color white = Color(0xffFFFFFF);
 }

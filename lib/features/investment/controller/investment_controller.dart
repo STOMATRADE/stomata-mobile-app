@@ -4,6 +4,7 @@ import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:get/utils.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
+import 'package:stomata_app/features/investment/pin_screen.dart';
 import 'package:stomata_app/features/investment/widget/confirmation_transaction.dart';
 
 class InvestmentController extends GetxController {
@@ -20,8 +21,16 @@ class InvestmentController extends GetxController {
           ),
           color: ColorUtils.secondaryBgColors,
         ),
-        child: ConfirmationTransaction(),
+        child: ConfirmationTransaction(
+          onConfirm: () {
+            gotoPin();
+          },
+        ),
       ),
     );
+  }
+
+  void gotoPin() {
+    Get.to(() => PinScreen());
   }
 }

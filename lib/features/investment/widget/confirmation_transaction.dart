@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
-import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 
 class ConfirmationTransaction extends StatelessWidget {
-  const ConfirmationTransaction({super.key});
+  final VoidCallback onConfirm;
+  const ConfirmationTransaction({super.key, required this.onConfirm});
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +156,9 @@ class ConfirmationTransaction extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             CustomButton(
-              onPressed: () {},
+              onPressed: () {
+                onConfirm();
+              },
               titleButton: "Confirm",
               borderRadius: 30,
               backgroundColors: ColorUtils.primaryColors,

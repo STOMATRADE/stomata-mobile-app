@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/features/home/home_screen.dart';
 import 'package:stomata_app/features/portofolio/portofolio_screen.dart';
+import 'package:stomata_app/features/profile/profile_screen.dart';
 import 'package:stomata_app/features/project/project_screen.dart';
 
 class MainController extends GetxController {
@@ -11,7 +12,7 @@ class MainController extends GetxController {
     HomeScreen(),
     ProjectScreen(),
     PortofolioScreen(),
-    Container(),
+    ProfileScreen(),
   ];
 
   void selectWidget(int index) {

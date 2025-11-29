@@ -31,7 +31,7 @@ class PortofolioScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             Card(
-              color: ColorUtils.thirdBgColors,
+              color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
