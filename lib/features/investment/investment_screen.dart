@@ -318,7 +318,7 @@ class InvestmentScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 100),
                   ],
                 ),
               ),
@@ -343,7 +343,7 @@ class InvestmentScreen extends StatelessWidget {
                 ),
                 child: CustomButton(
                   onPressed: () => _controller.confirmTransaction(context),
-                  titleButton: "Start to Invest",
+                  titleButton: "Payment",
                   borderRadius: 30,
                   backgroundColors: ColorUtils.primaryColors,
                 ),
