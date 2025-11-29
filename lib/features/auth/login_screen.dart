@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/get.dart';
+import 'package:stomata_app/core/global_widget/loading_screen.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/auth/controller/login_controller.dart';
@@ -48,6 +49,11 @@ class LoginScreen extends StatelessWidget {
                 ),
               ],
             ),
+          ),
+          Obx(
+            () => _controller.isLoading.value
+                ? const LoadingScreen()
+                : const SizedBox(),
           ),
         ],
       ),
