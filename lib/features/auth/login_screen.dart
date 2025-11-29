@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
+import 'package:flutter_package/source/ctext_input_component.dart';
 import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/global_widget/loading_screen.dart';
@@ -36,8 +37,51 @@ class LoginScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 50),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Login with Email",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(height: 10),
+                    CTextInput(
+                      textController: _controller.textController,
+                      inputBackgroundColors: ColorUtils.thirdBgColors,
+                      keyboardType: TextInputType.number,
+                      borderWidth: 1,
+                      enableBorderColors: ColorUtils.primaryColors,
+                      focusBorderColors: ColorUtils.primaryColors,
+                      preffixIcon: Icon(
+                        Icons.email_outlined,
+                        color: ColorUtils.white,
+                      ),
+                      hintText: "Email",
+                      labelInput: "Email",
+                      labelInputColors: ColorUtils.white,
+                      floatingLabelBehavior: FloatingLabelBehavior.never,
+                      cursorColors: ColorUtils.primaryColors,
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 30),
+                Obx(
+                  () => CustomButton(
+                    onPressed: _controller.loginPrivyEmail,
+                    enableButton: _controller.enableButton.value,
+                    titleButton: "Login",
+                    backgroundDisableColors: ColorUtils.primaryColors.withAlpha(
+                      60,
+                    ),
+                    borderRadius: 20,
+                    backgroundColors: ColorUtils.primaryColors,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Text("Or", style: TextStyle(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 10),
                 CustomButton(
-                  onPressed: _controller.gotoHome,
+                  onPressed: () {},
                   preffixIcons: Image.asset(
                     ImageUtils.googleLogo,
                     height: 20,
@@ -45,7 +89,10 @@ class LoginScreen extends StatelessWidget {
                   ),
                   titleButton: "Login With Google",
                   borderRadius: 20,
-                  backgroundColors: ColorUtils.primaryColors,
+                  backgroundColors: ColorUtils.secondaryBgColors,
+                  borderColors: ColorUtils.primaryColors,
+                  needBorder: true,
+                  fontColor: ColorUtils.white,
                 ),
               ],
             ),
