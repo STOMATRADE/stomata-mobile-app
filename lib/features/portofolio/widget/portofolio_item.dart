@@ -89,12 +89,13 @@ class PortofolioItem extends StatelessWidget {
                             ),
                             child: Text(
                               "Rp 500.000.000 / Rp 10.000.000.000",
-                              style: TextStyle(fontSize: 12),
+                              style: TextStyle(fontSize: 10),
                             ),
                           ),
                         ),
                         const SizedBox(height: 8),
                         LinearProgressBar(
+                          minHeight: 5,
                           maxSteps: 1000000000,
                           progressType: LinearProgressBar.progressTypeLinear,
                           currentStep: 500000000,

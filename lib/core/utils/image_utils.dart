@@ -10,6 +10,5 @@ class ImageUtils {
 
   // BACKGROUNDS
   static const String background = '${_background}background.png';
-  // static const String backgroundSecondary =
-  //     '${_background}background-secondary.png';
+  static const String ringBg = '${_background}ring-bg.png';
 }

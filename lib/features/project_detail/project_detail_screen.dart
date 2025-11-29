@@ -16,7 +16,7 @@ class ProjectDetailScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: Text('Project Detail'),
+        title: Text('Project Detail', style: TextStyle(fontSize: 18)),
         actions: [
           IconButton(
             icon: Icon(Icons.message_outlined, color: Colors.white),
@@ -161,12 +161,13 @@ class ProjectDetailScreen extends StatelessWidget {
                               ),
                               child: Text(
                                 "Rp 500.000.000 / Rp 10.000.000.000",
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: 10),
                               ),
                             ),
                           ),
                           const SizedBox(height: 12),
                           LinearProgressBar(
+                            minHeight: 5,
                             maxSteps: 1000000000,
                             progressType: LinearProgressBar.progressTypeLinear,
                             currentStep: 500000000,
@@ -437,8 +438,8 @@ class ProjectDetailScreen extends StatelessWidget {
                 top: 30,
               ),
               child: CustomButton(
-                onPressed: () {},
-                titleButton: "Start to Invest Project",
+                onPressed: _controller.startInvest,
+                titleButton: "Start to Invest",
                 borderRadius: 30,
                 backgroundColors: ColorUtils.primaryColors,
               ),

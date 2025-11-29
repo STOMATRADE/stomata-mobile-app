@@ -16,7 +16,7 @@ class PortofolioDetailScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: Text('Portofolio Detail'),
+        title: Text('Portofolio Detail', style: TextStyle(fontSize: 18)),
         actions: [
           IconButton(
             icon: Icon(Icons.message_outlined, color: Colors.white),
@@ -161,12 +161,13 @@ class PortofolioDetailScreen extends StatelessWidget {
                               ),
                               child: Text(
                                 "Rp 500.000.000 / Rp 10.000.000.000",
-                                style: TextStyle(fontSize: 12),
+                                style: TextStyle(fontSize: 10),
                               ),
                             ),
                           ),
                           const SizedBox(height: 12),
                           LinearProgressBar(
+                            minHeight: 5,
                             maxSteps: 1000000000,
                             progressType: LinearProgressBar.progressTypeLinear,
                             currentStep: 500000000,
@@ -516,22 +517,22 @@ class PortofolioDetailScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: CustomButton(
-                      onPressed: () {},
+                      onPressed: _controller.startInvest,
                       titleButton: "Invest",
                       borderRadius: 30,
                       backgroundColors: ColorUtils.primaryColors,
                     ),
                   ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: CustomButton(
-                      onPressed: () {},
-                      titleButton: "Sell",
-                      fontColor: ColorUtils.white,
-                      borderRadius: 30,
-                      backgroundColors: ColorUtils.thirdBgColors,
-                    ),
-                  ),
+                  // const SizedBox(width: 8),
+                  // Expanded(
+                  //   child: CustomButton(
+                  //     onPressed: () {},
+                  //     titleButton: "Sell",
+                  //     fontColor: ColorUtils.white,
+                  //     borderRadius: 30,
+                  //     backgroundColors: ColorUtils.thirdBgColors,
+                  //   ),
+                  // ),
                 ],
               ),
             ),
