@@ -16,6 +16,7 @@ class LoginScreen extends StatelessWidget {
     var _controller = Get.put(LoginController());
 
     return BaseWidgetContainer(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Positioned(
@@ -48,7 +49,7 @@ class LoginScreen extends StatelessWidget {
                     CTextInput(
                       textController: _controller.textController,
                       inputBackgroundColors: ColorUtils.thirdBgColors,
-                      keyboardType: TextInputType.number,
+                      // keyboardType: TextInputType.number,
                       borderWidth: 1,
                       maxLines: 1,
                       enableBorderColors: ColorUtils.primaryColors,

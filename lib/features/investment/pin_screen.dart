@@ -6,6 +6,7 @@ import 'package:flutter_package/source/otp_custom_component/otp_component.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:pinput/pinput.dart';
+import 'package:stomata_app/core/global_widget/loading_screen.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/investment/controller/pin_controller.dart';
@@ -23,77 +24,90 @@ class PinScreen extends StatelessWidget {
         centerTitle: true,
         title: Text('PIN', style: TextStyle(fontSize: 18)),
       ),
-      body: Padding(
-        padding: EdgeInsets.only(top: Helpers.getFullHeight(context) * 0.11),
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                "input your pin",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      body: Stack(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              top: Helpers.getFullHeight(context) * 0.11,
+            ),
+            child: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "input your pin",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                  ),
+                  const SizedBox(height: 40),
+                  Pinput(
+                    showCursor: true,
+                    obscureText: true,
+                    enabled: false,
+                    controller: _controller.textController,
+                    validator: (value) {
+                      _controller.confirmPin(value ?? "", context);
+                    },
+                  ),
+                  const SizedBox(height: 40),
+                  Center(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            buildNumberButton("1", _controller),
+                            const SizedBox(width: 20),
+                            buildNumberButton("2", _controller),
+                            const SizedBox(width: 20),
+                            buildNumberButton("3", _controller),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            buildNumberButton("4", _controller),
+                            const SizedBox(width: 20),
+                            buildNumberButton("5", _controller),
+                            const SizedBox(width: 20),
+                            buildNumberButton("6", _controller),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            buildNumberButton("7", _controller),
+                            const SizedBox(width: 20),
+                            buildNumberButton("8", _controller),
+                            const SizedBox(width: 20),
+                            buildNumberButton("9", _controller),
+                          ],
+                        ),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            refreshButton(_controller),
+                            const SizedBox(width: 20),
+                            buildNumberButton("0", _controller),
+                            const SizedBox(width: 20),
+                            deleteButton(_controller),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 40),
-              Pinput(
-                showCursor: true,
-                obscureText: true,
-                enabled: false,
-                controller: _controller.textController,
-                validator: (value) {},
-              ),
-              const SizedBox(height: 40),
-              Center(
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        buildNumberButton("1", _controller),
-                        const SizedBox(width: 20),
-                        buildNumberButton("2", _controller),
-                        const SizedBox(width: 20),
-                        buildNumberButton("3", _controller),
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        buildNumberButton("4", _controller),
-                        const SizedBox(width: 20),
-                        buildNumberButton("5", _controller),
-                        const SizedBox(width: 20),
-                        buildNumberButton("6", _controller),
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        buildNumberButton("7", _controller),
-                        const SizedBox(width: 20),
-                        buildNumberButton("8", _controller),
-                        const SizedBox(width: 20),
-                        buildNumberButton("9", _controller),
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        refreshButton(_controller),
-                        const SizedBox(width: 20),
-                        buildNumberButton("0", _controller),
-                        const SizedBox(width: 20),
-                        deleteButton(_controller),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
+          Obx(
+            () => _controller.isLoading.value
+                ? const LoadingScreen()
+                : const SizedBox(),
+          ),
+        ],
       ),
     );
   }

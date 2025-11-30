@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:privy_flutter/privy_flutter.dart';
 import 'package:stomata_app/core/config/blockchain/model/auth_privy_model.dart';
@@ -94,4 +95,38 @@ class PrivyConfigUtils {
 
     return data;
   }
+
+  Future<PrivyUser?> _getCurrentUser() async {
+    try {
+      final privy = await _getPrivyConfig();
+      final user = await privy.getUser();
+      return user;
+    } catch (e) {
+      printLog("Error getUser: $e");
+      return null;
+    }
+  }
+
+  // Future<String?> getEmailAcc() async {
+  //   final user = await _getCurrentUser();
+  //   if (user == null) {
+  //     printLog("User not authenticated");
+  //     return null;
+  //   }
+
+  //   try {
+  //     // linkedAccounts adalah List<dynamic> (accounts)
+  //     final emailAcc = user.linkedAccounts.firstWhere(
+  //       (acc) => acc.type == 'email',
+  //       orElse: () => null,
+  //     );
+  //     final email = emailAcc
+  //         ?.address; // di JS docs: account.address :contentReference[oaicite:3]{index=3}
+  //     printLog("Privy Email: $email");
+  //     return email;
+  //   } catch (e) {
+  //     printLog("Cannot get email: $e");
+  //     return null;
+  //   }
+  // }
 }
