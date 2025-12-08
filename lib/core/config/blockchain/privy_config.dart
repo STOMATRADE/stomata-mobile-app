@@ -116,6 +116,29 @@ class PrivyConfigUtils {
     return data;
   }
 
+  Future<void> createWallet() async {
+    final user = await _getCurrentUser();
+    if (user == null) {
+      return;
+    }
+
+    try {
+      final walletResult = await user.createEthereumWallet();
+
+      walletResult.fold(
+        onSuccess: (wallet) {
+          final address = wallet.address;
+          printLog("Wallet created — address: $address");
+        },
+        onFailure: (error) {
+          printLog("Gagal buat wallet: $error");
+        },
+      );
+    } catch (e) {
+      printLog("function error: $e");
+    }
+  }
+
   Future<PrivyUser?> _getCurrentUser() async {
     try {
       final privy = await _getPrivyConfig();

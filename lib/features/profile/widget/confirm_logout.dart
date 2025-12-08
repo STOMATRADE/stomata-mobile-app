@@ -32,7 +32,7 @@ class ConfirmLogout extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(
-                "You need to log in again to using Stomatrade app",
+                "You need log in again to using Stomatrade app",
                 style: TextStyle(fontSize: 12),
               ),
               const SizedBox(height: 40),

@@ -11,7 +11,7 @@ class ProfileController extends GetxController {
   RxBool loadingLogout = false.obs;
   RxBool loadingData = false.obs;
   RxString userEmail = "".obs;
-  RxString contractAddress = "0xDDDDDDDDDDDDDDDDDDDDDD".obs;
+  RxString contractAddress = "".obs;
 
   @override
   void onInit() async {

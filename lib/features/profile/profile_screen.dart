@@ -60,14 +60,29 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 2),
                           Obx(
-                            () => Text(
-                              _controller.contractAddress.value,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: ColorUtils.primaryColors,
-                              ),
-                            ),
+                            () => _controller.contractAddress.value.isNotEmpty
+                                ? Text(
+                                    _controller.contractAddress.value,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: ColorUtils.primaryColors,
+                                    ),
+                                  )
+                                : Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: CustomButton(
+                                      onPressed: () {},
+                                      titleButton: "Connect Wallet",
+                                      borderRadius: 30,
+                                      buttonHeight: 25,
+                                      fontSize: 12,
+                                      buttonWidth:
+                                          Helpers.getFullWidth(context) * 0.5,
+                                      backgroundColors:
+                                          ColorUtils.primaryColors,
+                                    ),
+                                  ),
                           ),
                         ],
                       ),
