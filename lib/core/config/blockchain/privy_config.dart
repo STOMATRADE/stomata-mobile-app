@@ -96,6 +96,26 @@ class PrivyConfigUtils {
     return data;
   }
 
+  Future<AuthPrivyModel> privyLogout() async {
+    AuthPrivyModel data = AuthPrivyModel();
+
+    try {
+      var privy = await _getPrivyConfig();
+      await privy.logout();
+
+      data.message = "Logout Success";
+      data.success = true;
+    } catch (e) {
+      printLog("error: $e");
+      data.message = e.toString();
+      data.success = false;
+
+      rethrow;
+    }
+
+    return data;
+  }
+
   Future<PrivyUser?> _getCurrentUser() async {
     try {
       final privy = await _getPrivyConfig();

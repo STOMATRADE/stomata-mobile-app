@@ -1,13 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/state_manager.dart';
+import 'package:stomata_app/core/config/blockchain/privy_config.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
+import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/auth/login_screen.dart';
 import 'package:stomata_app/features/profile/widget/confirm_logout.dart';
 
 class ProfileController extends GetxController {
+  RxBool isLoading = false.obs;
+
   void confirmLogout(context) {
     Get.bottomSheet(
       Container(
@@ -24,10 +26,23 @@ class ProfileController extends GetxController {
             Get.back();
           },
           onLogout: () {
-            Get.offAll(() => LoginScreen());
+            logout();
           },
         ),
       ),
     );
+  }
+
+  void logout() async {
+    try {
+      isLoading.value = true;
+
+      await PrivyConfigUtils().privyLogout();
+      Get.offAll(() => LoginScreen());
+      isLoading.value = false;
+    } catch (e) {
+      isLoading.value = false;
+      printLog("error: $e");
+    }
   }
 }
