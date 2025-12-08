@@ -44,25 +44,33 @@ class ProfileScreen extends StatelessWidget {
                       child: Image.asset(ImageUtils.profile, scale: 60),
                     ),
                     const SizedBox(width: 20),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Ramadhani",
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Obx(
+                            () => Text(
+                              _controller.userEmail.value,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          "0x00000abbbb",
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: ColorUtils.primaryColors,
+                          const SizedBox(height: 2),
+                          Obx(
+                            () => Text(
+                              _controller.contractAddress.value,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: ColorUtils.primaryColors,
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     const SizedBox(width: 20),
                   ],
@@ -195,7 +203,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           Obx(
-            () => _controller.isLoading.value
+            () => _controller.loadingLogout.value
                 ? const LoadingScreen()
                 : const SizedBox(),
           ),

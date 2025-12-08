@@ -8,7 +8,18 @@ import 'package:stomata_app/features/auth/login_screen.dart';
 import 'package:stomata_app/features/profile/widget/confirm_logout.dart';
 
 class ProfileController extends GetxController {
-  RxBool isLoading = false.obs;
+  RxBool loadingLogout = false.obs;
+  RxBool loadingData = false.obs;
+  RxString userEmail = "".obs;
+  RxString contractAddress = "0xDDDDDDDDDDDDDDDDDDDDDD".obs;
+
+  @override
+  void onInit() async {
+    // TODO: implement onInit
+    userEmail.value = await PrivyConfigUtils().getEmailAcc() ?? "";
+    contractAddress.value = await PrivyConfigUtils().getContractAddress() ?? "";
+    super.onInit();
+  }
 
   void confirmLogout(context) {
     Get.bottomSheet(
@@ -35,13 +46,13 @@ class ProfileController extends GetxController {
 
   void logout() async {
     try {
-      isLoading.value = true;
+      loadingLogout.value = true;
 
       await PrivyConfigUtils().privyLogout();
       Get.offAll(() => LoginScreen());
-      isLoading.value = false;
+      loadingLogout.value = false;
     } catch (e) {
-      isLoading.value = false;
+      loadingLogout.value = false;
       printLog("error: $e");
     }
   }

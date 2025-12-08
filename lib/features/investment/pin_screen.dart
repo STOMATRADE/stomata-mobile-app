@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:custom_pin_screen/custom_pin_screen.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
-import 'package:flutter_package/source/otp_custom_component/otp_component.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:pinput/pinput.dart';
 import 'package:stomata_app/core/global_widget/loading_screen.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
@@ -39,14 +35,19 @@ class PinScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
                   const SizedBox(height: 40),
-                  Pinput(
-                    showCursor: true,
-                    obscureText: true,
-                    enabled: false,
-                    controller: _controller.textController,
-                    validator: (value) {
-                      _controller.confirmPin(value ?? "", context);
-                    },
+                  Padding(
+                    padding: const EdgeInsets.only(left: 50, right: 50),
+                    child: Pinput(
+                      length: 6,
+                      showCursor: true,
+                      obscureText: true,
+                      enabled: false,
+                      controller: _controller.textController,
+                      validator: (value) {
+                        _controller.confirmPin(value ?? "", context);
+                        return null;
+                      },
+                    ),
                   ),
                   const SizedBox(height: 40),
                   Center(
