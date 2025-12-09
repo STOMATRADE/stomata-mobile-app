@@ -3,6 +3,8 @@ import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/global_widget/card_item.dart';
+import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
+import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
@@ -37,95 +39,72 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CText(
-                      text: "Total Aset",
-                      fontSize: 12,
-                      textColor: ColorUtils.white,
-                    ),
-                    const SizedBox(height: 8),
-                    CText(
-                      text: Helpers.formatRupiah(_controller.totalAsset.value),
-                      fontSize: 20,
-                      textColor: ColorUtils.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        CText(
-                          text: "Return",
-                          fontSize: 12,
-                          textColor: ColorUtils.white,
-                        ),
-                        const SizedBox(width: 5),
-                        CText(
-                          text:
-                              "+${Helpers.formatRupiah(_controller.totalReturn.value)} (+20%)",
-                          fontSize: 12,
-                          textColor: ColorUtils.primaryColors,
-                        ),
-                      ],
+                    TotalAssetWidget(
+                      totalAmount: _controller.totalAsset.value,
+                      totalReturn: _controller.totalReturn.value,
+                      percentageReturn: _controller.percentage.value,
                     ),
                     const SizedBox(height: 8),
                     Divider(),
                     const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              CText(
-                                text: "Total Cash",
-                                fontSize: 12,
-                                textColor: ColorUtils.white,
-                              ),
-                              const SizedBox(height: 8),
-                              CText(
-                                text: Helpers.formatRupiah(
-                                  _controller.totalCash.value,
-                                ),
-                                fontSize: 20,
-                                textColor: ColorUtils.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ],
-                          ),
-                        ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(right: 10),
-                        //   child: ElevatedButton(
-                        //     onPressed: () {},
-                        //     style: ButtonStyle(
-                        //       backgroundColor: WidgetStateProperty.all<Color>(
-                        //         ColorUtils.primaryColors,
-                        //       ),
-                        //     ),
-                        //     child: Row(
-                        //       children: [
-                        //         Icon(
-                        //           Icons.add_circle_rounded,
-                        //           color: Colors.black,
-                        //         ),
-                        //         const SizedBox(width: 5),
-                        //         CText(
-                        //           text: "Deposit",
-                        //           fontWeight: FontWeight.bold,
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
+                    TotalCashWidget(amount: _controller.totalCash.value),
+                    // Row(
+                    //   children: [
+                    //     Expanded(
+                    //       child: Column(
+                    //         crossAxisAlignment: CrossAxisAlignment.start,
+                    //         children: [
+                    //           CText(
+                    //             text: "Total Cash",
+                    //             fontSize: 12,
+                    //             textColor: ColorUtils.white,
+                    //           ),
+                    //           const SizedBox(height: 8),
+                    //           CText(
+                    //             text: Helpers.formatRupiah(
+                    //               _controller.totalCash.value,
+                    //             ),
+                    //             fontSize: 20,
+                    //             textColor: ColorUtils.white,
+                    //             fontWeight: FontWeight.bold,
+                    //           ),
+                    //         ],
+                    //       ),
+                    //     ),
+                    //     // Padding(
+                    //     //   padding: const EdgeInsets.only(right: 10),
+                    //     //   child: ElevatedButton(
+                    //     //     onPressed: () {},
+                    //     //     style: ButtonStyle(
+                    //     //       backgroundColor: WidgetStateProperty.all<Color>(
+                    //     //         ColorUtils.primaryColors,
+                    //     //       ),
+                    //     //     ),
+                    //     //     child: Row(
+                    //     //       children: [
+                    //     //         Icon(
+                    //     //           Icons.add_circle_rounded,
+                    //     //           color: Colors.black,
+                    //     //         ),
+                    //     //         const SizedBox(width: 5),
+                    //     //         CText(
+                    //     //           text: "Deposit",
+                    //     //           fontWeight: FontWeight.bold,
+                    //     //         ),
+                    //     //       ],
+                    //     //     ),
+                    //     //   ),
+                    //     // ),
+                    //   ],
+                    // ),
+                    // const SizedBox(height: 8),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 30),
             CText(
-              text: "Ongoing Projects",
+              text: "Ongoing Project",
               fontSize: 24,
               textColor: ColorUtils.white,
               fontWeight: FontWeight.bold,

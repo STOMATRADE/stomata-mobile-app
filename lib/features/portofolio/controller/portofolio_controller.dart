@@ -5,6 +5,7 @@ class PortofolioController extends GetxController {
   RxInt totalAsset = 1000000.obs;
   RxInt totalCash = 500000.obs;
   RxInt totalReturn = 1200000.obs;
+  RxString percentage = "50".obs;
 
   void goToDetail() {
     Get.to(() => PortofolioDetailScreen());

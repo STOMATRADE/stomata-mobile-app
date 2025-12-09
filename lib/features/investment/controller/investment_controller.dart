@@ -22,6 +22,7 @@ class InvestmentController extends GetxController {
           color: ColorUtils.secondaryBgColors,
         ),
         child: ConfirmationTransaction(
+          amount: int.parse(textEditingController.text),
           onConfirm: () {
             gotoPin();
           },

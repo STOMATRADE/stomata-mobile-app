@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_package/flutter_package.dart';
+import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/investment/controller/investment_controller.dart';
@@ -38,39 +40,12 @@ class InvestmentScreen extends StatelessWidget {
                     const SizedBox(height: 10),
                     Card(
                       margin: const EdgeInsets.all(0),
-                      color: ColorUtils.thirdBgColors,
-                      child: SizedBox(
-                        width: Helpers.getFullWidth(context),
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Your Cash",
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                    Text(
-                                      Helpers.formatRupiah(10000000),
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        color: ColorUtils.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Icon(
-                                Icons.account_balance_wallet,
-                                color: ColorUtils.white,
-                              ),
-                            ],
-                          ),
-                        ),
+                      color: ColorUtils.secondaryGreenColors.withValues(
+                        alpha: 0.3,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: TotalCashWidget(amount: 500000),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -81,14 +56,14 @@ class InvestmentScreen extends StatelessWidget {
                     const SizedBox(height: 10),
                     CTextInput(
                       textController: _controller.textEditingController,
-                      inputBackgroundColors: ColorUtils.thirdBgColors,
+                      inputBackgroundColors: ColorUtils.secondaryBgColors,
                       keyboardType: TextInputType.number,
                       borderWidth: 1,
                       enableBorderColors: ColorUtils.primaryColors,
                       focusBorderColors: ColorUtils.primaryColors,
-                      preffixIcon: Icon(
-                        Icons.monetization_on,
-                        color: ColorUtils.white,
+                      preffixIcon: Image.network(
+                        "https://s3.ap-southeast-1.amazonaws.com/static.pintu.co.id/assets/images/logo/IDRX+-+IDRX.png",
+                        scale: 30,
                       ),
                       hintText: "Input Amount...",
                       labelInput: "Input Amount...",

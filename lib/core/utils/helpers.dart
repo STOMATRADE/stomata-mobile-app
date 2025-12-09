@@ -11,6 +11,11 @@ class Helpers {
     return formatter.format(number);
   }
 
+  static String formatAmount(int number) {
+    final formatter = NumberFormat.decimalPattern('id');
+    return formatter.format(number);
+  }
+
   static double getFullHeight(context) {
     double screenFullHeight = MediaQuery.of(context).size.height;
 

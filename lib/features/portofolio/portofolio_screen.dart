@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
+import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
@@ -34,44 +35,12 @@ class PortofolioScreen extends StatelessWidget {
               color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CText(
-                      text: "Cumulative Total Aset",
-                      fontSize: 12,
-                      textColor: ColorUtils.white,
-                    ),
-                    const SizedBox(height: 8),
-                    CText(
-                      text: Helpers.formatRupiah(_controller.totalAsset.value),
-                      fontSize: 20,
-                      textColor: ColorUtils.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    const SizedBox(height: 8),
-                    Divider(),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CText(
-                            text: "Cumulative Total Return",
-                            fontSize: 12,
-                            textColor: ColorUtils.white,
-                          ),
-                        ),
-                        const SizedBox(width: 5),
-                        CText(
-                          text:
-                              "+${Helpers.formatRupiah(_controller.totalReturn.value)} (+20%)",
-                          fontSize: 12,
-                          textColor: ColorUtils.primaryColors,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                  ],
+                child: Obx(
+                  () => TotalAssetWidget(
+                    totalAmount: _controller.totalAsset.value,
+                    totalReturn: _controller.totalReturn.value,
+                    percentageReturn: _controller.percentage.value,
+                  ),
                 ),
               ),
             ),

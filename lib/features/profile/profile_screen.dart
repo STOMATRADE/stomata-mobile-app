@@ -4,6 +4,8 @@ import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
 import 'package:get/state_manager.dart';
 import 'package:stomata_app/core/global_widget/loading_screen.dart';
+import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
+import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
@@ -103,39 +105,15 @@ class ProfileScreen extends StatelessWidget {
                   color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CText(
-                                    text: "Total Cash",
-                                    fontSize: 12,
-                                    textColor: ColorUtils.white,
-                                  ),
-                                  const SizedBox(height: 8),
-                                  CText(
-                                    text: Helpers.formatRupiah(500000),
-                                    fontSize: 20,
-                                    textColor: ColorUtils.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: Obx(
+                      () =>
+                          TotalCashWidget(amount: _controller.totalCash.value),
                     ),
                   ),
                 ),
                 const SizedBox(height: 40),
                 CText(
-                  text: "Your Asset",
+                  text: "Your Portofolio",
                   fontSize: 15,
                   textColor: ColorUtils.white,
                   fontWeight: FontWeight.bold,
@@ -146,38 +124,12 @@ class ProfileScreen extends StatelessWidget {
                   color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CText(
-                          text: "Total Aset",
-                          fontSize: 12,
-                          textColor: ColorUtils.white,
-                        ),
-                        const SizedBox(height: 8),
-                        CText(
-                          text: Helpers.formatRupiah(1000000),
-                          fontSize: 20,
-                          textColor: ColorUtils.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        const SizedBox(height: 8),
-                        Row(
-                          children: [
-                            CText(
-                              text: "Return",
-                              fontSize: 12,
-                              textColor: ColorUtils.white,
-                            ),
-                            const SizedBox(width: 5),
-                            CText(
-                              text: "+${Helpers.formatRupiah(1200000)} (+20%)",
-                              fontSize: 12,
-                              textColor: ColorUtils.primaryColors,
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: Obx(
+                      () => TotalAssetWidget(
+                        totalAmount: _controller.totalAsset.value,
+                        totalReturn: _controller.totalReturn.value,
+                        percentageReturn: _controller.percentage.value,
+                      ),
                     ),
                   ),
                 ),
@@ -188,7 +140,7 @@ class ProfileScreen extends StatelessWidget {
                   },
                   child: Card(
                     margin: const EdgeInsets.all(0),
-                    color: ColorUtils.thirdBgColors,
+                    color: ColorUtils.secondaryBgColors,
                     child: Container(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(

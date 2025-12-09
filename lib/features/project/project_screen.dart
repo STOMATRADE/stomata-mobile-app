@@ -30,7 +30,7 @@ class ProjectScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             CText(
-              text: "Projects List",
+              text: "Project List",
               fontSize: 24,
               textColor: ColorUtils.white,
               fontWeight: FontWeight.bold,

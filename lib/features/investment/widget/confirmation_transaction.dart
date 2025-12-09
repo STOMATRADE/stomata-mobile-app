@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_package/source/ctext_component.dart';
 import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 
 class ConfirmationTransaction extends StatelessWidget {
+  final int amount;
   final VoidCallback onConfirm;
-  const ConfirmationTransaction({super.key, required this.onConfirm});
+  const ConfirmationTransaction({
+    super.key,
+    required this.onConfirm,
+    required this.amount,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,17 +55,33 @@ class ConfirmationTransaction extends StatelessWidget {
             const SizedBox(height: 10),
             Card(
               margin: const EdgeInsets.all(0),
-              color: ColorUtils.thirdBgColors,
+              color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(
                   children: [
-                    Icon(Icons.monetization_on, color: ColorUtils.white),
                     Expanded(
-                      child: Text(
-                        Helpers.formatRupiah(500000000),
-                        textAlign: TextAlign.end,
+                      child: Row(
+                        children: [
+                          Image.network(
+                            "https://s3.ap-southeast-1.amazonaws.com/static.pintu.co.id/assets/images/logo/IDRX+-+IDRX.png",
+                            scale: 30,
+                          ),
+                          const SizedBox(width: 8),
+                          CText(
+                            text: Helpers.formatAmount(amount),
+                            fontSize: 20,
+                            textColor: ColorUtils.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ],
                       ),
+                    ),
+                    CText(
+                      text: "IDRX",
+                      fontSize: 20,
+                      textColor: ColorUtils.white,
+                      fontWeight: FontWeight.bold,
                     ),
                   ],
                 ),
