@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/config/blockchain/model/auth_privy_model.dart';
+import 'package:stomata_app/core/config/blockchain/model/wallet_privy_model.dart';
 import 'package:stomata_app/core/config/blockchain/privy_config.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/auth/controller/otp_auth_controller.dart';
@@ -37,11 +38,12 @@ class LoginController extends GetxController {
       printLog("data: ${data.message}");
 
       if (data.success == true) {
-        isLoading.value = false;
-        Get.to(() => OtpAuthScreen(email: textController.text));
+        createWalletAcc();
+        // isLoading.value = false;
+        // Get.to(() => OtpAuthScreen(email: textController.text));
       } else {
         isLoading.value = false;
-        printLog("is failed");
+        printLog("is failed: ${data.message}");
       }
     } catch (e) {
       printLog("error screen: $e");
@@ -50,10 +52,27 @@ class LoginController extends GetxController {
     }
   }
 
-  // void gotoHome() async {
-  //   // Implement navigation to home screen
-  //   await Future.delayed(const Duration(seconds: 1));
-  //   isLoading = false.obs;
-  //   Get.offAll(() => const MainScreen());
-  // }
+  void createWalletAcc() async {
+    try {
+      var address = await PrivyConfigUtils().getContractAddress();
+
+      if ((address ?? "").isNotEmpty) {
+        isLoading.value = false;
+        Get.to(() => OtpAuthScreen(email: textController.text));
+      } else {
+        WalletPrivyModel data = await PrivyConfigUtils().createWallet();
+
+        if (data.success ?? false) {
+          isLoading.value = false;
+          Get.to(() => OtpAuthScreen(email: textController.text));
+        } else {
+          isLoading.value = false;
+          printLog("failed: ${data.message}");
+        }
+      }
+    } catch (e) {
+      printLog("error screen: $e");
+      isLoading.value = false;
+    }
+  }
 }

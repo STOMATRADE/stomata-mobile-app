@@ -202,7 +202,6 @@ class PrivyConfigUtils {
       for (final acc in user.linkedAccounts) {
         if (acc is EmbeddedEthereumWalletAccount) {
           address = acc.address;
-          // return acc.address;
         }
 
         if (acc is EmbeddedSolanaWalletAccount) {
