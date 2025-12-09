@@ -2,6 +2,7 @@ import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:privy_flutter/privy_flutter.dart';
 import 'package:stomata_app/core/config/blockchain/model/auth_privy_model.dart';
 import 'package:stomata_app/core/config/blockchain/model/verify_privy_model.dart';
+import 'package:stomata_app/core/config/blockchain/model/wallet_privy_model.dart';
 import 'package:stomata_app/core/config/firebase/firebase_remote_config_utils.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 
@@ -116,10 +117,15 @@ class PrivyConfigUtils {
     return data;
   }
 
-  Future<void> createWallet() async {
+  Future<WalletPrivyModel> createWallet() async {
     final user = await _getCurrentUser();
+
+    WalletPrivyModel data = WalletPrivyModel();
+
     if (user == null) {
-      return;
+      data.message = "Can't get Account";
+      data.success = false;
+      return data;
     }
 
     try {
@@ -128,15 +134,24 @@ class PrivyConfigUtils {
       walletResult.fold(
         onSuccess: (wallet) {
           final address = wallet.address;
+          data.message = "Success Create Wallet";
+          data.success = true;
+          data.walletAddress = wallet.address;
           printLog("Wallet created — address: $address");
         },
         onFailure: (error) {
+          data.message = error.toString();
+          data.success = false;
           printLog("Gagal buat wallet: $error");
         },
       );
-    } catch (e) {
-      printLog("function error: $e");
+    } catch (error) {
+      printLog("function error: $error");
+      data.message = error.toString();
+      data.success = false;
     }
+
+    return data;
   }
 
   Future<PrivyUser?> _getCurrentUser() async {
