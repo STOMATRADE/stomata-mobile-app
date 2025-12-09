@@ -8,7 +8,20 @@ import 'package:stomata_app/features/investment/pin_screen.dart';
 import 'package:stomata_app/features/investment/widget/confirmation_transaction.dart';
 
 class InvestmentController extends GetxController {
+  RxBool enableButton = false.obs;
   TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void onInit() {
+    textEditingController.addListener(() {
+      if (textEditingController.text.isNotEmpty) {
+        enableButton.value = true;
+      } else {
+        enableButton.value = false;
+      }
+    });
+    super.onInit();
+  }
 
   void confirmTransaction(context) {
     Get.bottomSheet(

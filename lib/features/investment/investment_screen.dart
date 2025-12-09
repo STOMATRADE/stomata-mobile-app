@@ -316,11 +316,16 @@ class InvestmentScreen extends StatelessWidget {
                   bottom: 30,
                   top: 30,
                 ),
-                child: CustomButton(
-                  onPressed: () => _controller.confirmTransaction(context),
-                  titleButton: "Payment",
-                  borderRadius: 30,
-                  backgroundColors: ColorUtils.primaryColors,
+                child: Obx(
+                  () => CustomButton(
+                    onPressed: () => _controller.confirmTransaction(context),
+                    titleButton: "Payment",
+                    borderRadius: 30,
+                    enableButton: _controller.enableButton.value,
+                    backgroundDisableColors: ColorUtils.secondaryGreenColors
+                        .withValues(alpha: 0.3),
+                    backgroundColors: ColorUtils.primaryColors,
+                  ),
                 ),
               ),
             ),

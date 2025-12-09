@@ -105,7 +105,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 30),
             CText(
               text: "Ongoing Project",
-              fontSize: 24,
+              fontSize: 20,
               textColor: ColorUtils.white,
               fontWeight: FontWeight.bold,
             ),

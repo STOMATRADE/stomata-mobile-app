@@ -44,7 +44,7 @@ class CardItem extends StatelessWidget {
                     Text(
                       projectName ?? "",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

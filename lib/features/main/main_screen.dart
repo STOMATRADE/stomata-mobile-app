@@ -35,7 +35,7 @@ class MainScreen extends StatelessWidget {
               _controller.selectedWidget.value = index;
             },
             labelTextStyle: WidgetStateProperty.all(
-              TextStyle(color: Colors.white),
+              TextStyle(color: Colors.white, fontSize: 12),
             ),
             destinations: const [
               NavigationDestination(
