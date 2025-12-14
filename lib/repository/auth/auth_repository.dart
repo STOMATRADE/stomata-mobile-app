@@ -1,4 +1,3 @@
-import 'package:stomata_app/core/config/firebase/auth_services.dart';
 import 'package:stomata_app/core/config/services/base_services.dart';
 import 'package:stomata_app/core/config/services/endpoint.dart';
 import 'package:stomata_app/core/config/services/model/base_response_model.dart';
