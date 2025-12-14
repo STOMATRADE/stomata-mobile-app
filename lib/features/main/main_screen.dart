@@ -26,39 +26,45 @@ class MainScreen extends StatelessWidget {
           }),
         ),
         child: Obx(
-          () => NavigationBar(
-            backgroundColor: ColorUtils.secondaryBgColors,
-            indicatorColor: ColorUtils.primaryColors,
-
-            selectedIndex: _controller.selectedWidget.value,
-            onDestinationSelected: (index) {
-              _controller.selectedWidget.value = index;
-            },
-            labelTextStyle: WidgetStateProperty.all(
-              TextStyle(color: Colors.white, fontSize: 10),
+          () => ClipRRect(
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
             ),
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(Icons.home_outlined),
-                selectedIcon: Icon(Icons.home),
-                label: 'Home',
+            child: NavigationBar(
+              backgroundColor: ColorUtils.secondaryBgColors,
+              indicatorColor: ColorUtils.primaryColors,
+              selectedIndex: _controller.selectedWidget.value,
+
+              onDestinationSelected: (index) {
+                _controller.selectedWidget.value = index;
+              },
+              labelTextStyle: WidgetStateProperty.all(
+                TextStyle(color: Colors.white, fontSize: 10),
               ),
-              NavigationDestination(
-                icon: Icon(Icons.shopping_basket_outlined),
-                selectedIcon: Icon(Icons.shopping_basket_rounded),
-                label: 'Project',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.shopping_cart_checkout_rounded),
-                selectedIcon: Icon(Icons.shopping_cart_checkout_rounded),
-                label: 'Portofolio',
-              ),
-              NavigationDestination(
-                icon: Icon(Icons.people_alt_outlined),
-                selectedIcon: Icon(Icons.people_alt),
-                label: 'Profile',
-              ),
-            ],
+              destinations: const [
+                NavigationDestination(
+                  icon: Icon(Icons.home_outlined),
+                  selectedIcon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.shopping_basket_outlined),
+                  selectedIcon: Icon(Icons.shopping_basket_rounded),
+                  label: 'Project',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.shopping_cart_checkout_rounded),
+                  selectedIcon: Icon(Icons.shopping_cart_checkout_rounded),
+                  label: 'Portofolio',
+                ),
+                NavigationDestination(
+                  icon: Icon(Icons.people_alt_outlined),
+                  selectedIcon: Icon(Icons.people_alt),
+                  label: 'Profile',
+                ),
+              ],
+            ),
           ),
         ),
       ),
