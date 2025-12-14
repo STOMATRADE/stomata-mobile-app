@@ -4,7 +4,9 @@ import 'package:stomata_app/repository/auth/response/logout_response.dart';
 
 // NEED ENHANCE
 class AuthRepository {
-  // Future<AuthLoginResponse> loginWithGoogle() async {}
+  // Future<LoginResponse> loginWithGoogle() async {
+
+  // }
 
   // Future<AuthLogoutResponse> logoutAccount() async {}
 }
