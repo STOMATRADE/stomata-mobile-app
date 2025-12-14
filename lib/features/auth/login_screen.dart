@@ -54,10 +54,7 @@ class LoginScreen extends StatelessWidget {
                       maxLines: 1,
                       enableBorderColors: ColorUtils.primaryColors,
                       focusBorderColors: ColorUtils.primaryColors,
-                      preffixIcon: Icon(
-                        Icons.email_outlined,
-                        color: ColorUtils.white,
-                      ),
+                      preffixIcon: Icon(Icons.person, color: ColorUtils.white),
                       hintText: "Email",
                       labelInput: "Email",
                       labelInputColors: ColorUtils.white,
