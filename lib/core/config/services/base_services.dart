@@ -32,24 +32,11 @@ class BaseServices with CacheManager {
   }
 
   _initBaseServices() async {
-    bool loginStatus = await getLoginStatus();
-    // LoginDM loginData = await getLoginData();
-    // token = "Bearer ${loginData.token}";
-
+    String bearerToken = await getBearerToken();
     printLog("token : $token");
 
-    // headers = loginStatus
-    //     ? {'Content-Type': 'application/json', 'Authorization': token}
-    //     : {
-    //         'Content-Type': 'application/json',
-    //         'User-Agent': "PostmanRuntime/7.41.2",
-    //         'Accept': "*/*",
-    //         'Accept-Encoding': "gzip, deflate, br",
-    //         'Connection': "keep-alive",
-    //       };
-
-    headers = loginStatus
-        ? {'accept': 'application/json', 'Authorization': ''}
+    headers = bearerToken.isNotEmpty
+        ? {'accept': 'application/json', 'Authorization': bearerToken}
         : {'Content-Type': 'application/json', 'accept': 'application/json'};
 
     printLog("Header : ${jsonEncode(headers)}");
