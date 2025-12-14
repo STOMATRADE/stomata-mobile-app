@@ -1,10 +1,6 @@
-import 'package:firebase_auth/firebase_auth.dart';
-
-// NEED ENHANCE
 class AuthLoginResponse {
-  UserCredential? userData;
-  bool? isError;
-  String? errorMessage;
+  String? email;
+  String? walletAddress;
 
-  AuthLoginResponse({this.errorMessage, this.isError, this.userData});
+  AuthLoginResponse({this.email, this.walletAddress});
 }

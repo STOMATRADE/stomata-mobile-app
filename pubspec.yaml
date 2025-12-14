@@ -60,6 +60,7 @@ dependencies:
   build_runner: ^2.10.4
   json_serializable: ^6.11.3
   json_annotation: ^4.9.0
+  easy_load_more: ^2.0.0
 
 dev_dependencies:
   flutter_test:

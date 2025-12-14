@@ -1,1 +1,1 @@
-enum CacheManagerKey { loginStatus, loginData, processStatus }
+enum CacheManagerKey { loginStatus, loginData, processStatus, bearerToken }

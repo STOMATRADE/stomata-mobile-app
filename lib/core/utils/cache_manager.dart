@@ -13,5 +13,12 @@ mixin CacheManager {
     return status;
   }
 
-  // Future saveLoginData(Privy)
+  Future setBearerToken({required String jwt}) async {
+    await storage.write(CacheManagerKey.bearerToken.name, jwt);
+  }
+
+  Future<String> getBearerToken() async {
+    String bearerToken = storage.read(CacheManagerKey.bearerToken.name) ?? "";
+    return bearerToken;
+  }
 }
