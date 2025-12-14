@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:stomata_app/core/global_widget/loading_screen.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
@@ -16,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(ProfileController());
+    var controller = Get.put(ProfileController());
     return BaseWidgetContainer(
       body: Stack(
         children: [
@@ -52,7 +51,7 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           Obx(
                             () => Text(
-                              _controller.userEmail.value,
+                              controller.userEmail.value,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
                                 fontSize: 15,
@@ -62,9 +61,9 @@ class ProfileScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: 2),
                           Obx(
-                            () => _controller.contractAddress.value.isNotEmpty
+                            () => controller.contractAddress.value.isNotEmpty
                                 ? Text(
-                                    _controller.contractAddress.value,
+                                    controller.contractAddress.value,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize: 15,
@@ -107,7 +106,7 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Obx(
                       () =>
-                          TotalCashWidget(amount: _controller.totalCash.value),
+                          TotalCashWidget(amount: controller.totalCash.value),
                     ),
                   ),
                 ),
@@ -126,9 +125,9 @@ class ProfileScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Obx(
                       () => TotalAssetWidget(
-                        totalAmount: _controller.totalAsset.value,
-                        totalReturn: _controller.totalReturn.value,
-                        percentageReturn: _controller.percentage.value,
+                        totalAmount: controller.totalAsset.value,
+                        totalReturn: controller.totalReturn.value,
+                        percentageReturn: controller.percentage.value,
                       ),
                     ),
                   ),
@@ -136,7 +135,7 @@ class ProfileScreen extends StatelessWidget {
                 const SizedBox(height: 40),
                 GestureDetector(
                   onTap: () {
-                    _controller.confirmLogout(context);
+                    controller.confirmLogout(context);
                   },
                   child: Card(
                     margin: const EdgeInsets.all(0),
@@ -170,7 +169,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           Obx(
-            () => _controller.loadingLogout.value
+            () => controller.loadingLogout.value
                 ? const LoadingScreen()
                 : const SizedBox(),
           ),

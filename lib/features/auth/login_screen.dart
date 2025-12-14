@@ -13,7 +13,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(LoginController());
+    var controller = Get.put(LoginController());
 
     return BaseWidgetContainer(
       resizeToAvoidBottomInset: false,
@@ -47,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     CTextInput(
-                      textController: _controller.textController,
+                      textController: controller.textController,
                       inputBackgroundColors: ColorUtils.thirdBgColors,
                       // keyboardType: TextInputType.number,
                       borderWidth: 1,
@@ -66,8 +66,8 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 30),
                 Obx(
                   () => CustomButton(
-                    onPressed: () => _controller.loginPrivyEmail(),
-                    enableButton: _controller.enableButton.value,
+                    onPressed: () => controller.loginPrivyEmail(),
+                    enableButton: controller.enableButton.value,
                     titleButton: "Login",
                     backgroundDisableColors: ColorUtils.primaryColors.withAlpha(
                       60,
@@ -97,7 +97,7 @@ class LoginScreen extends StatelessWidget {
             ),
           ),
           Obx(
-            () => _controller.isLoading.value
+            () => controller.isLoading.value
                 ? const LoadingScreen()
                 : const SizedBox(),
           ),

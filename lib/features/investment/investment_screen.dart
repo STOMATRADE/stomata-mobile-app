@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_package/flutter_package.dart';
-import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
-import 'package:get/state_manager.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
@@ -15,7 +12,7 @@ class InvestmentScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(InvestmentController());
+    var controller = Get.put(InvestmentController());
     return BaseWidgetContainer(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
@@ -55,7 +52,7 @@ class InvestmentScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     CTextInput(
-                      textController: _controller.textEditingController,
+                      textController: controller.textEditingController,
                       inputBackgroundColors: ColorUtils.secondaryBgColors,
                       keyboardType: TextInputType.number,
                       borderWidth: 1,
@@ -318,10 +315,10 @@ class InvestmentScreen extends StatelessWidget {
                 ),
                 child: Obx(
                   () => CustomButton(
-                    onPressed: () => _controller.confirmTransaction(context),
+                    onPressed: () => controller.confirmTransaction(context),
                     titleButton: "Payment",
                     borderRadius: 30,
-                    enableButton: _controller.enableButton.value,
+                    enableButton: controller.enableButton.value,
                     backgroundDisableColors: ColorUtils.secondaryGreenColors
                         .withValues(alpha: 0.3),
                     backgroundColors: ColorUtils.primaryColors,

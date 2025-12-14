@@ -41,6 +41,7 @@ class AuthService {
       printLog("System Error : $e");
       rethrow;
     }
+    return null;
   }
 
   Future signOut() async {

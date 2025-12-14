@@ -11,7 +11,7 @@ class PortofolioDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(PortofolioDetailController());
+    var controller = Get.put(PortofolioDetailController());
     return BaseWidgetContainer(
       appBar: AppBar(
         elevation: 0,
@@ -104,7 +104,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 16),
                       InkWell(
-                        onTap: () => _controller.showCompanyDetail(context),
+                        onTap: () => controller.showCompanyDetail(context),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -517,7 +517,7 @@ class PortofolioDetailScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: CustomButton(
-                      onPressed: _controller.startInvest,
+                      onPressed: controller.startInvest,
                       titleButton: "Invest",
                       borderRadius: 30,
                       backgroundColors: ColorUtils.primaryColors,

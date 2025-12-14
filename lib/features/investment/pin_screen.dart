@@ -12,7 +12,7 @@ class PinScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(PinController());
+    var controller = Get.put(PinController());
     return BaseWidgetContainer(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -42,9 +42,9 @@ class PinScreen extends StatelessWidget {
                       showCursor: true,
                       obscureText: true,
                       enabled: false,
-                      controller: _controller.textController,
+                      controller: controller.textController,
                       validator: (value) {
-                        _controller.confirmPin(value ?? "", context);
+                        controller.confirmPin(value ?? "", context);
                         return null;
                       },
                     ),
@@ -56,44 +56,44 @@ class PinScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            buildNumberButton("1", _controller),
+                            buildNumberButton("1", controller),
                             const SizedBox(width: 20),
-                            buildNumberButton("2", _controller),
+                            buildNumberButton("2", controller),
                             const SizedBox(width: 20),
-                            buildNumberButton("3", _controller),
+                            buildNumberButton("3", controller),
                           ],
                         ),
                         SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            buildNumberButton("4", _controller),
+                            buildNumberButton("4", controller),
                             const SizedBox(width: 20),
-                            buildNumberButton("5", _controller),
+                            buildNumberButton("5", controller),
                             const SizedBox(width: 20),
-                            buildNumberButton("6", _controller),
+                            buildNumberButton("6", controller),
                           ],
                         ),
                         SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            buildNumberButton("7", _controller),
+                            buildNumberButton("7", controller),
                             const SizedBox(width: 20),
-                            buildNumberButton("8", _controller),
+                            buildNumberButton("8", controller),
                             const SizedBox(width: 20),
-                            buildNumberButton("9", _controller),
+                            buildNumberButton("9", controller),
                           ],
                         ),
                         SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            refreshButton(_controller),
+                            refreshButton(controller),
                             const SizedBox(width: 20),
-                            buildNumberButton("0", _controller),
+                            buildNumberButton("0", controller),
                             const SizedBox(width: 20),
-                            deleteButton(_controller),
+                            deleteButton(controller),
                           ],
                         ),
                       ],
@@ -104,7 +104,7 @@ class PinScreen extends StatelessWidget {
             ),
           ),
           Obx(
-            () => _controller.isLoading.value
+            () => controller.isLoading.value
                 ? const LoadingScreen()
                 : const SizedBox(),
           ),

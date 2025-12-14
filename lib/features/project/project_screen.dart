@@ -12,7 +12,7 @@ class ProjectScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(ProjectController());
+    var controller = Get.put(ProjectController());
     return BaseWidgetContainer(
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
@@ -66,21 +66,21 @@ class ProjectScreen extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   CardItem(
-                    onTap: _controller.goToDetail,
+                    onTap: controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   CardItem(
-                    onTap: _controller.goToDetail,
+                    onTap: controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   CardItem(
-                    onTap: _controller.goToDetail,
+                    onTap: controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",

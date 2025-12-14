@@ -12,7 +12,7 @@ class OtpAuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(OtpAuthController());
+    var controller = Get.put(OtpAuthController());
     return BaseWidgetContainer(
       body: Stack(
         children: [
@@ -36,7 +36,7 @@ class OtpAuthScreen extends StatelessWidget {
                     length: 6,
                     showCursor: true,
                     validator: (code) {
-                      _controller.otpConfirmation(email, code ?? "");
+                      controller.otpConfirmation(email, code ?? "");
                       return null;
                     },
                   ),
@@ -51,7 +51,7 @@ class OtpAuthScreen extends StatelessWidget {
             ),
           ),
           Obx(
-            () => _controller.isLoading.value
+            () => controller.isLoading.value
                 ? const LoadingScreen()
                 : const SizedBox(),
           ),

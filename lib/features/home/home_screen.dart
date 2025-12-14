@@ -6,7 +6,6 @@ import 'package:stomata_app/core/global_widget/card_item.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
-import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/home/controller/home_controller.dart';
 
@@ -15,7 +14,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var _controller = Get.put(HomeController());
+    var controller = Get.put(HomeController());
     return BaseWidgetContainer(
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
@@ -40,14 +39,14 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TotalAssetWidget(
-                      totalAmount: _controller.totalAsset.value,
-                      totalReturn: _controller.totalReturn.value,
-                      percentageReturn: _controller.percentage.value,
+                      totalAmount: controller.totalAsset.value,
+                      totalReturn: controller.totalReturn.value,
+                      percentageReturn: controller.percentage.value,
                     ),
                     const SizedBox(height: 8),
                     Divider(),
                     const SizedBox(height: 8),
-                    TotalCashWidget(amount: _controller.totalCash.value),
+                    TotalCashWidget(amount: controller.totalCash.value),
                     // Row(
                     //   children: [
                     //     Expanded(
@@ -116,21 +115,21 @@ class HomeScreen extends StatelessWidget {
                 shrinkWrap: true,
                 children: [
                   CardItem(
-                    onTap: _controller.goToDetail,
+                    onTap: controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   CardItem(
-                    onTap: _controller.goToDetail,
+                    onTap: controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
                     releaserName: "PT. Makmur Sejahtera",
                   ),
                   CardItem(
-                    onTap: _controller.goToDetail,
+                    onTap: controller.goToDetail,
                     imageUrl:
                         'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
                     projectName: "Pengiriman Kopi Lampung",
