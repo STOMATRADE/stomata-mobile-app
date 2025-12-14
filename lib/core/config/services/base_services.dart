@@ -1,0 +1,148 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:stomata_app/core/config/firebase/firebase_remote_config_utils.dart';
+import 'package:stomata_app/core/utils/cache_manager.dart';
+import 'package:stomata_app/core/utils/logging.dart';
+
+class BaseServices with CacheManager {
+  final Dio _dio = Dio();
+
+  String path = "";
+  String token = "";
+  Map<String, String>? headers;
+
+  Future<FirebaseRemoteConfig> _initRemoteConfig() async {
+    FirebaseRemoteConfig remoteConfigUtils = await FirebaseRemoteConfigUtils()
+        .getRemoteConfig();
+
+    return remoteConfigUtils;
+  }
+
+  _initEndpoint() async {
+    var remoteConfig = await _initRemoteConfig();
+
+    try {
+      path = remoteConfig.getString('baseUrl');
+      printLog("path : $path");
+    } catch (e) {
+      printLog('Failed to fetch remote config: $e');
+    }
+  }
+
+  _initBaseServices() async {
+    bool loginStatus = await getLoginStatus();
+    // LoginDM loginData = await getLoginData();
+    // token = "Bearer ${loginData.token}";
+
+    printLog("token : $token");
+
+    // headers = loginStatus
+    //     ? {'Content-Type': 'application/json', 'Authorization': token}
+    //     : {
+    //         'Content-Type': 'application/json',
+    //         'User-Agent': "PostmanRuntime/7.41.2",
+    //         'Accept': "*/*",
+    //         'Accept-Encoding': "gzip, deflate, br",
+    //         'Connection': "keep-alive",
+    //       };
+
+    headers = loginStatus
+        ? {'accept': 'application/json', 'Authorization': ''}
+        : {'Content-Type': 'application/json', 'accept': 'application/json'};
+
+    printLog("Header : ${jsonEncode(headers)}");
+
+    _dio.interceptors.add(
+      InterceptorsWrapper(
+        onError: (DioException e, handler) async {
+          if (e.response?.statusCode == 401) {
+            return handler.resolve(
+              Response(
+                requestOptions: e.requestOptions,
+                data:
+                    e.response?.data ??
+                    {
+                      "data": null,
+                      "status": {
+                        "code": 401,
+                        "message": "Unauthorized access.",
+                      },
+                    },
+                statusCode: 401,
+              ),
+            );
+          }
+          if (e.response?.statusCode == 404) {
+            return handler.resolve(
+              Response(
+                requestOptions: e.requestOptions,
+                data:
+                    e.response?.data ??
+                    {
+                      "data": null,
+                      "status": {"code": 404, "message": "not found"},
+                    },
+                statusCode: 401,
+              ),
+            );
+          }
+          return handler.next(e);
+        },
+      ),
+    );
+  }
+
+  Future<Response> postApi<T>({
+    required Map<String, dynamic> params,
+    required String endpoint,
+  }) async {
+    await _initBaseServices();
+    await _initEndpoint();
+
+    try {
+      var response = await _dio.post(
+        "$path$endpoint",
+        data: params,
+        options: Options(headers: headers),
+      );
+
+      printLog("$path$endpoint Response : ${jsonEncode(response.data)}");
+
+      return response;
+    } on DioException catch (e) {
+      printLog("$path$endpoint Response : ${jsonEncode(e.response)}");
+      printLog("Dio Error: $e");
+
+      return e.response!;
+    } catch (e) {
+      printLog("$path$endpoint Response : $e");
+      rethrow;
+    }
+  }
+
+  Future<Response> getApi<T>({required String endpoint}) async {
+    await _initBaseServices();
+    await _initEndpoint();
+
+    try {
+      var response = await _dio.get(
+        endpoint,
+        options: Options(headers: headers),
+      );
+
+      printLog("$path$endpoint Response : ${jsonEncode(response.data)}");
+
+      return response;
+    } on DioException catch (e) {
+      printLog("$path$endpoint Response : ${jsonEncode(e.response)}");
+      printLog("Dio Error: $e");
+
+      return e.response!;
+    } catch (e) {
+      printLog("$path$endpoint Response : $e");
+      rethrow;
+    }
+  }
+}

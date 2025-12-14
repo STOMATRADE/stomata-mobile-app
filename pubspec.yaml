@@ -57,6 +57,9 @@ dependencies:
   google_sign_in: ^7.2.0
   collection: ^1.19.1
   awesome_snackbar_content: ^0.1.8
+  build_runner: ^2.10.4
+  json_serializable: ^6.11.3
+  json_annotation: ^4.9.0
 
 dev_dependencies:
   flutter_test:

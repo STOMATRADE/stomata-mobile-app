@@ -8,13 +8,14 @@ import 'package:stomata_app/core/utils/logging.dart';
 
 class PrivyConfigUtils {
   Future<PrivyConfig> _setupPrivyConfig() async {
-    // TO DO SHOULD SAVE ON FIREBASE REMOTE CONFIG
-    FirebaseRemoteConfig remoteConfigUtils = FirebaseRemoteConfigUtils()
+    FirebaseRemoteConfig remoteConfigUtils = await FirebaseRemoteConfigUtils()
         .getRemoteConfig();
 
     var privyConfig = PrivyConfig(
-      appClientId: "client-WY6TLxLxgY3eeVH4dPW8bNrkH399KSQifKcrz2QKAHjDy",
-      appId: "cmielo7me00hjl50dwzy9uy08",
+      // appClientId: "client-WY6TLxLxgY3eeVH4dPW8bNrkH399KSQifKcrz2QKAHjDy",
+      // appId: "cmielo7me00hjl50dwzy9uy08",
+      appClientId: remoteConfigUtils.getString("privyAppClientId"),
+      appId: remoteConfigUtils.getString("privyAppId"),
       logLevel: PrivyLogLevel.verbose,
     );
 
