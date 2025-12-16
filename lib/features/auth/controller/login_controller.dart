@@ -23,6 +23,12 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
+  @override
+  void onClose() {
+    textController.dispose();
+    super.onClose();
+  }
+
   void loginPrivyEmail() async {
     isLoading.value = true;
     PrivyConfigUtils privyConfigUtils = PrivyConfigUtils();

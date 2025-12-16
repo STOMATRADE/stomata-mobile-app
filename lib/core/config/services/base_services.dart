@@ -25,7 +25,7 @@ class BaseServices with CacheManager {
 
     try {
       path = remoteConfig.getString('baseUrl');
-      printLog("path : $path");
+      printLog("Base URL: $path");
     } catch (e) {
       printLog('Failed to fetch remote config: $e');
     }
@@ -88,6 +88,8 @@ class BaseServices with CacheManager {
     await _initBaseServices();
     await _initEndpoint();
 
+    printLog("REQUEST PARAM : ${jsonEncode(params)}");
+
     try {
       var response = await _dio.post(
         "$path$endpoint",
@@ -95,16 +97,16 @@ class BaseServices with CacheManager {
         options: Options(headers: headers),
       );
 
-      printLog("$path$endpoint Response : ${jsonEncode(response.data)}");
+      printLog("$path$endpoint RESPONSE : ${jsonEncode(response.data)}");
 
       return response;
     } on DioException catch (e) {
-      printLog("$path$endpoint Response : ${jsonEncode(e.response)}");
+      printLog("$path$endpoint RESPONSE : ${jsonEncode(e.response)}");
       printLog("Dio Error: $e");
 
       return e.response!;
     } catch (e) {
-      printLog("$path$endpoint Response : $e");
+      printLog("$path$endpoint RESPONSE : $e");
       rethrow;
     }
   }

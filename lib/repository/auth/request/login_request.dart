@@ -4,9 +4,9 @@ part 'login_request.g.dart';
 
 @JsonSerializable()
 class LoginRequest {
-  final String walletAddress;
-  final String signature;
-  final String message;
+  String walletAddress;
+  String signature;
+  String message;
 
   LoginRequest({
     required this.walletAddress,

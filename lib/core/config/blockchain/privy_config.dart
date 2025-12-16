@@ -12,8 +12,6 @@ class PrivyConfigUtils {
         .getRemoteConfig();
 
     var privyConfig = PrivyConfig(
-      // appClientId: "client-WY6TLxLxgY3eeVH4dPW8bNrkH399KSQifKcrz2QKAHjDy",
-      // appId: "cmielo7me00hjl50dwzy9uy08",
       appClientId: remoteConfigUtils.getString("privyAppClientId"),
       appId: remoteConfigUtils.getString("privyAppId"),
       logLevel: PrivyLogLevel.verbose,
@@ -138,6 +136,7 @@ class PrivyConfigUtils {
           data.message = "Success Create Wallet";
           data.success = true;
           data.walletAddress = wallet.address;
+
           printLog("Wallet created — address: $address");
         },
         onFailure: (error) {
@@ -219,6 +218,35 @@ class PrivyConfigUtils {
       return address;
     } catch (e) {
       printLog("error get contract address: $e");
+      rethrow;
+    }
+  }
+
+  Future<String> getSignature({required String walletAddress}) async {
+    String signatureData = "";
+    try {
+      final user = await _getCurrentUser();
+
+      final wallets = user?.embeddedEthereumWallets.first;
+
+      final rpcRequest = EthereumRpcRequest(
+        method: "personal_sign",
+        params: ["Hello Privy!", walletAddress],
+      );
+
+      final result = await wallets?.provider.request(rpcRequest);
+
+      result?.fold(
+        onSuccess: (resp) {
+          signatureData = resp.data;
+        },
+        onFailure: (error) {
+          signatureData = "";
+        },
+      );
+
+      return signatureData;
+    } catch (e) {
       rethrow;
     }
   }

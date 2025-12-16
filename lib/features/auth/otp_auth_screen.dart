@@ -36,7 +36,7 @@ class OtpAuthScreen extends StatelessWidget {
                     length: 6,
                     showCursor: true,
                     validator: (code) {
-                      controller.otpConfirmation(email, code ?? "");
+                      controller.otpConfirmation(email, code ?? "", context);
                       return null;
                     },
                   ),

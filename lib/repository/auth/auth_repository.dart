@@ -8,9 +8,7 @@ import 'package:stomata_app/repository/auth/view/login_view_model.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
 
 class AuthRepository extends BaseServices {
-  Future<BaseResponseModel> loginWithGoogle({
-    required LoginRequest param,
-  }) async {
+  Future<BaseResponseModel> login({required LoginRequest param}) async {
     try {
       var response = await postApi(
         params: param.toJson(),
