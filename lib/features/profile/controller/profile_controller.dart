@@ -10,6 +10,8 @@ import 'package:stomata_app/features/profile/widget/confirm_logout.dart';
 class ProfileController extends GetxController {
   RxBool loadingLogout = false.obs;
   RxBool loadingData = false.obs;
+  RxBool loadingAcc = true.obs;
+
   RxString userEmail = "".obs;
   RxString contractAddress = "".obs;
 
@@ -19,11 +21,26 @@ class ProfileController extends GetxController {
   RxString percentage = "50".obs;
 
   @override
-  void onInit() async {
-    // TODO: implement onInit
+  void onInit() {
+    loadWalletData();
+    loadAccountData();
+    super.onInit();
+  }
+
+  void loadWalletData() async {
+    loadingAcc.value = true;
     userEmail.value = await PrivyConfigUtils().getEmailAcc() ?? "";
     contractAddress.value = await PrivyConfigUtils().getContractAddress() ?? "";
-    super.onInit();
+
+    loadingAcc.value = false;
+  }
+
+  void loadAccountData() async {
+    loadingData.value = true;
+
+    await Future.delayed(const Duration(seconds: 5));
+
+    loadingData.value = false;
   }
 
   void confirmLogout(context) {

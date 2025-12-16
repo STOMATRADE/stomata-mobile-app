@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
-import 'package:stomata_app/core/global_widget/loading_screen.dart';
+import 'package:stomata_app/core/global_widget/loading/loading_screen.dart';
+import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
-import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/profile/controller/profile_controller.dart';
 
@@ -40,9 +40,14 @@ class ProfileScreen extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10.0),
-                      child: Image.asset(ImageUtils.profile, scale: 60),
+                    Obx(
+                      () => SkeletonLoading(
+                        loading: controller.loadingAcc.value,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: Image.asset(ImageUtils.profile, scale: 60),
+                        ),
+                      ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
@@ -50,40 +55,31 @@ class ProfileScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Obx(
-                            () => Text(
-                              controller.userEmail.value,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
+                            () => SkeletonLoading(
+                              loading: controller.loadingAcc.value,
+                              child: Text(
+                                controller.userEmail.value,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
                           const SizedBox(height: 2),
                           Obx(
-                            () => controller.contractAddress.value.isNotEmpty
-                                ? Text(
-                                    controller.contractAddress.value,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  )
-                                : Padding(
-                                    padding: const EdgeInsets.only(top: 10),
-                                    child: CustomButton(
-                                      onPressed: () {},
-                                      titleButton: "Connect Wallet",
-                                      borderRadius: 30,
-                                      buttonHeight: 25,
-                                      fontSize: 12,
-                                      buttonWidth:
-                                          Helpers.getFullWidth(context) * 0.5,
-                                      backgroundColors:
-                                          ColorUtils.primaryColors,
-                                    ),
-                                  ),
+                            () => SkeletonLoading(
+                              loading: controller.loadingAcc.value,
+                              child: Text(
+                                controller.contractAddress.value,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  color: ColorUtils.primaryColors,
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -105,8 +101,12 @@ class ProfileScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Obx(
-                      () =>
-                          TotalCashWidget(amount: controller.totalCash.value),
+                      () => SkeletonLoading(
+                        loading: controller.loadingData.value,
+                        child: TotalCashWidget(
+                          amount: controller.totalCash.value,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -124,10 +124,13 @@ class ProfileScreen extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Obx(
-                      () => TotalAssetWidget(
-                        totalAmount: controller.totalAsset.value,
-                        totalReturn: controller.totalReturn.value,
-                        percentageReturn: controller.percentage.value,
+                      () => SkeletonLoading(
+                        loading: controller.loadingData.value,
+                        child: TotalAssetWidget(
+                          totalAmount: controller.totalAsset.value,
+                          totalReturn: controller.totalReturn.value,
+                          percentageReturn: controller.percentage.value,
+                        ),
                       ),
                     ),
                   ),

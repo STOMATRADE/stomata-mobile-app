@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
-import 'package:stomata_app/core/global_widget/loading_screen.dart';
+import 'package:stomata_app/core/global_widget/loading/loading_screen.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/auth/controller/otp_auth_controller.dart';
 
