@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/features/project/project_detail_screen.dart';
 
@@ -6,6 +7,8 @@ class HomeController extends GetxController {
   RxInt totalCash = 500000.obs;
   RxInt totalReturn = 1200000.obs;
   RxString percentage = "50".obs;
+
+  ScrollController scrollController = ScrollController();
 
   void goToDetail() {
     Get.to(() => ProjectDetailScreen());
