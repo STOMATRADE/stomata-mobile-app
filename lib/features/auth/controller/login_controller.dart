@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/config/blockchain/model/auth_privy_model.dart';
 import 'package:stomata_app/core/config/blockchain/privy_config.dart';
+import 'package:stomata_app/core/global_widget/snackbar.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/auth/otp_auth_screen.dart';
 
@@ -29,7 +30,7 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  void loginPrivyEmail() async {
+  void loginPrivyEmail(context) async {
     isLoading.value = true;
     PrivyConfigUtils privyConfigUtils = PrivyConfigUtils();
 
@@ -46,11 +47,15 @@ class LoginController extends GetxController {
       } else {
         isLoading.value = false;
         printLog("is failed: ${data.message}");
+        SnackbarComponent.showErrorSnackbar(
+          context: context,
+          message: data.message,
+        );
       }
     } catch (e) {
-      printLog("error screen: $e");
-
       isLoading.value = false;
+      printLog("error screen: $e");
+      SnackbarComponent.showErrorSnackbar(context: context, message: e);
     }
   }
 }

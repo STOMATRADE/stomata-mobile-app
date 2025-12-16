@@ -1,6 +1,6 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stomata_app/core/global_widget/snackbar.dart';
 import 'package:stomata_app/features/main/main_screen.dart';
 
 class PinController extends GetxController {
@@ -33,20 +33,10 @@ class PinController extends GetxController {
     await Future.delayed(const Duration(seconds: 1));
     isLoading.value = false;
 
-    final snackbar = SnackBar(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      content: AwesomeSnackbarContent(
-        title: 'Success',
-        message: 'Your Transaction has been procesing, please wait a second',
-        contentType: ContentType.success,
-        inMaterialBanner: false,
-      ),
+    SnackbarComponent.showSuccesSnackbar(
+      context: context,
+      message: 'Your Transaction has been procesing, please wait a second',
     );
-
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(snackbar);
 
     Get.offAll(() => MainScreen());
   }

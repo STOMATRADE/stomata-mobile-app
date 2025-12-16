@@ -1,9 +1,8 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/config/blockchain/model/verify_privy_model.dart';
 import 'package:stomata_app/core/config/blockchain/model/wallet_privy_model.dart';
 import 'package:stomata_app/core/config/blockchain/privy_config.dart';
+import 'package:stomata_app/core/global_widget/snackbar.dart';
 import 'package:stomata_app/core/utils/cache_manager.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/main/main_screen.dart';
@@ -28,7 +27,10 @@ class OtpAuthController extends GetxController with CacheManager {
         isLoading.value = false;
 
         setLoginStatus(false);
-        showError(context: context, message: data.message);
+        SnackbarComponent.showErrorSnackbar(
+          context: context,
+          message: data.message,
+        );
         printLog("is failed");
       }
     } catch (e) {
@@ -36,7 +38,7 @@ class OtpAuthController extends GetxController with CacheManager {
       printLog("error screen: $e");
 
       isLoading.value = false;
-      showError(context: context, message: e);
+      SnackbarComponent.showErrorSnackbar(context: context, message: e);
     }
   }
 
@@ -104,28 +106,12 @@ class OtpAuthController extends GetxController with CacheManager {
         Get.offAll(() => const MainScreen());
       } else {
         isLoading.value = false;
-        showError(context: context, message: response.header.message);
+        // showError(context: context, message: response.header.message);
+        SnackbarComponent.showErrorSnackbar(context: context, message: message);
       }
     } catch (e) {
       isLoading.value = false;
-      showError(context: context, message: e);
+      SnackbarComponent.showErrorSnackbar(context: context, message: e);
     }
-  }
-
-  showError({required BuildContext context, required message}) {
-    final snackbar = SnackBar(
-      elevation: 0,
-      backgroundColor: Colors.transparent,
-      content: AwesomeSnackbarContent(
-        title: 'Failed',
-        message: message,
-        contentType: ContentType.failure,
-        inMaterialBanner: false,
-      ),
-    );
-
-    ScaffoldMessenger.of(context)
-      ..hideCurrentSnackBar()
-      ..showSnackBar(snackbar);
   }
 }

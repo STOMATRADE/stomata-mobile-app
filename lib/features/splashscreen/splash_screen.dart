@@ -3,16 +3,29 @@ import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
-import 'package:stomata_app/features/splashscreen/controller/splash_screen_controller.dart';
+import 'package:stomata_app/features/auth/login_screen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    // Get.lazyPut<SplashScreenController>(() => SplashScreenController());
-    Get.put(SplashScreenController());
+  State<SplashScreen> createState() => _SplashScreenState();
+}
 
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    splasScreenStart();
+  }
+
+  splasScreenStart() async {
+    await Future.delayed(const Duration(seconds: 3));
+    Get.offAll(() => const LoginScreen());
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BaseWidgetContainer(
       body: Stack(
         children: [
@@ -26,7 +39,7 @@ class SplashScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // SvgPicture.asset(ImageUtils.brandLogo, semanticsLabel: 'Dart Logo'),
-              Center(child: Image.asset(ImageUtils.brandLogo, scale: 5)),
+              Center(child: Image.asset(ImageUtils.brandLogo, width: 120)),
               Text(
                 "Stomatrade",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),

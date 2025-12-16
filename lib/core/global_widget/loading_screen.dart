@@ -13,9 +13,12 @@ class LoadingScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: ColorUtils.thirdBgColors,
+            color: ColorUtils.secondaryBgColors,
           ),
-          child: CircularProgressIndicator(color: ColorUtils.primaryColors),
+          child: CircularProgressIndicator(
+            color: ColorUtils.primaryColors,
+            strokeWidth: 2,
+          ),
         ),
       ),
     );

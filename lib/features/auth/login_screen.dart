@@ -8,13 +8,24 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/auth/controller/login_controller.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    var controller = Get.put(LoginController());
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
+class _LoginScreenState extends State<LoginScreen> {
+  late final LoginController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(LoginController());
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BaseWidgetContainer(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -30,8 +41,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // SvgPicture.asset(ImageUtils.brandLogo, semanticsLabel: 'Dart Logo'),
-                Center(child: Image.asset(ImageUtils.brandLogo, scale: 5)),
+                Center(child: Image.asset(ImageUtils.brandLogo, width: 120)),
                 const SizedBox(height: 20),
                 Text(
                   "Stomatrade Login",
@@ -42,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Login with Email",
+                      "Email",
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(height: 10),
@@ -66,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 30),
                 Obx(
                   () => CustomButton(
-                    onPressed: () => controller.loginPrivyEmail(),
+                    onPressed: () => controller.loginPrivyEmail(context),
                     enableButton: controller.enableButton.value,
                     titleButton: "Login",
                     backgroundDisableColors: ColorUtils.primaryColors.withAlpha(
@@ -81,11 +91,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 CustomButton(
                   onPressed: () {},
-                  preffixIcons: Image.asset(
-                    ImageUtils.googleLogo,
-                    height: 20,
-                    width: 20,
-                  ),
+                  preffixIcons: Image.asset(ImageUtils.googleLogo, width: 20),
                   titleButton: "Login With Google",
                   borderRadius: 20,
                   backgroundColors: ColorUtils.secondaryBgColors,

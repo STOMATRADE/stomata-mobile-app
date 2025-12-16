@@ -4,9 +4,10 @@ import 'package:stomata_app/core/utils/cache_manager.dart';
 import 'package:stomata_app/features/auth/login_screen.dart';
 // import 'package:stomata_app/features/main/main_screen.dart';
 
+// GA DIPAKE
 class SplashScreenController extends GetxController with CacheManager {
   @override
-  void onInit() async {
+  void onInit() {
     super.onInit();
     splasScreenStart();
   }

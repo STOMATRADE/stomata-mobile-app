@@ -6,13 +6,25 @@ import 'package:stomata_app/core/global_widget/loading_screen.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/auth/controller/otp_auth_controller.dart';
 
-class OtpAuthScreen extends StatelessWidget {
+class OtpAuthScreen extends StatefulWidget {
   final String email;
   const OtpAuthScreen({super.key, required this.email});
 
   @override
+  State<OtpAuthScreen> createState() => _OtpAuthScreenState();
+}
+
+class _OtpAuthScreenState extends State<OtpAuthScreen> {
+  late final OtpAuthController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(OtpAuthController());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(OtpAuthController());
     return BaseWidgetContainer(
       body: Stack(
         children: [
@@ -36,7 +48,11 @@ class OtpAuthScreen extends StatelessWidget {
                     length: 6,
                     showCursor: true,
                     validator: (code) {
-                      controller.otpConfirmation(email, code ?? "", context);
+                      controller.otpConfirmation(
+                        widget.email,
+                        code ?? "",
+                        context,
+                      );
                       return null;
                     },
                   ),
