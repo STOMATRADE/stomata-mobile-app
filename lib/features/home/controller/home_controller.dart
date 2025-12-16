@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:stomata_app/features/project_detail/project_detail_screen.dart';
+import 'package:stomata_app/features/project/project_detail_screen.dart';
 
 class HomeController extends GetxController {
   RxInt totalAsset = 1000000.obs;

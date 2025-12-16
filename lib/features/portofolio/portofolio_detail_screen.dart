@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/custom_button.dart';
-import 'package:get/get.dart';
+import 'package:get/instance_manager.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
-import 'package:stomata_app/features/project_detail/controller/project_detail_controller.dart';
+import 'package:stomata_app/features/portofolio/controller/portofolio_detail_controller.dart';
 
-class ProjectDetailScreen extends StatelessWidget {
-  const ProjectDetailScreen({super.key});
+class PortofolioDetailScreen extends StatelessWidget {
+  const PortofolioDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var controller = Get.put(ProjectDetailController());
+    var controller = Get.put(PortofolioDetailController());
     return BaseWidgetContainer(
       appBar: AppBar(
         elevation: 0,
         centerTitle: true,
-        title: Text('Project Detail', style: TextStyle(fontSize: 18)),
+        title: Text('Portofolio Detail', style: TextStyle(fontSize: 18)),
         actions: [
           IconButton(
             icon: Icon(Icons.message_outlined, color: Colors.white),
@@ -69,29 +69,29 @@ class ProjectDetailScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 8),
-                          // Card(
-                          //   margin: const EdgeInsets.all(0),
-                          //   color: ColorUtils.thirdBgColors,
-                          //   shape: RoundedRectangleBorder(
-                          //     borderRadius: BorderRadius.circular(30),
-                          //   ),
-                          //   child: Padding(
-                          //     padding: const EdgeInsets.only(
-                          //       left: 15,
-                          //       right: 15,
-                          //       top: 5,
-                          //       bottom: 5,
-                          //     ),
-                          //     child: Text(
-                          //       "On Your Portofolio",
-                          //       style: TextStyle(
-                          //         fontSize: 12,
-                          //         color: ColorUtils.white,
-                          //         fontWeight: FontWeight.bold,
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
+                          Card(
+                            margin: const EdgeInsets.all(0),
+                            color: ColorUtils.thirdBgColors,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 15,
+                                right: 15,
+                                top: 5,
+                                bottom: 5,
+                              ),
+                              child: Text(
+                                "On Your Portofolio",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: ColorUtils.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -217,6 +217,114 @@ class ProjectDetailScreen extends StatelessWidget {
                         ],
                       ),
 
+                      const SizedBox(height: 20),
+                      Text(
+                        "Portofolio Detail",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 10),
+                      Card(
+                        margin: const EdgeInsets.all(0),
+                        color: ColorUtils.secondaryBgColors,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Your Asset",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Rp 500.000.000",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: ColorUtils.primaryColors,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Return Rate",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
+                                  ),
+                                  Text(
+                                    "25%",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      color: ColorUtils.primaryColors,
+                                    ),
+                                  ),
+                                ],
+                              ),
+
+                              const SizedBox(height: 8),
+                              const Divider(),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Return",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
+                                  ),
+                                  Text(
+                                    "Rp 250.000.000 (+25%)",
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorUtils.primaryColors,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 12),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(
+                                      "Cumulative Asset Value",
+                                      style: TextStyle(fontSize: 15),
+                                    ),
+                                  ),
+                                  Card(
+                                    margin: const EdgeInsets.all(0),
+                                    color: ColorUtils.thirdBgColors,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 8,
+                                        right: 8,
+                                        top: 2,
+                                        bottom: 2,
+                                      ),
+                                      child: Text(
+                                        "Rp 750.000.000",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       const SizedBox(height: 20),
                       Text(
                         "Project Detail",
@@ -378,39 +486,7 @@ class ProjectDetailScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Text(
-                        "Investment",
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      const SizedBox(height: 10),
-                      Card(
-                        margin: const EdgeInsets.all(0),
-                        color: ColorUtils.secondaryBgColors,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "Return Investment Rate",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  Expanded(child: const SizedBox()),
-                                  Text(
-                                    "25%",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+
                       const SizedBox(height: 10),
                     ],
                   ),
@@ -437,11 +513,27 @@ class ProjectDetailScreen extends StatelessWidget {
                 bottom: 30,
                 top: 30,
               ),
-              child: CustomButton(
-                onPressed: controller.startInvest,
-                titleButton: "Start to Invest",
-                borderRadius: 30,
-                backgroundColors: ColorUtils.primaryColors,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      onPressed: controller.startInvest,
+                      titleButton: "Invest",
+                      borderRadius: 30,
+                      backgroundColors: ColorUtils.primaryColors,
+                    ),
+                  ),
+                  // const SizedBox(width: 8),
+                  // Expanded(
+                  //   child: CustomButton(
+                  //     onPressed: () {},
+                  //     titleButton: "Sell",
+                  //     fontColor: ColorUtils.white,
+                  //     borderRadius: 30,
+                  //     backgroundColors: ColorUtils.thirdBgColors,
+                  //   ),
+                  // ),
+                ],
               ),
             ),
           ),

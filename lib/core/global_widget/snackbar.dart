@@ -1,5 +1,6 @@
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
+import 'package:stomata_app/core/utils/colors_utils.dart';
 
 class SnackbarComponent {
   static void showErrorSnackbar({
@@ -31,8 +32,30 @@ class SnackbarComponent {
       backgroundColor: Colors.transparent,
       content: AwesomeSnackbarContent(
         title: 'Success',
+        color: ColorUtils.primaryColors,
         message: message,
         contentType: ContentType.success,
+        inMaterialBanner: false,
+      ),
+    );
+
+    ScaffoldMessenger.of(context)
+      ..hideCurrentSnackBar()
+      ..showSnackBar(snackbar);
+  }
+
+  static void showWarningSnackbar({
+    required BuildContext context,
+    required message,
+  }) {
+    final snackbar = SnackBar(
+      elevation: 0,
+      backgroundColor: Colors.transparent,
+      content: AwesomeSnackbarContent(
+        title: 'Sorry',
+        color: ColorUtils.secondaryGreenColors,
+        message: message,
+        contentType: ContentType.warning,
         inMaterialBanner: false,
       ),
     );

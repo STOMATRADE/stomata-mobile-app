@@ -90,7 +90,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text("Or", style: TextStyle(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 10),
                 CustomButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    controller.loginWithGoogle(context);
+                  },
                   preffixIcons: Image.asset(ImageUtils.googleLogo, width: 20),
                   titleButton: "Login With Google",
                   borderRadius: 20,

@@ -47,28 +47,38 @@ class OtpAuthController extends GetxController with CacheManager {
       var address = await PrivyConfigUtils().getContractAddress();
 
       if ((address ?? "").isNotEmpty) {
-        verifyAuth(
-          context,
-          walletAddress: address ?? "",
-          signature: await PrivyConfigUtils().getSignature(
-            walletAddress: address ?? "",
-          ),
-          message:
-              "Login Stomatrade: ${DateTime.now().toUtc().toIso8601String()}",
-        );
+        // TO DO: Change to this
+        // verifyAuth(
+        //   context,
+        //   walletAddress: address ?? "",
+        //   signature: await PrivyConfigUtils().getSignature(
+        //     walletAddress: address ?? "",
+        //   ),
+        //   message:
+        //       "Login Stomatrade: ${DateTime.now().toUtc().toIso8601String()}",
+        // );
+
+        setLoginStatus(true);
+        isLoading.value = false;
+        Get.offAll(() => const MainScreen());
       } else {
         WalletPrivyModel data = await PrivyConfigUtils().createWallet();
 
         if (data.success ?? false) {
-          verifyAuth(
-            context,
-            walletAddress: data.walletAddress ?? "",
-            signature: await PrivyConfigUtils().getSignature(
-              walletAddress: data.walletAddress ?? "",
-            ),
-            message:
-                "Login Stomatrade: ${DateTime.now().toUtc().toIso8601String()}",
-          );
+          // TO DO: Change to this
+          // verifyAuth(
+          //   context,
+          //   walletAddress: data.walletAddress ?? "",
+          //   signature: await PrivyConfigUtils().getSignature(
+          //     walletAddress: data.walletAddress ?? "",
+          //   ),
+          //   message:
+          //       "Login Stomatrade: ${DateTime.now().toUtc().toIso8601String()}",
+          // );
+
+          setLoginStatus(true);
+          isLoading.value = false;
+          Get.offAll(() => const MainScreen());
         } else {
           setLoginStatus(false);
           isLoading.value = false;

@@ -9,12 +9,24 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/home/controller/home_controller.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late final HomeController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(HomeController());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(HomeController());
     return BaseWidgetContainer(
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 24, right: 24),
@@ -47,56 +59,6 @@ class HomeScreen extends StatelessWidget {
                     Divider(),
                     const SizedBox(height: 8),
                     TotalCashWidget(amount: controller.totalCash.value),
-                    // Row(
-                    //   children: [
-                    //     Expanded(
-                    //       child: Column(
-                    //         crossAxisAlignment: CrossAxisAlignment.start,
-                    //         children: [
-                    //           CText(
-                    //             text: "Total Cash",
-                    //             fontSize: 12,
-                    //             textColor: ColorUtils.white,
-                    //           ),
-                    //           const SizedBox(height: 8),
-                    //           CText(
-                    //             text: Helpers.formatRupiah(
-                    //               _controller.totalCash.value,
-                    //             ),
-                    //             fontSize: 20,
-                    //             textColor: ColorUtils.white,
-                    //             fontWeight: FontWeight.bold,
-                    //           ),
-                    //         ],
-                    //       ),
-                    //     ),
-                    //     // Padding(
-                    //     //   padding: const EdgeInsets.only(right: 10),
-                    //     //   child: ElevatedButton(
-                    //     //     onPressed: () {},
-                    //     //     style: ButtonStyle(
-                    //     //       backgroundColor: WidgetStateProperty.all<Color>(
-                    //     //         ColorUtils.primaryColors,
-                    //     //       ),
-                    //     //     ),
-                    //     //     child: Row(
-                    //     //       children: [
-                    //     //         Icon(
-                    //     //           Icons.add_circle_rounded,
-                    //     //           color: Colors.black,
-                    //     //         ),
-                    //     //         const SizedBox(width: 5),
-                    //     //         CText(
-                    //     //           text: "Deposit",
-                    //     //           fontWeight: FontWeight.bold,
-                    //     //         ),
-                    //     //       ],
-                    //     //     ),
-                    //     //   ),
-                    //     // ),
-                    //   ],
-                    // ),
-                    // const SizedBox(height: 8),
                   ],
                 ),
               ),

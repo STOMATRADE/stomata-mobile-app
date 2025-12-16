@@ -58,4 +58,11 @@ class LoginController extends GetxController {
       SnackbarComponent.showErrorSnackbar(context: context, message: e);
     }
   }
+
+  void loginWithGoogle(context) {
+    SnackbarComponent.showWarningSnackbar(
+      context: context,
+      message: "this features is not available for now",
+    );
+  }
 }
