@@ -10,12 +10,24 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/profile/controller/profile_controller.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  late final ProfileController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(ProfileController());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(ProfileController());
     return BaseWidgetContainer(
       body: Stack(
         children: [

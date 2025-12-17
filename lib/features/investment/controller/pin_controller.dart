@@ -7,6 +7,12 @@ class PinController extends GetxController {
   RxBool isLoading = false.obs;
   final TextEditingController textController = TextEditingController();
 
+  @override
+  void onClose() {
+    textController.dispose();
+    super.onClose();
+  }
+
   void onNumberTap(String value) {
     textController.text += value;
   }

@@ -7,12 +7,23 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/investment/controller/pin_controller.dart';
 
-class PinScreen extends StatelessWidget {
+class PinScreen extends StatefulWidget {
   const PinScreen({super.key});
 
   @override
+  State<PinScreen> createState() => _PinScreenState();
+}
+
+class _PinScreenState extends State<PinScreen> {
+  late final PinController controller;
+  @override
+  void initState() {
+    controller = Get.put(PinController());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(PinController());
     return BaseWidgetContainer(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(

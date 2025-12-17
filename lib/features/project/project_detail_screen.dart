@@ -6,12 +6,24 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/features/project/controller/project_detail_controller.dart';
 
-class ProjectDetailScreen extends StatelessWidget {
+class ProjectDetailScreen extends StatefulWidget {
   const ProjectDetailScreen({super.key});
 
   @override
+  State<ProjectDetailScreen> createState() => _ProjectDetailScreenState();
+}
+
+class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
+  late final ProjectDetailController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(ProjectDetailController());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(ProjectDetailController());
     return BaseWidgetContainer(
       appBar: AppBar(
         elevation: 0,

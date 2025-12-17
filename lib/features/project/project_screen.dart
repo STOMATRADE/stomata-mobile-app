@@ -7,12 +7,23 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/project/controller/project_controller.dart';
 
-class ProjectScreen extends StatelessWidget {
+class ProjectScreen extends StatefulWidget {
   const ProjectScreen({super.key});
 
   @override
+  State<ProjectScreen> createState() => _ProjectScreenState();
+}
+
+class _ProjectScreenState extends State<ProjectScreen> {
+  late final ProjectController controller;
+  @override
+  void initState() {
+    controller = Get.put(ProjectController());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(ProjectController());
     return BaseWidgetContainer(
       body: Padding(
         padding: const EdgeInsets.only(top: 40, left: 24, right: 24),

@@ -9,13 +9,25 @@ import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/portofolio/controller/portofolio_controller.dart';
 import 'package:stomata_app/features/portofolio/widget/portofolio_item.dart';
 
-class PortofolioScreen extends StatelessWidget {
+class PortofolioScreen extends StatefulWidget {
   const PortofolioScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    var controller = Get.put(PortofolioController());
+  State<PortofolioScreen> createState() => _PortofolioScreenState();
+}
 
+class _PortofolioScreenState extends State<PortofolioScreen> {
+  late final PortofolioController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(PortofolioController());
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BaseWidgetContainer(
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {

@@ -10,6 +10,12 @@ class InvestmentController extends GetxController {
   TextEditingController textEditingController = TextEditingController();
 
   @override
+  void onClose() {
+    textEditingController.dispose();
+    super.onClose();
+  }
+
+  @override
   void onInit() {
     textEditingController.addListener(() {
       if (textEditingController.text.isNotEmpty) {

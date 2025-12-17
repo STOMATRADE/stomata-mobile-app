@@ -6,12 +6,24 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/features/portofolio/controller/portofolio_detail_controller.dart';
 
-class PortofolioDetailScreen extends StatelessWidget {
+class PortofolioDetailScreen extends StatefulWidget {
   const PortofolioDetailScreen({super.key});
 
   @override
+  State<PortofolioDetailScreen> createState() => _PortofolioDetailScreenState();
+}
+
+class _PortofolioDetailScreenState extends State<PortofolioDetailScreen> {
+  late final PortofolioDetailController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(PortofolioDetailController());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(PortofolioDetailController());
     return BaseWidgetContainer(
       appBar: AppBar(
         elevation: 0,

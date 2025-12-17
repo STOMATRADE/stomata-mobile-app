@@ -7,12 +7,24 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/investment/controller/investment_controller.dart';
 
-class InvestmentScreen extends StatelessWidget {
+class InvestmentScreen extends StatefulWidget {
   const InvestmentScreen({super.key});
 
   @override
+  State<InvestmentScreen> createState() => _InvestmentScreenState();
+}
+
+class _InvestmentScreenState extends State<InvestmentScreen> {
+  late final InvestmentController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(InvestmentController());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(InvestmentController());
     return BaseWidgetContainer(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
