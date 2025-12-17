@@ -43,42 +43,42 @@ class OtpAuthController extends GetxController with CacheManager {
   }
 
   void createWalletAcc(context) async {
+    var currentDate = DateTime.now();
+
     try {
       var address = await PrivyConfigUtils().getContractAddress();
 
       if ((address ?? "").isNotEmpty) {
         // TO DO: Change to this
-        // verifyAuth(
-        //   context,
-        //   walletAddress: address ?? "",
-        //   signature: await PrivyConfigUtils().getSignature(
-        //     walletAddress: address ?? "",
-        //   ),
-        //   message:
-        //       "Login Stomatrade: ${DateTime.now().toUtc().toIso8601String()}",
-        // );
+        verifyAuth(
+          context,
+          walletAddress: address ?? "",
+          signature: await PrivyConfigUtils().getSignature(
+            walletAddress: address ?? "",
+          ),
+          message: "Login Stomatrade: $currentDate",
+        );
 
-        setLoginStatus(true);
-        isLoading.value = false;
-        Get.offAll(() => const MainScreen());
+        // setLoginStatus(true);
+        // isLoading.value = false;
+        // Get.offAll(() => const MainScreen());
       } else {
         WalletPrivyModel data = await PrivyConfigUtils().createWallet();
 
         if (data.success ?? false) {
           // TO DO: Change to this
-          // verifyAuth(
-          //   context,
-          //   walletAddress: data.walletAddress ?? "",
-          //   signature: await PrivyConfigUtils().getSignature(
-          //     walletAddress: data.walletAddress ?? "",
-          //   ),
-          //   message:
-          //       "Login Stomatrade: ${DateTime.now().toUtc().toIso8601String()}",
-          // );
+          verifyAuth(
+            context,
+            walletAddress: data.walletAddress ?? "",
+            signature: await PrivyConfigUtils().getSignature(
+              walletAddress: data.walletAddress ?? "",
+            ),
+            message: "Login Stomatrade: $currentDate",
+          );
 
-          setLoginStatus(true);
-          isLoading.value = false;
-          Get.offAll(() => const MainScreen());
+          // setLoginStatus(true);
+          // isLoading.value = false;
+          // Get.offAll(() => const MainScreen());
         } else {
           setLoginStatus(false);
           isLoading.value = false;
@@ -116,8 +116,10 @@ class OtpAuthController extends GetxController with CacheManager {
         Get.offAll(() => const MainScreen());
       } else {
         isLoading.value = false;
-        // showError(context: context, message: response.header.message);
-        SnackbarComponent.showErrorSnackbar(context: context, message: message);
+        SnackbarComponent.showErrorSnackbar(
+          context: context,
+          message: response.header.message,
+        );
       }
     } catch (e) {
       isLoading.value = false;
