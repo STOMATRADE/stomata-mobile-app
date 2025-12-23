@@ -9,6 +9,7 @@ import 'package:stomata_app/features/main/main_screen.dart';
 import 'package:stomata_app/repository/auth/auth_repository.dart';
 import 'package:stomata_app/repository/auth/request/login_request.dart';
 import 'package:stomata_app/repository/auth/view/login_view_model.dart';
+import 'package:stomata_app/repository/auth/view/user_view_model.dart';
 
 class OtpAuthController extends GetxController with CacheManager {
   RxBool isLoading = false.obs;
@@ -115,7 +116,7 @@ class OtpAuthController extends GetxController with CacheManager {
 
         setLoginStatus(true);
         setBearerToken(jwt: loginViewModel.accessToken ?? "");
-        setLoginData(data: loginViewModel);
+        setLoginData(data: loginViewModel.user ?? UserViewModel());
         isLoading.value = false;
         Get.offAll(() => const MainScreen());
       } else {
