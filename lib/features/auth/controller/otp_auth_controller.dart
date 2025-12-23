@@ -107,7 +107,8 @@ class OtpAuthController extends GetxController with CacheManager {
 
       var response = await AuthRepository().login(param: param);
 
-      if (response.header.statusCode == 200) {
+      if (response.header.statusCode == 200 ||
+          response.header.statusCode == 201) {
         isLoading.value = false;
         // LoginViewModel loginViewModel = response.data;
 

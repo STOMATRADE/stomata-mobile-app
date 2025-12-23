@@ -24,7 +24,7 @@ class BaseServices with CacheManager {
     var remoteConfig = await _initRemoteConfig();
 
     try {
-      path = remoteConfig.getString('baseUrl');
+      path = remoteConfig.getString('baseUrlNew');
       printLog("Base URL: $path");
     } catch (e) {
       printLog('Failed to fetch remote config: $e');
