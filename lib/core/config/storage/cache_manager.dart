@@ -1,6 +1,5 @@
 import 'package:get_storage/get_storage.dart';
 import 'package:stomata_app/core/config/storage/cache_key.dart';
-import 'package:stomata_app/repository/auth/view/login_view_model.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
 
 mixin CacheManager {
