@@ -22,7 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    controller = Get.put(ProfileController());
+    controller = Get.put(ProfileController(context: context));
     super.initState();
   }
 
@@ -114,7 +114,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Obx(
                       () => SkeletonLoading(
-                        loading: controller.loadingData.value,
+                        loading: controller.loadingCash.value,
                         child: TotalCashWidget(
                           amount: controller.totalCash.value,
                         ),
@@ -137,7 +137,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: Obx(
                       () => SkeletonLoading(
-                        loading: controller.loadingData.value,
+                        loading: controller.loadingAsset.value,
                         child: TotalAssetWidget(
                           totalAmount: controller.totalAsset.value,
                           totalReturn: controller.totalReturn.value,

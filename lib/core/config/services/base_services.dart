@@ -120,7 +120,7 @@ class BaseServices with CacheManager {
 
     try {
       var response = await _dio.get(
-        endpoint,
+        "$path$endpoint",
         options: Options(headers: headers),
         queryParameters: params,
       );
