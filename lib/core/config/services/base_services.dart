@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:stomata_app/core/config/firebase/firebase_remote_config_utils.dart';
-import 'package:stomata_app/core/utils/cache_manager.dart';
+import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 
 class BaseServices with CacheManager {
@@ -36,7 +36,7 @@ class BaseServices with CacheManager {
     printLog("token : $token");
 
     headers = bearerToken.isNotEmpty
-        ? {'accept': 'application/json', 'Authorization': bearerToken}
+        ? {'accept': 'application/json', 'Authorization': "Bearer $bearerToken"}
         : {'Content-Type': 'application/json', 'accept': 'application/json'};
 
     printLog("Header : ${jsonEncode(headers)}");

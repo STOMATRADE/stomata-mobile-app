@@ -3,11 +3,12 @@ import 'package:stomata_app/core/config/blockchain/model/verify_privy_model.dart
 import 'package:stomata_app/core/config/blockchain/model/wallet_privy_model.dart';
 import 'package:stomata_app/core/config/blockchain/privy_config.dart';
 import 'package:stomata_app/core/global_widget/snackbar.dart';
-import 'package:stomata_app/core/utils/cache_manager.dart';
+import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/main/main_screen.dart';
 import 'package:stomata_app/repository/auth/auth_repository.dart';
 import 'package:stomata_app/repository/auth/request/login_request.dart';
+import 'package:stomata_app/repository/auth/view/login_view_model.dart';
 
 class OtpAuthController extends GetxController with CacheManager {
   RxBool isLoading = false.obs;
@@ -110,13 +111,16 @@ class OtpAuthController extends GetxController with CacheManager {
       if (response.header.statusCode == 200 ||
           response.header.statusCode == 201) {
         isLoading.value = false;
-        // LoginViewModel loginViewModel = response.data;
+        LoginViewModel loginViewModel = response.data;
 
         setLoginStatus(true);
+        setBearerToken(jwt: loginViewModel.accessToken ?? "");
+        setLoginData(data: loginViewModel);
         isLoading.value = false;
         Get.offAll(() => const MainScreen());
       } else {
         isLoading.value = false;
+        setLoginStatus(false);
         SnackbarComponent.showErrorSnackbar(
           context: context,
           message: response.header.message,
@@ -124,6 +128,7 @@ class OtpAuthController extends GetxController with CacheManager {
       }
     } catch (e) {
       isLoading.value = false;
+      setLoginStatus(false);
       SnackbarComponent.showErrorSnackbar(context: context, message: e);
     }
   }

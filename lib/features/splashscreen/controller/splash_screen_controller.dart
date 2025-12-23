@@ -1,6 +1,6 @@
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/route_manager.dart';
-import 'package:stomata_app/core/utils/cache_manager.dart';
+import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/features/auth/login_screen.dart';
 // import 'package:stomata_app/features/main/main_screen.dart';
 

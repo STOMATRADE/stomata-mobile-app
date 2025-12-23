@@ -10,6 +10,14 @@ class HomeController extends GetxController {
 
   ScrollController scrollController = ScrollController();
 
+  @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+  }
+
+  void getBalanceAndAsset() async {}
+
   void goToDetail() {
     Get.to(() => ProjectDetailScreen());
   }
