@@ -8,9 +8,9 @@ part of 'user_view_model.dart';
 
 UserViewModel _$UserViewModelFromJson(Map<String, dynamic> json) =>
     UserViewModel(
-      id: json['id'] as String,
-      walletAddress: json['walletAddress'] as String,
-      role: json['role'] as String,
+      id: json['id'] as String?,
+      walletAddress: json['walletAddress'] as String?,
+      role: json['role'] as String?,
     );
 
 Map<String, dynamic> _$UserViewModelToJson(UserViewModel instance) =>

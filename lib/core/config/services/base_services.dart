@@ -33,13 +33,13 @@ class BaseServices with CacheManager {
 
   _initBaseServices() async {
     String bearerToken = await getBearerToken();
-    printLog("token : $token");
+    printLog("TOKEN : $token");
 
     headers = bearerToken.isNotEmpty
         ? {'accept': 'application/json', 'Authorization': "Bearer $bearerToken"}
         : {'Content-Type': 'application/json', 'accept': 'application/json'};
 
-    printLog("Header : ${jsonEncode(headers)}");
+    printLog("HEADER : ${jsonEncode(headers)}");
 
     _dio.interceptors.add(
       InterceptorsWrapper(
@@ -88,7 +88,7 @@ class BaseServices with CacheManager {
     await _initBaseServices();
     await _initEndpoint();
 
-    printLog("REQUEST PARAM : ${jsonEncode(params)}");
+    printLog("REQUEST: ${jsonEncode(params)}");
 
     try {
       var response = await _dio.post(
@@ -97,16 +97,16 @@ class BaseServices with CacheManager {
         options: Options(headers: headers),
       );
 
-      printLog("$path$endpoint RESPONSE : ${jsonEncode(response.data)}");
+      printLog("$path$endpoint RESPONSE: ${jsonEncode(response.data)}");
 
       return response;
     } on DioException catch (e) {
-      printLog("$path$endpoint RESPONSE : ${jsonEncode(e.response)}");
+      printLog("$path$endpoint RESPONSE: ${jsonEncode(e.response)}");
       printLog("Dio Error: $e");
 
       return e.response!;
     } catch (e) {
-      printLog("$path$endpoint RESPONSE : $e");
+      printLog("$path$endpoint RESPONSE: $e");
       rethrow;
     }
   }
@@ -125,16 +125,16 @@ class BaseServices with CacheManager {
         queryParameters: params,
       );
 
-      printLog("$path$endpoint Response : ${jsonEncode(response.data)}");
+      printLog("$path$endpoint RESPONSE: ${jsonEncode(response.data)}");
 
       return response;
     } on DioException catch (e) {
-      printLog("$path$endpoint Response : ${jsonEncode(e.response)}");
+      printLog("$path$endpoint RESPONSE: ${jsonEncode(e.response)}");
       printLog("Dio Error: $e");
 
       return e.response!;
     } catch (e) {
-      printLog("$path$endpoint Response : $e");
+      printLog("$path$endpoint RESPONSE: $e");
       rethrow;
     }
   }

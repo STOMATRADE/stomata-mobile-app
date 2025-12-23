@@ -8,8 +8,10 @@ part of 'login_view_model.dart';
 
 LoginViewModel _$LoginViewModelFromJson(Map<String, dynamic> json) =>
     LoginViewModel(
-      accessToken: json['accessToken'] as String,
-      user: UserViewModel.fromJson(json['user'] as Map<String, dynamic>),
+      accessToken: json['accessToken'] as String?,
+      user: json['user'] == null
+          ? null
+          : UserViewModel.fromJson(json['user'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$LoginViewModelToJson(LoginViewModel instance) =>

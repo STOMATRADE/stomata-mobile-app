@@ -3,6 +3,7 @@ import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/global_widget/card_item.dart';
+import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
@@ -21,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    controller = Get.put(HomeController());
+    controller = Get.put(HomeController(context: context));
     super.initState();
   }
 
@@ -82,16 +83,27 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TotalAssetWidget(
-                                totalAmount: controller.totalAsset.value,
-                                totalReturn: controller.totalReturn.value,
-                                percentageReturn: controller.percentage.value,
+                              Obx(
+                                () => SkeletonLoading(
+                                  loading: controller.loadingAsset.value,
+                                  child: TotalAssetWidget(
+                                    totalAmount: controller.totalAsset.value,
+                                    totalReturn: controller.totalReturn.value,
+                                    percentageReturn:
+                                        controller.percentage.value,
+                                  ),
+                                ),
                               ),
                               const SizedBox(height: 8),
                               const Divider(),
                               const SizedBox(height: 8),
-                              TotalCashWidget(
-                                amount: controller.totalCash.value,
+                              Obx(
+                                () => SkeletonLoading(
+                                  loading: controller.loadingCash.value,
+                                  child: TotalCashWidget(
+                                    amount: controller.totalCash.value,
+                                  ),
+                                ),
                               ),
                             ],
                           ),
