@@ -43,9 +43,14 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Center(child: Image.asset(ImageUtils.brandLogo, width: 120)),
                 const SizedBox(height: 20),
-                Text(
-                  "Stomatrade Login",
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                GestureDetector(
+                  onLongPress: () {
+                    controller.goToDebugMode();
+                  },
+                  child: Text(
+                    "Stomatrade Login",
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 const SizedBox(height: 50),
                 Column(

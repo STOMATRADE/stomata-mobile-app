@@ -32,4 +32,13 @@ mixin CacheManager {
     String bearerToken = storage.read(CacheManagerKey.bearerToken.name) ?? "";
     return bearerToken;
   }
+
+  Future setDummyData(bool status) async {
+    await storage.write(CacheManagerKey.dummyDataStatus.name, status);
+  }
+
+  Future<bool> getDummyData() async {
+    bool status = storage.read(CacheManagerKey.dummyDataStatus.name) ?? false;
+    return status;
+  }
 }

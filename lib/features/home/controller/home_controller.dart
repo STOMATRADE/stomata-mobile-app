@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/global_widget/snackbar.dart';
+import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/project/project_detail_screen.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
 import 'package:stomata_app/repository/portofolio/portofolio_repository.dart';
@@ -53,7 +54,11 @@ class HomeController extends GetxController with CacheManager {
       }
     } catch (e) {
       loadingAsset.value = false;
-      SnackbarComponent.showErrorSnackbar(context: context, message: e);
+      printLog("error : ${e.toString()}");
+      SnackbarComponent.showErrorSnackbar(
+        context: context,
+        message: e.toString(),
+      );
     }
   }
 

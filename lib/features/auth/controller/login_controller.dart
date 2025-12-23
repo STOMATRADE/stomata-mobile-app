@@ -5,6 +5,7 @@ import 'package:stomata_app/core/config/blockchain/privy_config.dart';
 import 'package:stomata_app/core/global_widget/snackbar.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/auth/otp_auth_screen.dart';
+import 'package:stomata_app/features/debug_mode/debug_mode_screen.dart';
 
 class LoginController extends GetxController {
   RxBool isLoading = false.obs;
@@ -64,5 +65,12 @@ class LoginController extends GetxController {
       context: context,
       message: "this features is not available for now",
     );
+  }
+
+  void goToDebugMode() {
+    // if (kDebugMode) {
+    //   Get.to(() => DebugModeScreen());
+    // }
+    Get.to(() => DebugModeScreen());
   }
 }

@@ -1,0 +1,15 @@
+{
+    "header": {
+        "statusCode": 200,
+        "message": "Request processed successfully",
+        "timestamp": "2025-12-23T12:15:01.529Z"
+    },
+    "data": {
+        "amount": "1000000",
+        "returnAmount": "1500000",
+        "percentage": 50,
+        "userId": "4e29e33c-8a1c-4ed6-9a28-8631aab50a75",
+        "totalInvested": "1000000",
+        "totalProfit": "0"
+    }
+}
