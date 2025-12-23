@@ -5,7 +5,7 @@ import 'package:stomata_app/core/config/services/base_services.dart';
 import 'package:stomata_app/core/config/services/endpoint.dart';
 import 'package:stomata_app/core/config/services/model/base_response_model.dart';
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
-import 'package:stomata_app/core/utils/dummy_data/dummy_data.dart';
+import 'package:stomata_app/core/config/services/dummy_data/dummy_data.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/portofolio/response/portofolio_amount_response.dart';
 import 'package:stomata_app/repository/portofolio/view/portofolio_amount_view_model.dart';
