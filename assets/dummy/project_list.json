@@ -1,0 +1,51 @@
+{
+    "header": {
+        "statusCode": 200,
+        "message": "Request processed successfully",
+        "timestamp": "2025-12-23T14:59:59.767Z"
+    },
+    "data": {
+        "items": [
+            {
+                "projectId": "89410088-7d5b-43ba-982a-6992d23314d0",
+                "projectName": "Sweet Corn Organic Harvest 2026",
+                "projectCompany": "PT Pertanian Sejahtera",
+                "totalFunding": "30000000000000000000000",
+                "fundingPrice": "60000000000000000000000",
+                "investors": 2,
+                "margin": 20,
+                "image": "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?w=800",
+                "status": "ACTIVE",
+                "fundingPercentage": 50
+            },
+            {
+                "projectId": "be00be09-5c96-4270-a170-261bfe3f2fa3",
+                "projectName": "Arabica Coffee Premium Harvest 2026",
+                "projectCompany": "PT Pertanian Sejahtera",
+                "totalFunding": "40000000000000000000000",
+                "fundingPrice": "80000000000000000000000",
+                "investors": 2,
+                "margin": 30,
+                "image": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800",
+                "status": "ACTIVE",
+                "fundingPercentage": 50
+            },
+            {
+                "projectId": "ba315db9-6269-436e-b38e-9c9cea7d716f",
+                "projectName": "Rice Premium Grade A Harvest Q1 2026",
+                "projectCompany": "PT Pertanian Sejahtera",
+                "totalFunding": "50000000000000000000000",
+                "fundingPrice": "100000000000000000000000",
+                "investors": 2,
+                "margin": 25,
+                "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800",
+                "status": "ACTIVE",
+                "fundingPercentage": 50
+            }
+        ],
+        "total": 3,
+        "page": 1,
+        "limit": 10,
+        "totalPages": 1
+    }
+}

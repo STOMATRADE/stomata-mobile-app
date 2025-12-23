@@ -30,6 +30,7 @@ class HomeController extends GetxController with CacheManager {
   void onInit() {
     getAsset(context);
     getSofData(context);
+    getAllProject(context);
     super.onInit();
   }
 
@@ -87,6 +88,23 @@ class HomeController extends GetxController with CacheManager {
       }
     } catch (e) {
       loadingCash.value = false;
+      printLog("error : ${e.toString()}");
+      SnackbarComponent.showErrorSnackbar(
+        context: context,
+        message: e.toString(),
+      );
+    }
+  }
+
+  void getAllProject(context) async {
+    try {
+      loadingProject.value = true;
+
+      await Future.delayed(const Duration(seconds: 2));
+
+      loadingProject.value = false;
+    } catch (e) {
+      loadingProject.value = false;
       printLog("error : ${e.toString()}");
       SnackbarComponent.showErrorSnackbar(
         context: context,
