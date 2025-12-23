@@ -6,11 +6,11 @@ part 'project_list_view_model.g.dart';
 
 @JsonSerializable()
 class ProjectListViewModel {
-  final List<ProjectItemViewModel>? items;
-  final int? total;
-  final int? page;
-  final int? limit;
-  final int? totalPages;
+  List<ProjectItemViewModel>? items;
+  int? total;
+  int? page;
+  int? limit;
+  int? totalPages;
 
   ProjectListViewModel({
     this.items,

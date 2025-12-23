@@ -4,16 +4,16 @@ part 'project_item_view_model.g.dart';
 
 @JsonSerializable()
 class ProjectItemViewModel {
-  final String? projectId;
-  final String? projectName;
-  final String? projectCompany;
-  final String? totalFunding;
-  final String? fundingPrice;
-  final int? investors;
-  final int? margin;
-  final String? image;
-  final String? status;
-  final int? fundingPercentage;
+  String? projectId;
+  String? projectName;
+  String? projectCompany;
+  String? totalFunding;
+  String? fundingPrice;
+  int? investors;
+  int? margin;
+  String? image;
+  String? status;
+  int? fundingPercentage;
 
   ProjectItemViewModel({
     this.projectId,

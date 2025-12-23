@@ -113,7 +113,7 @@ class BaseServices with CacheManager {
 
   Future<Response> getApi<T>({
     required String endpoint,
-    Map<String, dynamic>? params,
+    Map<String, dynamic>? queryParams,
   }) async {
     await _initBaseServices();
     await _initEndpoint();
@@ -122,7 +122,7 @@ class BaseServices with CacheManager {
       var response = await _dio.get(
         "$path$endpoint",
         options: Options(headers: headers),
-        queryParameters: params,
+        queryParameters: queryParams,
       );
 
       printLog("$path$endpoint RESPONSE: ${jsonEncode(response.data)}");
