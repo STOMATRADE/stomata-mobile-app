@@ -7,6 +7,8 @@ import 'package:stomata_app/features/project/project_detail_screen.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
 import 'package:stomata_app/repository/portofolio/portofolio_repository.dart';
 import 'package:stomata_app/repository/portofolio/view/portofolio_amount_view_model.dart';
+import 'package:stomata_app/repository/source_of_fund/source_of_fund_repository.dart';
+import 'package:stomata_app/repository/source_of_fund/view/sof_view_model.dart';
 
 class HomeController extends GetxController with CacheManager {
   BuildContext? context;
@@ -27,6 +29,7 @@ class HomeController extends GetxController with CacheManager {
   @override
   void onInit() {
     getAsset(context);
+    getSofData(context);
     super.onInit();
   }
 
@@ -54,6 +57,36 @@ class HomeController extends GetxController with CacheManager {
       }
     } catch (e) {
       loadingAsset.value = false;
+      printLog("error : ${e.toString()}");
+      SnackbarComponent.showErrorSnackbar(
+        context: context,
+        message: e.toString(),
+      );
+    }
+  }
+
+  void getSofData(context) async {
+    try {
+      loadingCash.value = true;
+      UserViewModel userData = await getLoginData();
+
+      var response = await SourceOfFundRepository().getSourceOfFund(
+        userData.id ?? "",
+      );
+
+      if (response.header.statusCode == 200) {
+        loadingCash.value = false;
+        SofViewModel sofData = response.data;
+        totalCash.value = int.parse(sofData.amount ?? "0");
+      } else {
+        loadingCash.value = false;
+        SnackbarComponent.showErrorSnackbar(
+          context: context,
+          message: response.header.message,
+        );
+      }
+    } catch (e) {
+      loadingCash.value = false;
       printLog("error : ${e.toString()}");
       SnackbarComponent.showErrorSnackbar(
         context: context,

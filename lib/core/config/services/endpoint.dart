@@ -5,4 +5,8 @@ class Endpoint {
   static getUserPortofolioAmount(String userId) {
     return "/user-dashboard/$userId/assets";
   }
+
+  static getSourceOfFundEndpoint(String userId) {
+    return "/user-dashboard/$userId/cash";
+  }
 }
