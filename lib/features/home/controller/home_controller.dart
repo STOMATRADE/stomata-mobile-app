@@ -5,8 +5,10 @@ import 'package:stomata_app/core/global_widget/snackbar.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/project/project_detail_screen.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
+import 'package:stomata_app/repository/global_query_param/pagination_query.dart';
 import 'package:stomata_app/repository/portofolio/portofolio_repository.dart';
 import 'package:stomata_app/repository/portofolio/view/portofolio_amount_view_model.dart';
+import 'package:stomata_app/repository/project/project_repository.dart';
 import 'package:stomata_app/repository/source_of_fund/source_of_fund_repository.dart';
 import 'package:stomata_app/repository/source_of_fund/view/sof_view_model.dart';
 
@@ -21,6 +23,9 @@ class HomeController extends GetxController with CacheManager {
   RxBool loadingAsset = false.obs;
   RxBool loadingCash = false.obs;
   RxBool loadingProject = false.obs;
+
+  int page = 1;
+  int limit = 10;
 
   ScrollController scrollController = ScrollController();
 
@@ -100,7 +105,11 @@ class HomeController extends GetxController with CacheManager {
     try {
       loadingProject.value = true;
 
-      await Future.delayed(const Duration(seconds: 2));
+      PaginationQuery query = PaginationQuery()
+        ..limit = limit
+        ..page = page;
+
+      var response = await ProjectRepository().getOngoingProjects(query);
 
       loadingProject.value = false;
     } catch (e) {

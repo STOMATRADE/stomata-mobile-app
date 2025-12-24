@@ -13,7 +13,7 @@ import 'package:stomata_app/repository/project/view/project_item_view_model.dart
 import 'package:stomata_app/repository/project/view/project_list_view_model.dart';
 
 class ProjectRepository extends BaseServices with CacheManager {
-  Future<BaseResponseModel> getProjects(PaginationQuery query) async {
+  Future<BaseResponseModel> getOngoingProjects(PaginationQuery query) async {
     try {
       bool useDummyData = await getDummyData();
 
