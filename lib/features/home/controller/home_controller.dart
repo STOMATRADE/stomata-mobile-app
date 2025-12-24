@@ -7,8 +7,10 @@ import 'package:stomata_app/features/project/project_detail_screen.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
 import 'package:stomata_app/repository/global_query_param/pagination_query.dart';
 import 'package:stomata_app/repository/portofolio/portofolio_repository.dart';
-import 'package:stomata_app/repository/portofolio/view/portofolio_amount_view_model.dart';
+import 'package:stomata_app/repository/portofolio/view/amount/portofolio_amount_view_model.dart';
 import 'package:stomata_app/repository/project/project_repository.dart';
+import 'package:stomata_app/repository/project/view/project_item_view_model.dart';
+import 'package:stomata_app/repository/project/view/project_list_view_model.dart';
 import 'package:stomata_app/repository/source_of_fund/source_of_fund_repository.dart';
 import 'package:stomata_app/repository/source_of_fund/view/sof_view_model.dart';
 
@@ -23,6 +25,8 @@ class HomeController extends GetxController with CacheManager {
   RxBool loadingAsset = false.obs;
   RxBool loadingCash = false.obs;
   RxBool loadingProject = false.obs;
+
+  RxList<ProjectItemViewModel> listProjects = <ProjectItemViewModel>[].obs;
 
   int page = 1;
   int limit = 10;
@@ -112,6 +116,14 @@ class HomeController extends GetxController with CacheManager {
       var response = await ProjectRepository().getOngoingProjects(query);
 
       loadingProject.value = false;
+      if (response.header.statusCode == 200) {
+        ProjectListViewModel projectListData = response.data;
+      } else {
+        SnackbarComponent.showErrorSnackbar(
+          context: context,
+          message: response.header.message,
+        );
+      }
     } catch (e) {
       loadingProject.value = false;
       printLog("error : ${e.toString()}");

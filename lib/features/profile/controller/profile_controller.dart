@@ -10,7 +10,7 @@ import 'package:stomata_app/features/auth/login_screen.dart';
 import 'package:stomata_app/features/profile/widget/confirm_logout.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
 import 'package:stomata_app/repository/portofolio/portofolio_repository.dart';
-import 'package:stomata_app/repository/portofolio/view/portofolio_amount_view_model.dart';
+import 'package:stomata_app/repository/portofolio/view/amount/portofolio_amount_view_model.dart';
 import 'package:stomata_app/repository/source_of_fund/source_of_fund_repository.dart';
 import 'package:stomata_app/repository/source_of_fund/view/sof_view_model.dart';
 
