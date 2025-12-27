@@ -9,6 +9,7 @@ import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/home/controller/home_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -119,13 +120,24 @@ class _HomeScreenState extends State<HomeScreen> {
               () => ListView.builder(
                 padding: const EdgeInsets.only(top: 0),
                 itemBuilder: (context, index) {
+                  var data = controller.listProjects[index];
+
                   return CardItem(
                     onTap: controller.goToDetail,
-                    imageUrl: controller.listProjects[index].image ?? "",
-                    projectName:
-                        controller.listProjects[index].projectName ?? "",
-                    releaserName:
-                        controller.listProjects[index].projectCompany ?? "",
+                    imageUrl: data.image ?? "",
+                    projectName: data.projectName ?? "",
+                    releaserName: data.projectCompany ?? "",
+                    investor: data.investors ?? 0,
+                    fundingGoal: Helpers.formatTokenAmount(
+                      amount: BigInt.parse(data.fundingPrice ?? "0"),
+                      decimals: Helpers().getDecimals(),
+                    ),
+                    margin: data.margin,
+                    percentageFunded: data.fundingPercentage,
+                    totalFunding: Helpers.formatTokenAmount(
+                      amount: BigInt.parse(data.totalFunding ?? "0"),
+                      decimals: Helpers().getDecimals(),
+                    ),
                   );
                 },
                 itemCount: controller.listProjects.length,

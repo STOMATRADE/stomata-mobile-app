@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
 
 class CardItem extends StatelessWidget {
   final String? imageUrl;
   final String? projectName;
   final String? releaserName;
+  final double? totalFunding;
+  final double? fundingGoal;
+  final int? investor;
+  final int? margin;
+  final int? percentageFunded;
   final VoidCallback onTap;
 
   const CardItem({
@@ -14,6 +20,11 @@ class CardItem extends StatelessWidget {
     this.releaserName,
     this.imageUrl,
     required this.onTap,
+    this.totalFunding = 0,
+    this.fundingGoal = 0,
+    this.investor = 0,
+    this.margin = 0,
+    this.percentageFunded = 0,
   });
 
   @override
@@ -88,7 +99,7 @@ class CardItem extends StatelessWidget {
                               bottom: 2,
                             ),
                             child: Text(
-                              "Rp 500.000.000 / Rp 10.000.000.000",
+                              "Rp ${Helpers.formatAmount((totalFunding ?? 0).toInt())} / Rp ${Helpers.formatAmount((fundingGoal ?? 0).toInt())}",
                               style: TextStyle(fontSize: 10),
                             ),
                           ),
@@ -96,9 +107,9 @@ class CardItem extends StatelessWidget {
                         const SizedBox(height: 8),
                         LinearProgressBar(
                           minHeight: 5,
-                          maxSteps: 1000000000,
+                          maxSteps: fundingGoal?.toInt(),
                           progressType: LinearProgressBar.progressTypeLinear,
-                          currentStep: 500000000,
+                          currentStep: totalFunding?.toInt(),
                           progressColor: ColorUtils.primaryColors,
                           backgroundColor: Colors.grey,
                           borderRadius: BorderRadius.circular(10),
@@ -112,7 +123,7 @@ class CardItem extends StatelessWidget {
                           child: Text("Price", style: TextStyle(fontSize: 15)),
                         ),
                         Text(
-                          "Rp. 10.000.000.000",
+                          "Rp. ${Helpers.formatAmount((fundingGoal ?? 0).toInt())}",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -130,7 +141,7 @@ class CardItem extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "12",
+                          "$investor",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -158,7 +169,7 @@ class CardItem extends StatelessWidget {
                               bottom: 2,
                             ),
                             child: Text(
-                              "50%",
+                              "$margin%",
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.black,
