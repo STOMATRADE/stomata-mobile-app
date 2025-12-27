@@ -41,7 +41,7 @@ class PinController extends GetxController {
 
     SnackbarComponent.showSuccesSnackbar(
       context: context,
-      message: 'Your Transaction has been procesing, please wait a second',
+      message: 'Your Transaction has been processed successfully',
     );
 
     Get.offAll(() => MainScreen());

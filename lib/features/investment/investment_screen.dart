@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart';
 import 'package:get/get.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
@@ -19,7 +20,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
 
   @override
   void initState() {
-    controller = Get.put(InvestmentController());
+    controller = Get.put(InvestmentController(context: context));
     super.initState();
   }
 
@@ -52,7 +53,14 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                       color: ColorUtils.fourGreenColors.withValues(alpha: 0.3),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: TotalCashWidget(amount: 500000),
+                        child: Obx(
+                          () => SkeletonLoading(
+                            loading: controller.loadingCash.value,
+                            child: TotalCashWidget(
+                              amount: controller.totalCash.value,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(height: 20),
