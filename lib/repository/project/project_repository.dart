@@ -131,21 +131,33 @@ class ProjectRepository extends BaseServices with CacheManager {
         projectDetailViewModel.deliveryDate =
             projectDetailResponse.deliveryDate;
 
-        projectDetailViewModel.projectPrice = Helpers.formatTokenAmount(
+        double projectPrice = Helpers.formatTokenAmount(
           amount: BigInt.parse(projectDetailResponse.projectPrice ?? "0"),
           decimals: Helpers().getDecimals(),
-        ).toString();
+        );
 
-        projectDetailViewModel.fundingPrice = Helpers.formatTokenAmount(
+        double fundingPrice = Helpers.formatTokenAmount(
           amount: BigInt.parse(projectDetailResponse.fundingPrice ?? "0"),
           decimals: Helpers().getDecimals(),
-        ).toString();
+        );
 
-        projectDetailViewModel.currentFundingPrice = Helpers.formatTokenAmount(
+        double currentFundingPrice = Helpers.formatTokenAmount(
           amount: BigInt.parse(
             projectDetailResponse.currentFundingPrice ?? "0",
           ),
           decimals: Helpers().getDecimals(),
+        );
+
+        projectDetailViewModel.projectPrice = Helpers.formatAmount(
+          projectPrice.toInt(),
+        ).toString();
+
+        projectDetailViewModel.fundingPrice = Helpers.formatAmount(
+          fundingPrice.toInt(),
+        ).toString();
+
+        projectDetailViewModel.currentFundingPrice = Helpers.formatAmount(
+          currentFundingPrice.toInt(),
         ).toString();
 
         projectDetailViewModel.returnInvestmentRate =

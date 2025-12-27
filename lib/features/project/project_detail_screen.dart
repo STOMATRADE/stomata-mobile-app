@@ -6,7 +6,6 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/loading/skeleton_loading_v2.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
-import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/project/controller/project_detail_controller.dart';
 import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
 
@@ -229,7 +228,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                         bottom: 2,
                                       ),
                                       child: Text(
-                                        "Rp 50000 / Rp 10.000.000.000",
+                                        "Rp ${controller.projectDetail.value.currentFundingPrice} / Rp ${controller.projectDetail.value.fundingPrice}",
                                         style: TextStyle(fontSize: 10),
                                       ),
                                     ),
@@ -241,10 +240,22 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                 ? SkeletonLoadingV2()
                                 : LinearProgressBar(
                                     minHeight: 5,
-                                    maxSteps: 1000000000,
+                                    maxSteps: int.parse(
+                                      controller
+                                          .projectDetail
+                                          .value
+                                          .fundingPrice!
+                                          .replaceAll('.', ''),
+                                    ),
                                     progressType:
                                         LinearProgressBar.progressTypeLinear,
-                                    currentStep: 500000000,
+                                    currentStep: int.parse(
+                                      controller
+                                          .projectDetail
+                                          .value
+                                          .currentFundingPrice!
+                                          .replaceAll('.', ''),
+                                    ),
                                     progressColor: ColorUtils.primaryColors,
                                     backgroundColor: Colors.grey,
                                     borderRadius: BorderRadius.circular(10),
@@ -334,7 +345,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                             ),
                                           ),
                                           Text(
-                                            "20 Pieces",
+                                            "${controller.projectDetail.value.volume} Pieces",
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: ColorUtils.primaryColors,
@@ -356,7 +367,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                             ),
                                           ),
                                           Text(
-                                            "Coffee Bean",
+                                            "${controller.projectDetail.value.commodity}",
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: ColorUtils.primaryColors,
@@ -439,7 +450,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                             ),
                                           ),
                                           Text(
-                                            "Rp. 20.000.000.000",
+                                            "Rp ${controller.projectDetail.value.projectPrice}",
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: ColorUtils.primaryColors,
@@ -461,7 +472,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                             ),
                                           ),
                                           Text(
-                                            "Rp. 10.000.000.000",
+                                            "Rp ${controller.projectDetail.value.fundingPrice}",
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: ColorUtils.primaryColors,
@@ -483,7 +494,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                             ),
                                           ),
                                           Text(
-                                            "Rp. 500.000.000",
+                                            "Rp ${controller.projectDetail.value.currentFundingPrice}",
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: ColorUtils.primaryColors,

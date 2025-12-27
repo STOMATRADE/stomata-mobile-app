@@ -51,4 +51,9 @@ class Helpers {
   int getDecimals() {
     return 18;
   }
+
+  String formatDate(DateTime dateTime) {
+    final DateFormat formatter = DateFormat('dd MMMM yyyy');
+    return formatter.format(dateTime);
+  }
 }
