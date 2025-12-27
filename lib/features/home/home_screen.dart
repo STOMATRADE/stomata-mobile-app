@@ -117,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             child: Obx(
               () => ListView.builder(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 0),
                 itemBuilder: (context, index) {
                   return CardItem(
                     onTap: controller.goToDetail,
