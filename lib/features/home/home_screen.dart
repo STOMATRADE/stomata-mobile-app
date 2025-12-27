@@ -5,6 +5,7 @@ import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/global_widget/card_item.dart';
 import 'package:stomata_app/core/global_widget/company_logo/company_logo.dart';
+import 'package:stomata_app/core/global_widget/loading/circle_loading.dart';
 import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
@@ -117,31 +118,33 @@ class _HomeScreenState extends State<HomeScreen> {
               return true;
             },
             child: Obx(
-              () => ListView.builder(
-                padding: const EdgeInsets.only(top: 0),
-                itemBuilder: (context, index) {
-                  var data = controller.listProjects[index];
+              () => controller.loadingProject.value
+                  ? Center(child: CircleLoading())
+                  : ListView.builder(
+                      padding: const EdgeInsets.only(top: 0),
+                      itemBuilder: (context, index) {
+                        var data = controller.listProjects[index];
 
-                  return CardItem(
-                    onTap: controller.goToDetail,
-                    imageUrl: data.image ?? "",
-                    projectName: data.projectName ?? "",
-                    releaserName: data.projectCompany ?? "",
-                    investor: data.investors ?? 0,
-                    fundingGoal: Helpers.formatTokenAmount(
-                      amount: BigInt.parse(data.fundingPrice ?? "0"),
-                      decimals: Helpers().getDecimals(),
+                        return CardItem(
+                          onTap: controller.goToDetail,
+                          imageUrl: data.image ?? "",
+                          projectName: data.projectName ?? "",
+                          releaserName: data.projectCompany ?? "",
+                          investor: data.investors ?? 0,
+                          fundingGoal: Helpers.formatTokenAmount(
+                            amount: BigInt.parse(data.fundingPrice ?? "0"),
+                            decimals: Helpers().getDecimals(),
+                          ),
+                          margin: data.margin,
+                          percentageFunded: data.fundingPercentage,
+                          totalFunding: Helpers.formatTokenAmount(
+                            amount: BigInt.parse(data.totalFunding ?? "0"),
+                            decimals: Helpers().getDecimals(),
+                          ),
+                        );
+                      },
+                      itemCount: controller.listProjects.length,
                     ),
-                    margin: data.margin,
-                    percentageFunded: data.fundingPercentage,
-                    totalFunding: Helpers.formatTokenAmount(
-                      amount: BigInt.parse(data.totalFunding ?? "0"),
-                      decimals: Helpers().getDecimals(),
-                    ),
-                  );
-                },
-                itemCount: controller.listProjects.length,
-              ),
             ),
           ),
         ),

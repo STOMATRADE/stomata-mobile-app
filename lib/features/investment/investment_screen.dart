@@ -329,8 +329,9 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                     titleButton: "Payment",
                     borderRadius: 30,
                     enableButton: controller.enableButton.value,
-                    backgroundDisableColors: ColorUtils.fourGreenColors
-                        .withValues(alpha: 0.3),
+                    backgroundDisableColors: ColorUtils.primaryColors.withAlpha(
+                      60,
+                    ),
                     backgroundColors: ColorUtils.primaryColors,
                   ),
                 ),
