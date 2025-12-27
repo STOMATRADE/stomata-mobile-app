@@ -5,8 +5,8 @@ import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/project/project_detail_screen.dart';
 import 'package:stomata_app/repository/global_query_param/pagination_query.dart';
 import 'package:stomata_app/repository/project/project_repository.dart';
-import 'package:stomata_app/repository/project/view/project_item_view_model.dart';
-import 'package:stomata_app/repository/project/view/project_list_view_model.dart';
+import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
+import 'package:stomata_app/repository/project/view/list/project_list_view_model.dart';
 
 class ProjectController extends GetxController {
   BuildContext? context;

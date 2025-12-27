@@ -8,9 +8,9 @@ import 'package:stomata_app/core/config/services/model/base_response_model.dart'
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/global_query_param/pagination_query.dart';
-import 'package:stomata_app/repository/project/response/project_list_response.dart';
-import 'package:stomata_app/repository/project/view/project_item_view_model.dart';
-import 'package:stomata_app/repository/project/view/project_list_view_model.dart';
+import 'package:stomata_app/repository/project/response/list/project_list_response.dart';
+import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
+import 'package:stomata_app/repository/project/view/list/project_list_view_model.dart';
 
 class ProjectRepository extends BaseServices with CacheManager {
   Future<BaseResponseModel> getOngoingProjects(PaginationQuery query) async {

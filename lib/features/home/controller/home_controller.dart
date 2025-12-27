@@ -9,8 +9,8 @@ import 'package:stomata_app/repository/global_query_param/pagination_query.dart'
 import 'package:stomata_app/repository/portofolio/portofolio_repository.dart';
 import 'package:stomata_app/repository/portofolio/view/amount/portofolio_amount_view_model.dart';
 import 'package:stomata_app/repository/project/project_repository.dart';
-import 'package:stomata_app/repository/project/view/project_item_view_model.dart';
-import 'package:stomata_app/repository/project/view/project_list_view_model.dart';
+import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
+import 'package:stomata_app/repository/project/view/list/project_list_view_model.dart';
 import 'package:stomata_app/repository/source_of_fund/source_of_fund_repository.dart';
 import 'package:stomata_app/repository/source_of_fund/view/sof_view_model.dart';
 

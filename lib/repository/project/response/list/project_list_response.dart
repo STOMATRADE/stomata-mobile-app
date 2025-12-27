@@ -1,4 +1,4 @@
-import 'package:stomata_app/repository/project/response/project_item_response.dart';
+import 'package:stomata_app/repository/project/response/list/project_item_response.dart';
 
 import 'package:json_annotation/json_annotation.dart';
 
