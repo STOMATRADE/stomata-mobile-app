@@ -49,9 +49,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                     const SizedBox(height: 10),
                     Card(
                       margin: const EdgeInsets.all(0),
-                      color: ColorUtils.secondaryGreenColors.withValues(
-                        alpha: 0.3,
-                      ),
+                      color: ColorUtils.fourGreenColors.withValues(alpha: 0.3),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TotalCashWidget(amount: 500000),
@@ -68,8 +66,8 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                       inputBackgroundColors: ColorUtils.secondaryBgColors,
                       keyboardType: TextInputType.number,
                       borderWidth: 1,
-                      enableBorderColors: ColorUtils.primaryColors,
-                      focusBorderColors: ColorUtils.primaryColors,
+                      enableBorderColors: ColorUtils.secondaryColors,
+                      focusBorderColors: ColorUtils.secondaryColors,
                       preffixIcon: Image.network(
                         "https://s3.ap-southeast-1.amazonaws.com/static.pintu.co.id/assets/images/logo/IDRX+-+IDRX.png",
                         scale: 30,
@@ -78,7 +76,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                       labelInput: "Input Amount...",
                       labelInputColors: ColorUtils.white,
                       floatingLabelBehavior: FloatingLabelBehavior.never,
-                      cursorColors: ColorUtils.primaryColors,
+                      cursorColors: ColorUtils.secondaryColors,
                     ),
                     const SizedBox(height: 20),
                     Text(
@@ -331,7 +329,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                     titleButton: "Payment",
                     borderRadius: 30,
                     enableButton: controller.enableButton.value,
-                    backgroundDisableColors: ColorUtils.secondaryGreenColors
+                    backgroundDisableColors: ColorUtils.fourGreenColors
                         .withValues(alpha: 0.3),
                     backgroundColors: ColorUtils.primaryColors,
                   ),

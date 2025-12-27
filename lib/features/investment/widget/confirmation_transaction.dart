@@ -55,7 +55,7 @@ class ConfirmationTransaction extends StatelessWidget {
             const SizedBox(height: 10),
             Card(
               margin: const EdgeInsets.all(0),
-              color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
+              color: ColorUtils.fourGreenColors.withValues(alpha: 0.3),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Row(

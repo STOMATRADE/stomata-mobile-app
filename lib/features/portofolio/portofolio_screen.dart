@@ -49,7 +49,7 @@ class _PortofolioScreenState extends State<PortofolioScreen> {
                         CompanyLogo(),
                         const SizedBox(height: 30),
                         Card(
-                          color: ColorUtils.secondaryGreenColors.withValues(
+                          color: ColorUtils.fourGreenColors.withValues(
                             alpha: 0.3,
                           ),
                           child: Padding(

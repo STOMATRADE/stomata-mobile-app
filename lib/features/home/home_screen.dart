@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 12),
                       Card(
-                        color: ColorUtils.secondaryGreenColors.withValues(
+                        color: ColorUtils.fourGreenColors.withValues(
                           alpha: 0.3,
                         ),
                         shape: RoundedRectangleBorder(

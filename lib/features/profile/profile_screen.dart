@@ -99,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(height: 8),
                 Card(
                   margin: const EdgeInsets.all(0),
-                  color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
+                  color: ColorUtils.fourGreenColors.withValues(alpha: 0.3),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Obx(
@@ -122,7 +122,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const SizedBox(height: 8),
                 Card(
                   margin: const EdgeInsets.all(0),
-                  color: ColorUtils.secondaryGreenColors.withValues(alpha: 0.3),
+                  color: ColorUtils.fourGreenColors.withValues(alpha: 0.3),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Obx(

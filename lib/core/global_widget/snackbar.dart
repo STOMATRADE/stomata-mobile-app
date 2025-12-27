@@ -32,7 +32,7 @@ class SnackbarComponent {
       backgroundColor: Colors.transparent,
       content: AwesomeSnackbarContent(
         title: 'Success',
-        color: ColorUtils.primaryColors,
+        color: ColorUtils.secondaryColors,
         message: message,
         contentType: ContentType.success,
         inMaterialBanner: false,
@@ -53,7 +53,7 @@ class SnackbarComponent {
       backgroundColor: Colors.transparent,
       content: AwesomeSnackbarContent(
         title: 'Sorry',
-        color: ColorUtils.secondaryGreenColors,
+        color: ColorUtils.fourGreenColors,
         message: message,
         contentType: ContentType.warning,
         inMaterialBanner: false,
