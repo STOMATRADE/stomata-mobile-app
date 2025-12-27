@@ -118,12 +118,18 @@ class HomeController extends GetxController with CacheManager {
       loadingProject.value = false;
       if (response.header.statusCode == 200) {
         ProjectListViewModel projectListData = response.data;
+
+        listProjects.addAll(projectListData.items ?? []);
+
+        printLog("list project: $listProjects");
       } else {
         SnackbarComponent.showErrorSnackbar(
           context: context,
           message: response.header.message,
         );
       }
+
+      page++;
     } catch (e) {
       loadingProject.value = false;
       printLog("error : ${e.toString()}");

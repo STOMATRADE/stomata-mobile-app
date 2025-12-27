@@ -72,6 +72,8 @@ class ProjectRepository extends BaseServices with CacheManager {
         projectListViewModel.total = projectListResponse.total;
         projectListViewModel.totalPages = projectListResponse.totalPages;
 
+        baseResponseModel.data = projectListViewModel;
+
         return baseResponseModel;
       } else {
         return baseResponseModel;

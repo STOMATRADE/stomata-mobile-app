@@ -1,13 +1,14 @@
+import 'package:easy_load_more/easy_load_more.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/global_widget/card_item.dart';
+import 'package:stomata_app/core/global_widget/company_logo/company_logo.dart';
 import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
-import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/home/controller/home_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -57,20 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        children: [
-                          Image.asset(ImageUtils.brandLogo, width: 20),
-                          const SizedBox(width: 8),
-                          const Text(
-                            "Stomatrade",
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ],
-                      ),
+                      CompanyLogo(),
                       const SizedBox(height: 12),
                       Card(
                         color: ColorUtils.fourGreenColors.withValues(
@@ -120,31 +108,29 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Container(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           decoration: const BoxDecoration(color: ColorUtils.bgColors),
-          child: ListView(
-            padding: const EdgeInsets.only(top: 20),
-            children: [
-              CardItem(
-                onTap: controller.goToDetail,
-                imageUrl:
-                    'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
-                projectName: "Pengiriman Kopi Lampung",
-                releaserName: "PT. Makmur Sejahtera",
+          child: EasyLoadMore(
+            runOnEmptyResult: false,
+            onLoadMore: () async {
+              debugPrint("LOAD MORE DIPANGGIL");
+              controller.getAllProject(context);
+              return true;
+            },
+            child: Obx(
+              () => ListView.builder(
+                padding: const EdgeInsets.only(top: 20),
+                itemBuilder: (context, index) {
+                  return CardItem(
+                    onTap: controller.goToDetail,
+                    imageUrl: controller.listProjects[index].image ?? "",
+                    projectName:
+                        controller.listProjects[index].projectName ?? "",
+                    releaserName:
+                        controller.listProjects[index].projectCompany ?? "",
+                  );
+                },
+                itemCount: controller.listProjects.length,
               ),
-              CardItem(
-                onTap: controller.goToDetail,
-                imageUrl:
-                    'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
-                projectName: "Pengiriman Kopi Lampung",
-                releaserName: "PT. Makmur Sejahtera",
-              ),
-              CardItem(
-                onTap: controller.goToDetail,
-                imageUrl:
-                    'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
-                projectName: "Pengiriman Kopi Lampung",
-                releaserName: "PT. Makmur Sejahtera",
-              ),
-            ],
+            ),
           ),
         ),
       ),
