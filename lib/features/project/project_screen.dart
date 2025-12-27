@@ -84,7 +84,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
                             var data = controller.listProjects[index];
 
                             return CardItem(
-                              onTap: controller.goToDetail,
+                              onTap: () => controller.goToDetail(data),
                               imageUrl: data.image ?? "",
                               projectName: data.projectName ?? "",
                               releaserName: data.projectCompany ?? "",

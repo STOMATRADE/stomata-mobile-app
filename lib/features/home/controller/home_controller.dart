@@ -140,7 +140,7 @@ class HomeController extends GetxController with CacheManager {
     }
   }
 
-  void goToDetail() {
-    Get.to(() => ProjectDetailScreen());
+  void goToDetail(ProjectItemViewModel data) {
+    Get.to(() => ProjectDetailScreen(projectData: data));
   }
 }

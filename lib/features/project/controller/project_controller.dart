@@ -60,7 +60,7 @@ class ProjectController extends GetxController {
     }
   }
 
-  void goToDetail() {
-    Get.to(() => ProjectDetailScreen());
+  void goToDetail(ProjectItemViewModel data) {
+    Get.to(() => ProjectDetailScreen(projectData: data));
   }
 }

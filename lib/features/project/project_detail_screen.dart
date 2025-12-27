@@ -5,9 +5,11 @@ import 'package:get/get.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/features/project/controller/project_detail_controller.dart';
+import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
 
 class ProjectDetailScreen extends StatefulWidget {
-  const ProjectDetailScreen({super.key});
+  final ProjectItemViewModel projectData;
+  const ProjectDetailScreen({super.key, required this.projectData});
 
   @override
   State<ProjectDetailScreen> createState() => _ProjectDetailScreenState();
@@ -43,9 +45,13 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
-                  child: Image.network(
-                    "https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg",
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: widget.projectData.projectName ?? "",
+                    child: Image.network(
+                      widget.projectData.image ??
+                          "https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
