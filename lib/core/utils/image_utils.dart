@@ -5,7 +5,7 @@ class ImageUtils {
 
   // ICONS
   // static const String brandLogo = '${_icons}stomata-logo.svg';
-  static const String brandLogo = '${_icons}stomata-logo.png';
+  static const String brandLogo = '${_icons}stomatrade-logo.png';
   static const String googleLogo = '${_icons}google-logo.png';
   static const String profile = '${_icons}profile.png';
   static const String exitIcon = '${_icons}scooter.png';

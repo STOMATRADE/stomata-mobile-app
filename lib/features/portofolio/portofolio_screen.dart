@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
+import 'package:stomata_app/core/global_widget/company_logo/company_logo.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
-import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/portofolio/controller/portofolio_controller.dart';
 import 'package:stomata_app/features/portofolio/widget/portofolio_item.dart';
 
@@ -46,18 +46,7 @@ class _PortofolioScreenState extends State<PortofolioScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Image.asset(ImageUtils.brandLogo, scale: 20),
-                            Text(
-                              "Stomatrade",
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
+                        CompanyLogo(),
                         const SizedBox(height: 30),
                         Card(
                           color: ColorUtils.secondaryGreenColors.withValues(

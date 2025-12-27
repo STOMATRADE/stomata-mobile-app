@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_package/flutter_package.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
+import 'package:stomata_app/core/global_widget/company_logo/company_logo.dart';
 import 'package:stomata_app/core/global_widget/loading/loading_screen.dart';
 import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
@@ -36,18 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Image.asset(ImageUtils.brandLogo, scale: 20),
-                    Text(
-                      "Stomatrade",
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
+                CompanyLogo(),
                 const SizedBox(height: 40),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -39,7 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // SvgPicture.asset(ImageUtils.brandLogo, semanticsLabel: 'Dart Logo'),
-              Center(child: Image.asset(ImageUtils.brandLogo, width: 120)),
+              Center(child: Image.asset(ImageUtils.brandLogo, width: 90)),
+              const SizedBox(height: 16),
               Text(
                 "Stomatrade",
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),

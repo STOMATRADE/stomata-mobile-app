@@ -3,8 +3,8 @@ import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/instance_manager.dart';
 import 'package:stomata_app/core/global_widget/card_item.dart';
+import 'package:stomata_app/core/global_widget/company_logo/company_logo.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
-import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/project/controller/project_controller.dart';
 
 class ProjectScreen extends StatefulWidget {
@@ -30,15 +30,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Image.asset(ImageUtils.brandLogo, scale: 20),
-                Text(
-                  "Stomatrade",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
+            CompanyLogo(),
             const SizedBox(height: 30),
             CText(
               text: "Project List",

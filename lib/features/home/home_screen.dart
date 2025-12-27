@@ -59,7 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Row(
                         children: [
-                          Image.asset(ImageUtils.brandLogo, scale: 20),
+                          Image.asset(ImageUtils.brandLogo, width: 20),
+                          const SizedBox(width: 8),
                           const Text(
                             "Stomatrade",
                             style: TextStyle(

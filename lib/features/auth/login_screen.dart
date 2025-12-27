@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(child: Image.asset(ImageUtils.brandLogo, width: 120)),
+                Center(child: Image.asset(ImageUtils.brandLogo, width: 90)),
                 const SizedBox(height: 20),
                 GestureDetector(
                   onLongPress: () {
