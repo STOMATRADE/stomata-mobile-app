@@ -4,38 +4,44 @@ part 'project_detail_view_model.g.dart';
 
 @JsonSerializable()
 class ProjectDetailViewModel {
-  String? id;
-  int? tokenId;
-  String? collectorId;
-  String? farmerId;
-  String? landId;
-  String? commodity;
-  String? name;
   int? volume;
-  int? volumeDecimal;
-  int? profitShare;
-  DateTime? sendDate;
+  String? commodity;
+  DateTime? submissionDate;
+  DateTime? deliveryDate;
+  String? projectPrice;
+  String? fundingPrice;
+  String? currentFundingPrice;
+  int? returnInvestmentRate;
+  String? projectId;
+  String? projectName;
+  String? collectorName;
+  String? farmerName;
+  int? investors;
   String? status;
-  DateTime? createdAt;
-  DateTime? updatedAt;
-  bool? deleted;
+  int? fundingPercentage;
+  String? image;
+  String? landAddress;
+  String? gradeQuality;
 
   ProjectDetailViewModel({
-    this.id,
-    this.tokenId,
-    this.collectorId,
-    this.farmerId,
-    this.landId,
-    this.commodity,
-    this.name,
     this.volume,
-    this.volumeDecimal,
-    this.profitShare,
-    this.sendDate,
+    this.commodity,
+    this.submissionDate,
+    this.deliveryDate,
+    this.projectPrice,
+    this.fundingPrice,
+    this.currentFundingPrice,
+    this.returnInvestmentRate,
+    this.projectId,
+    this.projectName,
+    this.collectorName,
+    this.farmerName,
+    this.investors,
     this.status,
-    this.createdAt,
-    this.updatedAt,
-    this.deleted,
+    this.fundingPercentage,
+    this.image,
+    this.landAddress,
+    this.gradeQuality,
   });
 
   factory ProjectDetailViewModel.fromJson(Map<String, dynamic> json) =>

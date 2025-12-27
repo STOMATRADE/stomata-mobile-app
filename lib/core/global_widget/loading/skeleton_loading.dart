@@ -12,6 +12,6 @@ class SkeletonLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Skeletonizer(enabled: loading, child: child);
+    return Skeletonizer(enabled: loading, ignoreContainers: true, child: child);
   }
 }

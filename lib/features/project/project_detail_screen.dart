@@ -3,7 +3,10 @@ import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/get.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
+import 'package:stomata_app/core/global_widget/loading/skeleton_loading_v2.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/project/controller/project_detail_controller.dart';
 import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
 
@@ -20,7 +23,12 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
 
   @override
   void initState() {
-    controller = Get.put(ProjectDetailController());
+    controller = Get.put(
+      ProjectDetailController(
+        context: context,
+        projectData: widget.projectData,
+      ),
+    );
     super.initState();
   }
 
@@ -61,30 +69,36 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 10),
+
+                      // COMMODITY CATEGORY
                       Row(
                         children: [
-                          Card(
-                            margin: const EdgeInsets.all(0),
-                            color: ColorUtils.primaryColors,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 15,
-                                right: 15,
-                                top: 5,
-                                bottom: 5,
-                              ),
-                              child: Text(
-                                "Kopi",
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+                          Obx(
+                            () => controller.loadingDetail.value
+                                ? SkeletonLoadingV2(width: 50, height: 20)
+                                : Card(
+                                    margin: const EdgeInsets.all(0),
+                                    color: ColorUtils.primaryColors,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                        left: 15,
+                                        right: 15,
+                                        top: 5,
+                                        bottom: 5,
+                                      ),
+                                      child: Text(
+                                        "${controller.projectDetail.value.commodity}",
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
                           ),
                           const SizedBox(width: 8),
                           // Card(
@@ -113,49 +127,83 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      Text(
-                        "Pengiriman Kopi Lampung",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+
+                      // PROJECT NAME
+                      Obx(
+                        () => controller.loadingDetail.value
+                            ? SkeletonLoadingV2(height: 25)
+                            : Text(
+                                "${controller.projectDetail.value.projectName}",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                       ),
                       const SizedBox(height: 16),
+
+                      // COLLECTOR NAME
                       InkWell(
-                        onTap: () => controller.showCompanyDetail(context),
+                        onTap: () => controller.showCompanyDetail(
+                          context,
+                          controller.projectDetail.value,
+                        ),
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Icon(Icons.corporate_fare, color: ColorUtils.white),
-                            Container(
-                              decoration: BoxDecoration(shape: BoxShape.circle),
-                              child: Image.network(
-                                "https://bcassetcdn.com/public/blog/wp-content/uploads/2023/06/21145200/Costa-Coffee-1024x640.png",
-                                fit: BoxFit.cover,
-                                scale: 15,
+                            Obx(
+                              () => SkeletonLoading(
+                                loading: controller.loadingDetail.value,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.network(
+                                    "https://bcassetcdn.com/public/blog/wp-content/uploads/2023/06/21145200/Costa-Coffee-1024x640.png",
+                                    fit: BoxFit.cover,
+                                    scale: 15,
+                                  ),
+                                ),
                               ),
                             ),
                             const SizedBox(width: 8),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "PT. Makmur Sejahtera",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Obx(
+                                    () => controller.loadingDetail.value
+                                        ? SkeletonLoadingV2()
+                                        : Text(
+                                            "${controller.projectDetail.value.collectorName}",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
                                   ),
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  "Lampung",
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: ColorUtils.primaryColors,
+                                  const SizedBox(height: 2),
+                                  Obx(
+                                    () => controller.loadingDetail.value
+                                        ? Padding(
+                                            padding: const EdgeInsets.only(
+                                              top: 8,
+                                            ),
+                                            child: SkeletonLoadingV2(),
+                                          )
+                                        : Text(
+                                            "${controller.projectDetail.value.landAddress}",
+                                            softWrap: true,
+                                            maxLines: null,
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -164,51 +212,12 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Card(
-                            margin: const EdgeInsets.all(0),
-                            color: ColorUtils.thirdBgColors,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 8,
-                                right: 8,
-                                top: 2,
-                                bottom: 2,
-                              ),
-                              child: Text(
-                                "Rp 500.000.000 / Rp 10.000.000.000",
-                                style: TextStyle(fontSize: 10),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 12),
-                          LinearProgressBar(
-                            minHeight: 5,
-                            maxSteps: 1000000000,
-                            progressType: LinearProgressBar.progressTypeLinear,
-                            currentStep: 500000000,
-                            progressColor: ColorUtils.primaryColors,
-                            backgroundColor: Colors.grey,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          const SizedBox(height: 8),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  "12 Investor",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Row(
-                                children: [
-                                  Text("Margin"),
-                                  const SizedBox(width: 8),
-                                  Card(
+                          Obx(
+                            () => controller.loadingDetail.value
+                                ? SkeletonLoadingV2()
+                                : Card(
                                     margin: const EdgeInsets.all(0),
-                                    color: ColorUtils.primaryColors,
+                                    color: ColorUtils.thirdBgColors,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(30),
                                     ),
@@ -220,15 +229,79 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                         bottom: 2,
                                       ),
                                       child: Text(
-                                        "50%",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          color: Colors.black,
-                                        ),
+                                        "Rp 50000 / Rp 10.000.000.000",
+                                        style: TextStyle(fontSize: 10),
                                       ),
                                     ),
                                   ),
-                                ],
+                          ),
+                          const SizedBox(height: 12),
+                          Obx(
+                            () => controller.loadingDetail.value
+                                ? SkeletonLoadingV2()
+                                : LinearProgressBar(
+                                    minHeight: 5,
+                                    maxSteps: 1000000000,
+                                    progressType:
+                                        LinearProgressBar.progressTypeLinear,
+                                    currentStep: 500000000,
+                                    progressColor: ColorUtils.primaryColors,
+                                    backgroundColor: Colors.grey,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                          ),
+                          const SizedBox(height: 8),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Obx(
+                                  () => controller.loadingDetail.value
+                                      ? Padding(
+                                          padding: const EdgeInsets.only(
+                                            right: 8,
+                                          ),
+                                          child: SkeletonLoadingV2(),
+                                        )
+                                      : Text(
+                                          "${controller.projectDetail.value.investors} Investor",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                ),
+                              ),
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2(width: 50)
+                                    : Row(
+                                        children: [
+                                          Text("Margin"),
+                                          const SizedBox(width: 8),
+                                          Card(
+                                            margin: const EdgeInsets.all(0),
+                                            color: ColorUtils.primaryColors,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(30),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: 8,
+                                                right: 8,
+                                                top: 2,
+                                                bottom: 2,
+                                              ),
+                                              child: Text(
+                                                "${controller.projectDetail.value.returnInvestmentRate}%",
+                                                style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                             ],
                           ),
@@ -249,76 +322,92 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "Quantity of Items",
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  ),
-                                  Text(
-                                    "20 Pieces",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2()
+                                    : Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              "Quantity of Items",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          Text(
+                                            "20 Pieces",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                               const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "Item Type",
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  ),
-                                  Text(
-                                    "Coffee Bean",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2()
+                                    : Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              "Item Type",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Coffee Bean",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                               const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "Submission Date",
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  ),
-                                  Text(
-                                    "27 January 2026",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2()
+                                    : Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              "Submission Date",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          Text(
+                                            "27 January 2026",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                               const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "Delivery Date",
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  ),
-                                  Text(
-                                    "27 January 2026",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2()
+                                    : Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              "Delivery Date",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          Text(
+                                            "27 January 2026",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                             ],
                           ),
@@ -338,58 +427,70 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "Project Price",
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  ),
-                                  Text(
-                                    "Rp. 20.000.000.000",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2()
+                                    : Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              "Project Price",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Rp. 20.000.000.000",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                               const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "Funding Price",
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  ),
-                                  Text(
-                                    "Rp. 10.000.000.000",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2()
+                                    : Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              "Funding Price",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Rp. 10.000.000.000",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                               const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Text(
-                                      "Current Funding Price",
-                                      style: TextStyle(fontSize: 15),
-                                    ),
-                                  ),
-                                  Text(
-                                    "Rp. 500.000.000",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2()
+                                    : Row(
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              "Current Funding Price",
+                                              style: TextStyle(fontSize: 15),
+                                            ),
+                                          ),
+                                          Text(
+                                            "Rp. 500.000.000",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                             ],
                           ),
@@ -409,21 +510,25 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    "Return Investment Rate",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  Expanded(child: const SizedBox()),
-                                  Text(
-                                    "25%",
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      color: ColorUtils.primaryColors,
-                                    ),
-                                  ),
-                                ],
+                              Obx(
+                                () => controller.loadingDetail.value
+                                    ? SkeletonLoadingV2()
+                                    : Row(
+                                        children: [
+                                          Text(
+                                            "Return Investment Rate",
+                                            style: TextStyle(fontSize: 15),
+                                          ),
+                                          Expanded(child: const SizedBox()),
+                                          Text(
+                                            "${controller.projectDetail.value.returnInvestmentRate}%",
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: ColorUtils.primaryColors,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                               ),
                             ],
                           ),
@@ -455,11 +560,15 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                 bottom: 30,
                 top: 30,
               ),
-              child: CustomButton(
-                onPressed: controller.startInvest,
-                titleButton: "Start to Invest",
-                borderRadius: 30,
-                backgroundColors: ColorUtils.primaryColors,
+              child: Obx(
+                () => controller.loadingDetail.value
+                    ? SkeletonLoadingV2(height: 35, borderRadius: 30)
+                    : CustomButton(
+                        onPressed: controller.startInvest,
+                        titleButton: "Start to Invest",
+                        borderRadius: 30,
+                        backgroundColors: ColorUtils.primaryColors,
+                      ),
               ),
             ),
           ),

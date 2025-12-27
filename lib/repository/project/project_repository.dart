@@ -6,6 +6,7 @@ import 'package:stomata_app/core/config/services/dummy_data/dummy_data.dart';
 import 'package:stomata_app/core/config/services/endpoint.dart';
 import 'package:stomata_app/core/config/services/model/base_response_model.dart';
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/global_query_param/pagination_query.dart';
 import 'package:stomata_app/repository/project/response/detail/project_detail_response.dart';
@@ -118,22 +119,45 @@ class ProjectRepository extends BaseServices with CacheManager {
         ProjectDetailViewModel projectDetailViewModel =
             ProjectDetailViewModel();
 
-        projectDetailViewModel.id = projectDetailResponse.id;
-        projectDetailViewModel.tokenId = projectDetailResponse.tokenId;
-        projectDetailViewModel.collectorId = projectDetailResponse.collectorId;
-        projectDetailViewModel.farmerId = projectDetailResponse.farmerId;
-        projectDetailViewModel.landId = projectDetailResponse.landId;
-        projectDetailViewModel.commodity = projectDetailResponse.commodity;
-        projectDetailViewModel.name = projectDetailResponse.name;
+        projectDetailViewModel.projectId = projectDetailResponse.projectId;
+        projectDetailViewModel.projectName = projectDetailResponse.projectName;
+        projectDetailViewModel.collectorName =
+            projectDetailResponse.collectorName;
+        projectDetailViewModel.farmerName = projectDetailResponse.farmerName;
         projectDetailViewModel.volume = projectDetailResponse.volume;
-        projectDetailViewModel.volumeDecimal =
-            projectDetailResponse.volumeDecimal;
-        projectDetailViewModel.profitShare = projectDetailResponse.profitShare;
-        projectDetailViewModel.sendDate = projectDetailResponse.sendDate;
+        projectDetailViewModel.commodity = projectDetailResponse.commodity;
+        projectDetailViewModel.submissionDate =
+            projectDetailResponse.submissionDate;
+        projectDetailViewModel.deliveryDate =
+            projectDetailResponse.deliveryDate;
+
+        projectDetailViewModel.projectPrice = Helpers.formatTokenAmount(
+          amount: BigInt.parse(projectDetailResponse.projectPrice ?? "0"),
+          decimals: Helpers().getDecimals(),
+        ).toString();
+
+        projectDetailViewModel.fundingPrice = Helpers.formatTokenAmount(
+          amount: BigInt.parse(projectDetailResponse.fundingPrice ?? "0"),
+          decimals: Helpers().getDecimals(),
+        ).toString();
+
+        projectDetailViewModel.currentFundingPrice = Helpers.formatTokenAmount(
+          amount: BigInt.parse(
+            projectDetailResponse.currentFundingPrice ?? "0",
+          ),
+          decimals: Helpers().getDecimals(),
+        ).toString();
+
+        projectDetailViewModel.returnInvestmentRate =
+            projectDetailResponse.returnInvestmentRate;
+        projectDetailViewModel.investors = projectDetailResponse.investors;
         projectDetailViewModel.status = projectDetailResponse.status;
-        projectDetailViewModel.createdAt = projectDetailResponse.createdAt;
-        projectDetailViewModel.updatedAt = projectDetailResponse.updatedAt;
-        projectDetailViewModel.deleted = projectDetailResponse.deleted;
+        projectDetailViewModel.fundingPercentage =
+            projectDetailResponse.fundingPercentage;
+        projectDetailViewModel.image = projectDetailResponse.image;
+        projectDetailViewModel.landAddress = projectDetailResponse.landAddress;
+        projectDetailViewModel.gradeQuality =
+            projectDetailResponse.gradeQuality;
 
         baseResponseModel.data = projectDetailViewModel;
 

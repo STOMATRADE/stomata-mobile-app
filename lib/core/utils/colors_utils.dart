@@ -9,4 +9,5 @@ class ColorUtils {
   static const Color thirdColors = Color(0xff2CFF9E);
   static const Color fourGreenColors = Color(0xff006923);
   static const Color white = Color(0xffFFFFFF);
+  static const Color skeletonLoadingColor = Color(0xffEDECF4);
 }

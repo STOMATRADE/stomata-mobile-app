@@ -1,16 +1,62 @@
-import 'package:flutter/rendering.dart';
-import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stomata_app/core/global_widget/snackbar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/global_widget/company_detail_content.dart';
+import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/investment/investment_screen.dart';
+import 'package:stomata_app/repository/project/project_repository.dart';
+import 'package:stomata_app/repository/project/view/detail/project_detail_view_model.dart';
+import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
 
 class ProjectDetailController extends GetxController {
-  void showCompanyDetail(context) {
+  BuildContext? context;
+  final ProjectItemViewModel projectData;
+
+  RxBool loadingDetail = false.obs;
+  Rx<ProjectDetailViewModel> projectDetail = ProjectDetailViewModel().obs;
+
+  ProjectDetailController({required this.context, required this.projectData});
+  @override
+  void onInit() {
+    getProjectDetail(context);
+    super.onInit();
+  }
+
+  void getProjectDetail(context) async {
+    try {
+      loadingDetail.value = true;
+
+      var response = await ProjectRepository().getProjectDetail(
+        projectData.projectId ?? "",
+      );
+
+      loadingDetail.value = false;
+      if (response.header.statusCode == 200) {
+        projectDetail.value = response.data;
+
+        printLog("project detail: ${projectDetail.value}");
+      } else {
+        SnackbarComponent.showErrorSnackbar(
+          context: context,
+          message: response.header.message,
+        );
+      }
+    } catch (e) {
+      loadingDetail.value = false;
+      printLog("error : ${e.toString()}");
+      SnackbarComponent.showErrorSnackbar(
+        context: context,
+        message: e.toString(),
+      );
+    }
+  }
+
+  void showCompanyDetail(context, ProjectDetailViewModel data) {
     Get.bottomSheet(
       Container(
-        height: Helpers.getFullHeight(context) * 0.35,
+        height: Helpers.getFullHeight(context) * 0.45,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(20),
@@ -21,9 +67,9 @@ class ProjectDetailController extends GetxController {
         child: CompanyDetailContent(
           companyIcon:
               "https://bcassetcdn.com/public/blog/wp-content/uploads/2023/06/21145200/Costa-Coffee-1024x640.png",
-          companyName: "PT. Makmur Sejahtera",
-          companyAddress: "Lampung",
-          companyEmail: "CustomerService@PT.MakmurSejahtera.co.id",
+          companyName: data.collectorName ?? "",
+          companyAddress: data.landAddress ?? "",
+          companyEmail: "CustomerService@${data.collectorName}.co.id",
           companyPhone: "81234567823",
         ),
       ),

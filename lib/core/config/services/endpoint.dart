@@ -4,7 +4,7 @@ class Endpoint {
   static const String ongoingProject = "/projects/ongoing";
 
   static projectDetail(String projectId) {
-    return "/projects/$projectId";
+    return "/projects/$projectId/detail";
   }
 
   static getUserPortofolioAmount(String userId) {

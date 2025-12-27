@@ -4,38 +4,44 @@ part 'project_detail_response.g.dart';
 
 @JsonSerializable()
 class ProjectDetailResponse {
-  final String? id;
-  final int? tokenId;
-  final String? collectorId;
-  final String? farmerId;
-  final String? landId;
-  final String? commodity;
-  final String? name;
   final int? volume;
-  final int? volumeDecimal;
-  final int? profitShare;
-  final DateTime? sendDate;
+  final String? commodity;
+  final DateTime? submissionDate;
+  final DateTime? deliveryDate;
+  final String? projectPrice;
+  final String? fundingPrice;
+  final String? currentFundingPrice;
+  final int? returnInvestmentRate;
+  final String? projectId;
+  final String? projectName;
+  final String? collectorName;
+  final String? farmerName;
+  final int? investors;
   final String? status;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
-  final bool? deleted;
+  final int? fundingPercentage;
+  final String? image;
+  final String? landAddress;
+  final String? gradeQuality;
 
   ProjectDetailResponse({
-    this.id,
-    this.tokenId,
-    this.collectorId,
-    this.farmerId,
-    this.landId,
-    this.commodity,
-    this.name,
     this.volume,
-    this.volumeDecimal,
-    this.profitShare,
-    this.sendDate,
+    this.commodity,
+    this.submissionDate,
+    this.deliveryDate,
+    this.projectPrice,
+    this.fundingPrice,
+    this.currentFundingPrice,
+    this.returnInvestmentRate,
+    this.projectId,
+    this.projectName,
+    this.collectorName,
+    this.farmerName,
+    this.investors,
     this.status,
-    this.createdAt,
-    this.updatedAt,
-    this.deleted,
+    this.fundingPercentage,
+    this.image,
+    this.landAddress,
+    this.gradeQuality,
   });
 
   factory ProjectDetailResponse.fromJson(Map<String, dynamic> json) =>

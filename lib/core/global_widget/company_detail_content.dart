@@ -38,25 +38,29 @@ class CompanyDetailContent extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 8),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      companyName,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        companyName,
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      companyAddress,
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: ColorUtils.primaryColors,
+                      const SizedBox(height: 2),
+                      Text(
+                        companyAddress,
+                        softWrap: true,
+                        maxLines: null,
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: ColorUtils.primaryColors,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
