@@ -1,24 +1,27 @@
 {
-    "header": {
-        "statusCode": 200,
-        "message": "Request processed successfully",
-        "timestamp": "2025-12-27T13:47:02.929Z"
-    },
-    "data": {
-        "id": "89410088-7d5b-43ba-982a-6992d23314d0",
-        "tokenId": 1003,
-        "collectorId": "9da837d7-319a-43d1-9dec-366554922d42",
-        "farmerId": "e59afc89-0272-4193-83d1-52fba5788694",
-        "landId": "8170b744-8e76-4ffd-ba7c-0b69753f5cd0",
-        "commodity": "Corn",
-        "name": "Sweet Corn Organic Harvest 2026",
-        "volume": 4500,
-        "volumeDecimal": 18,
-        "profitShare": 20,
-        "sendDate": "2026-05-10T00:00:00.000Z",
-        "status": "ACTIVE",
-        "createdAt": "2025-12-14T12:00:35.491Z",
-        "updatedAt": "2025-12-14T12:00:35.491Z",
-        "deleted": false
-    }
+  "header": {
+    "statusCode": 200,
+    "message": "Request processed successfully",
+    "timestamp": "2025-12-27T13:47:02.929Z"
+  },
+  "data": {
+    "volume": 5000,
+    "commodity": "Rice",
+    "submissionDate": "2025-12-10T10:30:00.000Z",
+    "deliveryDate": "2026-03-15T10:30:00.000Z",
+    "projectPrice": "150000000000000000000000",
+    "fundingPrice": "100000000000000000000000",
+    "currentFundingPrice": "75000000000000000000000",
+    "returnInvestmentRate": 25,
+    "projectId": "550e8400-e29b-41d4-a716-446655440000",
+    "projectName": "Rice Premium Grade A Harvest 2026",
+    "collectorName": "PT Pertanian Sejahtera",
+    "farmerName": "Budi Santoso",
+    "investors": 12,
+    "status": "ACTIVE",
+    "fundingPercentage": 75,
+    "image": "https://storage.example.com/projects/rice-field.jpg",
+    "landAddress": "Jl. Raya Pertanian No. 123, Bogor",
+    "gradeQuality": "A"
+  }
 }
