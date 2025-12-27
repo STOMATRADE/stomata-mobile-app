@@ -52,7 +52,6 @@ class ConfirmLogout extends StatelessWidget {
                     child: CustomButton(
                       onPressed: onLogout,
                       titleButton: "Logout",
-                      fontColor: ColorUtils.white,
                       borderRadius: 30,
                       backgroundColors: ColorUtils.primaryColors,
                     ),

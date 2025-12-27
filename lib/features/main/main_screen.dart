@@ -4,23 +4,35 @@ import 'package:get/get.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/features/main/controller/main_controller.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  late final MainController controller;
+
+  @override
+  void initState() {
+    controller = Get.put(MainController());
+
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    var controller = Get.put(MainController());
     return BaseWidgetContainer(
       body: Obx(
-        () => controller.widgetScreen.elementAt(
-          controller.selectedWidget.value,
-        ),
+        () =>
+            controller.widgetScreen.elementAt(controller.selectedWidget.value),
       ),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
           iconTheme: WidgetStateProperty.resolveWith((states) {
             if (states.contains(WidgetState.selected)) {
-              return const IconThemeData(color: Colors.white);
+              return const IconThemeData(color: Colors.black);
             }
             return const IconThemeData(color: Colors.grey);
           }),
