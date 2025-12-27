@@ -4,7 +4,6 @@ import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/global_widget/total_asset_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
-import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/features/portofolio/controller/portofolio_controller.dart';
 import 'package:stomata_app/features/portofolio/widget/portofolio_item.dart';
@@ -37,7 +36,7 @@ class _PortofolioScreenState extends State<PortofolioScreen> {
               elevation: 0,
               pinned: false,
               floating: false,
-              expandedHeight: Helpers.getFullHeight(context) * 0.22,
+              expandedHeight: 170,
               automaticallyImplyLeading: false,
               flexibleSpace: FlexibleSpaceBar(
                 background: Padding(
