@@ -6,6 +6,7 @@ import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/global_widget/loading/skeleton_loading.dart';
 import 'package:stomata_app/core/global_widget/loading/skeleton_loading_v2.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/project/controller/project_detail_controller.dart';
 import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
 
@@ -389,7 +390,12 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                             ),
                                           ),
                                           Text(
-                                            "27 January 2026",
+                                            Helpers.formatDate(
+                                              controller
+                                                  .projectDetail
+                                                  .value
+                                                  .submissionDate!,
+                                            ),
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: ColorUtils.primaryColors,
@@ -411,7 +417,12 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                             ),
                                           ),
                                           Text(
-                                            "27 January 2026",
+                                            Helpers.formatDate(
+                                              controller
+                                                  .projectDetail
+                                                  .value
+                                                  .deliveryDate!,
+                                            ),
                                             style: TextStyle(
                                               fontSize: 15,
                                               color: ColorUtils.primaryColors,

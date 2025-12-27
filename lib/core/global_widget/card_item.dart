@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:stomata_app/core/global_widget/loading/skeleton_loading_v2.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 
@@ -48,14 +49,7 @@ class CardItem extends StatelessWidget {
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) return child;
-                      return Center(
-                        child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded /
-                                    loadingProgress.expectedTotalBytes!
-                              : null,
-                        ),
-                      );
+                      return SkeletonLoadingV2(height: 200);
                     },
                   ),
                 ),

@@ -52,8 +52,8 @@ class Helpers {
     return 18;
   }
 
-  String formatDate(DateTime dateTime) {
-    final DateFormat formatter = DateFormat('dd MMMM yyyy');
+  static String formatDate(DateTime dateTime) {
+    final DateFormat formatter = DateFormat('dd MMM yyyy');
     return formatter.format(dateTime);
   }
 }
