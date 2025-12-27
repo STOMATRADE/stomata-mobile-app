@@ -1,10 +1,13 @@
+import 'package:easy_load_more/easy_load_more.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_package/source/base_widget_container.dart';
 import 'package:flutter_package/source/ctext_component.dart';
 import 'package:get/instance_manager.dart';
+import 'package:get/state_manager.dart';
 import 'package:stomata_app/core/global_widget/card_item.dart';
 import 'package:stomata_app/core/global_widget/company_logo/company_logo.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/project/controller/project_controller.dart';
 
 class ProjectScreen extends StatefulWidget {
@@ -18,7 +21,7 @@ class _ProjectScreenState extends State<ProjectScreen> {
   late final ProjectController controller;
   @override
   void initState() {
-    controller = Get.put(ProjectController());
+    controller = Get.put(ProjectController(context: context));
     super.initState();
   }
 
@@ -64,32 +67,40 @@ class _ProjectScreenState extends State<ProjectScreen> {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView(
-                padding: const EdgeInsets.all(0),
-                shrinkWrap: true,
-                children: [
-                  CardItem(
-                    onTap: controller.goToDetail,
-                    imageUrl:
-                        'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
-                    projectName: "Pengiriman Kopi Lampung",
-                    releaserName: "PT. Makmur Sejahtera",
+              child: EasyLoadMore(
+                runOnEmptyResult: false,
+                onLoadMore: () async {
+                  debugPrint("LOAD MORE DIPANGGIL");
+                  controller.getAllProject(context);
+                  return true;
+                },
+                child: Obx(
+                  () => ListView.builder(
+                    padding: const EdgeInsets.only(top: 0),
+                    itemBuilder: (context, index) {
+                      var data = controller.listProjects[index];
+
+                      return CardItem(
+                        onTap: controller.goToDetail,
+                        imageUrl: data.image ?? "",
+                        projectName: data.projectName ?? "",
+                        releaserName: data.projectCompany ?? "",
+                        investor: data.investors ?? 0,
+                        fundingGoal: Helpers.formatTokenAmount(
+                          amount: BigInt.parse(data.fundingPrice ?? "0"),
+                          decimals: Helpers().getDecimals(),
+                        ),
+                        margin: data.margin,
+                        percentageFunded: data.fundingPercentage,
+                        totalFunding: Helpers.formatTokenAmount(
+                          amount: BigInt.parse(data.totalFunding ?? "0"),
+                          decimals: Helpers().getDecimals(),
+                        ),
+                      );
+                    },
+                    itemCount: controller.listProjects.length,
                   ),
-                  CardItem(
-                    onTap: controller.goToDetail,
-                    imageUrl:
-                        'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
-                    projectName: "Pengiriman Kopi Lampung",
-                    releaserName: "PT. Makmur Sejahtera",
-                  ),
-                  CardItem(
-                    onTap: controller.goToDetail,
-                    imageUrl:
-                        'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
-                    projectName: "Pengiriman Kopi Lampung",
-                    releaserName: "PT. Makmur Sejahtera",
-                  ),
-                ],
+                ),
               ),
             ),
           ],
