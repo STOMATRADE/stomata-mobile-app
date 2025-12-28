@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:stomata_app/core/global_widget/loading/loading_screen.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/image_utils.dart';
+import 'package:stomata_app/core/utils/param/parameters.dart';
 import 'package:stomata_app/features/auth/controller/login_controller.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -41,14 +42,19 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(child: Image.asset(ImageUtils.brandLogo, width: 90)),
+                Center(
+                  child: Hero(
+                    tag: ParametersKey.brandLogo.name,
+                    child: Image.asset(ImageUtils.brandLogo, width: 90),
+                  ),
+                ),
                 const SizedBox(height: 20),
                 GestureDetector(
                   onLongPress: () {
                     controller.goToDebugMode();
                   },
                   child: Text(
-                    "Stomatrade Login",
+                    "Stomatrade",
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
