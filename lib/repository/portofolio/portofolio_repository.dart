@@ -8,6 +8,7 @@ import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/config/services/dummy_data/dummy_data.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/portofolio/response/amount/portofolio_amount_response.dart';
+import 'package:stomata_app/repository/portofolio/response/summary/portofolio_summary_response.dart';
 import 'package:stomata_app/repository/portofolio/view/amount/portofolio_amount_view_model.dart';
 
 class PortofolioRepository extends BaseServices with CacheManager {
@@ -49,6 +50,45 @@ class PortofolioRepository extends BaseServices with CacheManager {
         portoViewModel.totalProfit = portoResponse.totalProfit;
 
         baseResponseModel.data = portoViewModel;
+
+        return baseResponseModel;
+      } else {
+        return baseResponseModel;
+      }
+    } catch (e) {
+      printLog("error : $e");
+      rethrow;
+    }
+  }
+
+  Future<BaseResponseModel> getPortofolioSummary(String userId) async {
+    try {
+      bool useDummyData = await getDummyData();
+
+      BaseResponseModel? baseResponseModel;
+
+      if (useDummyData) {
+        final String dummyRes = await rootBundle.loadString(
+          DummyData.portofolioAmmount,
+        );
+        final Map<String, dynamic> jsonMap = jsonDecode(dummyRes);
+
+        await Future.delayed(const Duration(seconds: 1));
+
+        baseResponseModel = BaseResponseModel.fromJson(jsonMap);
+      } else {
+        var response = await getApi(
+          endpoint: Endpoint.getUserPortoSummary(userId),
+        );
+
+        printLog("data: ${response.data}");
+
+        baseResponseModel = BaseResponseModel.fromJson(response.data);
+      }
+
+      if (baseResponseModel.data != null) {
+        PortofolioSummaryResponse portofolioSummaryResponse =
+            PortofolioSummaryResponse.fromJson(baseResponseModel.data);
 
         return baseResponseModel;
       } else {
