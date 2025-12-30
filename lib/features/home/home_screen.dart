@@ -119,29 +119,37 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Obx(
               () => controller.loadingProject.value
                   ? Center(child: CircleLoading())
-                  : ListView.builder(
-                      padding: const EdgeInsets.only(top: 0),
-                      itemBuilder: (context, index) {
-                        var data = controller.listProjects[index];
-
-                        return CardItem(
-                          onTap: () => controller.goToDetail(data),
-                          imageUrl: data.image ?? "",
-                          projectName: data.projectName ?? "",
-                          releaserName: data.projectCompany ?? "",
-                          investor: data.investors ?? 0,
-                          fundingGoal: double.parse(data.fundingPrice ?? "0"),
-                          margin: data.margin,
-                          percentageFunded: data.fundingPercentage,
-                          totalFunding: double.parse(data.totalFunding ?? "0"),
-                        );
-                      },
-                      itemCount: controller.listProjects.length,
-                    ),
+                  : loadDataWidget(controller),
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget loadDataWidget(HomeController controller) {
+    if (controller.listProjects.isNotEmpty) {
+      return ListView.builder(
+        padding: const EdgeInsets.only(top: 0),
+        itemBuilder: (context, index) {
+          var data = controller.listProjects[index];
+
+          return CardItem(
+            onTap: () => controller.goToDetail(data),
+            imageUrl: data.image ?? "",
+            projectName: data.projectName ?? "",
+            releaserName: data.projectCompany ?? "",
+            investor: data.investors ?? 0,
+            fundingGoal: double.parse(data.fundingPrice ?? "0"),
+            margin: data.margin,
+            percentageFunded: data.fundingPercentage,
+            totalFunding: double.parse(data.totalFunding ?? "0"),
+          );
+        },
+        itemCount: controller.listProjects.length,
+      );
+    } else {
+      return Center(child: Text("data is empty"));
+    }
   }
 }
