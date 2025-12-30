@@ -10,6 +10,8 @@ import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/portofolio/response/amount/portofolio_amount_response.dart';
 import 'package:stomata_app/repository/portofolio/response/summary/portofolio_summary_response.dart';
 import 'package:stomata_app/repository/portofolio/view/amount/portofolio_amount_view_model.dart';
+import 'package:stomata_app/repository/portofolio/view/summary/portofolio_item_view_model.dart';
+import 'package:stomata_app/repository/portofolio/view/summary/portofolio_summary_view_model.dart';
 
 class PortofolioRepository extends BaseServices with CacheManager {
   Future<BaseResponseModel> getTotalAsset(String userId) async {
@@ -89,6 +91,42 @@ class PortofolioRepository extends BaseServices with CacheManager {
       if (baseResponseModel.data != null) {
         PortofolioSummaryResponse portofolioSummaryResponse =
             PortofolioSummaryResponse.fromJson(baseResponseModel.data);
+
+        List<PortofolioItemViewModel> listPortofolio = [];
+
+        portofolioSummaryResponse.investments?.forEach((element) {
+          PortofolioItemViewModel data = PortofolioItemViewModel();
+          data.amount = element.amount;
+          data.farmerName = element.farmerName;
+          data.id = element.id;
+          data.investedAt = element.investedAt;
+          data.profitClaimed = element.profitClaimed;
+          data.profitClaimsCount = element.profitClaimsCount;
+          data.projectId = element.projectId;
+          data.projectName = element.projectName;
+          data.receiptTokenId = element.receiptTokenId;
+
+          listPortofolio.add(data);
+        });
+
+        PortofolioSummaryViewModel portofolioSummaryViewModel =
+            PortofolioSummaryViewModel()
+              ..activeInvestments = portofolioSummaryResponse.activeInvestments
+              ..avgRoi = portofolioSummaryResponse.avgRoi
+              ..completedInvestments =
+                  portofolioSummaryResponse.completedInvestments
+              ..createdAt = portofolioSummaryResponse.createdAt
+              ..deleted = portofolioSummaryResponse.deleted
+              ..id = portofolioSummaryResponse.id
+              ..investments = listPortofolio
+              ..lastCalculatedAt = portofolioSummaryResponse.lastCalculatedAt
+              ..totalClaimed = portofolioSummaryResponse.totalClaimed
+              ..totalInvested = portofolioSummaryResponse.totalInvested
+              ..totalProfit = portofolioSummaryResponse.totalProfit
+              ..updatedAt = portofolioSummaryResponse.updatedAt
+              ..userId = portofolioSummaryResponse.userId;
+
+        baseResponseModel.data = portofolioSummaryViewModel;
 
         return baseResponseModel;
       } else {

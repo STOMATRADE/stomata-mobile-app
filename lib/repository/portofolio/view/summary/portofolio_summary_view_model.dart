@@ -5,19 +5,19 @@ part 'portofolio_summary_view_model.g.dart';
 
 @JsonSerializable()
 class PortofolioSummaryViewModel {
-  final String? id;
-  final String? userId;
-  final String? totalInvested;
-  final String? totalProfit;
-  final String? totalClaimed;
-  final int? activeInvestments;
-  final int? completedInvestments;
-  final int? avgRoi;
-  final DateTime? lastCalculatedAt;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
-  final bool? deleted;
-  final List<PortofolioItemViewModel>? investments;
+  String? id;
+  String? userId;
+  String? totalInvested;
+  String? totalProfit;
+  String? totalClaimed;
+  int? activeInvestments;
+  int? completedInvestments;
+  int? avgRoi;
+  DateTime? lastCalculatedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  bool? deleted;
+  List<PortofolioItemViewModel>? investments;
 
   PortofolioSummaryViewModel({
     this.id,
