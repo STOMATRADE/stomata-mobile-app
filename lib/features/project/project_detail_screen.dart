@@ -242,19 +242,21 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                 : LinearProgressBar(
                                     minHeight: 5,
                                     maxSteps: int.parse(
-                                      controller
-                                          .projectDetail
-                                          .value
-                                          .fundingPrice!
+                                      (controller
+                                                  .projectDetail
+                                                  .value
+                                                  .fundingPrice ??
+                                              "0")
                                           .replaceAll('.', ''),
                                     ),
                                     progressType:
                                         LinearProgressBar.progressTypeLinear,
                                     currentStep: int.parse(
-                                      controller
-                                          .projectDetail
-                                          .value
-                                          .currentFundingPrice!
+                                      (controller
+                                                  .projectDetail
+                                                  .value
+                                                  .currentFundingPrice ??
+                                              "0")
                                           .replaceAll('.', ''),
                                     ),
                                     progressColor: ColorUtils.primaryColors,
@@ -392,9 +394,10 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                           Text(
                                             Helpers.formatDate(
                                               controller
-                                                  .projectDetail
-                                                  .value
-                                                  .submissionDate!,
+                                                      .projectDetail
+                                                      .value
+                                                      .submissionDate ??
+                                                  DateTime.now(),
                                             ),
                                             style: TextStyle(
                                               fontSize: 15,
@@ -419,9 +422,10 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
                                           Text(
                                             Helpers.formatDate(
                                               controller
-                                                  .projectDetail
-                                                  .value
-                                                  .deliveryDate!,
+                                                      .projectDetail
+                                                      .value
+                                                      .deliveryDate ??
+                                                  DateTime.now(),
                                             ),
                                             style: TextStyle(
                                               fontSize: 15,

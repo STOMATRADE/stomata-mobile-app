@@ -4,6 +4,7 @@ import 'package:stomata_app/core/global_widget/company_detail_content.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/investment/investment_screen.dart';
+import 'package:stomata_app/features/investment/model/investment_model.dart';
 
 class PortofolioDetailController extends GetxController {
   void showCompanyDetail(context) {
@@ -30,6 +31,7 @@ class PortofolioDetailController extends GetxController {
   }
 
   void startInvest() {
-    Get.to(() => InvestmentScreen());
+    InvestmentModel data = InvestmentModel();
+    Get.to(() => InvestmentScreen(detailData: data));
   }
 }

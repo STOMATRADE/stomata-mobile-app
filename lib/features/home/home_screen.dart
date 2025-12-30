@@ -131,16 +131,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           projectName: data.projectName ?? "",
                           releaserName: data.projectCompany ?? "",
                           investor: data.investors ?? 0,
-                          fundingGoal: Helpers.formatTokenAmount(
-                            amount: BigInt.parse(data.fundingPrice ?? "0"),
-                            decimals: Helpers().getDecimals(),
-                          ),
+                          fundingGoal: double.parse(data.fundingPrice ?? "0"),
                           margin: data.margin,
                           percentageFunded: data.fundingPercentage,
-                          totalFunding: Helpers.formatTokenAmount(
-                            amount: BigInt.parse(data.totalFunding ?? "0"),
-                            decimals: Helpers().getDecimals(),
-                          ),
+                          totalFunding: double.parse(data.totalFunding ?? "0"),
                         );
                       },
                       itemCount: controller.listProjects.length,

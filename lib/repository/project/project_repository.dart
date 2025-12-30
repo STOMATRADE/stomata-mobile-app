@@ -131,33 +131,33 @@ class ProjectRepository extends BaseServices with CacheManager {
         projectDetailViewModel.deliveryDate =
             projectDetailResponse.deliveryDate;
 
-        double projectPrice = Helpers.formatTokenAmount(
-          amount: BigInt.parse(projectDetailResponse.projectPrice ?? "0"),
-          decimals: Helpers().getDecimals(),
-        );
+        // double projectPrice = Helpers.formatTokenAmount(
+        //   amount: BigInt.parse(projectDetailResponse.projectPrice ?? "0"),
+        //   decimals: Helpers().getDecimals(),
+        // );
 
-        double fundingPrice = Helpers.formatTokenAmount(
-          amount: BigInt.parse(projectDetailResponse.fundingPrice ?? "0"),
-          decimals: Helpers().getDecimals(),
-        );
+        // double fundingPrice = Helpers.formatTokenAmount(
+        //   amount: BigInt.parse(projectDetailResponse.fundingPrice ?? "0"),
+        //   decimals: Helpers().getDecimals(),
+        // );
 
-        double currentFundingPrice = Helpers.formatTokenAmount(
-          amount: BigInt.parse(
-            projectDetailResponse.currentFundingPrice ?? "0",
-          ),
-          decimals: Helpers().getDecimals(),
-        );
+        // double currentFundingPrice = Helpers.formatTokenAmount(
+        //   amount: BigInt.parse(
+        //     projectDetailResponse.currentFundingPrice ?? "0",
+        //   ),
+        //   decimals: Helpers().getDecimals(),
+        // );
 
         projectDetailViewModel.projectPrice = Helpers.formatAmount(
-          projectPrice.toInt(),
+          int.parse(projectDetailResponse.projectPrice ?? ""),
         ).toString();
 
         projectDetailViewModel.fundingPrice = Helpers.formatAmount(
-          fundingPrice.toInt(),
+          int.parse(projectDetailResponse.fundingPrice ?? "0"),
         ).toString();
 
         projectDetailViewModel.currentFundingPrice = Helpers.formatAmount(
-          currentFundingPrice.toInt(),
+          int.parse(projectDetailResponse.currentFundingPrice ?? "0"),
         ).toString();
 
         projectDetailViewModel.returnInvestmentRate =

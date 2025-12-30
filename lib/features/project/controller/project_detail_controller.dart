@@ -6,6 +6,7 @@ import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/global_widget/company_detail_content.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/features/investment/investment_screen.dart';
+import 'package:stomata_app/features/investment/model/investment_model.dart';
 import 'package:stomata_app/repository/project/project_repository.dart';
 import 'package:stomata_app/repository/project/view/detail/project_detail_view_model.dart';
 import 'package:stomata_app/repository/project/view/list/project_item_view_model.dart';
@@ -77,6 +78,26 @@ class ProjectDetailController extends GetxController {
   }
 
   void startInvest() {
-    Get.to(() => InvestmentScreen());
+    InvestmentModel data = InvestmentModel()
+      ..collectorName = projectDetail.value.collectorName
+      ..commodity = projectDetail.value.commodity
+      ..currentFundingPrice = projectDetail.value.currentFundingPrice
+      ..deliveryDate = projectDetail.value.deliveryDate
+      ..farmerName = projectDetail.value.farmerName
+      ..fundingPercentage = projectDetail.value.fundingPercentage
+      ..fundingPrice = projectDetail.value.fundingPrice
+      ..gradeQuality = projectDetail.value.gradeQuality
+      ..image = projectDetail.value.image
+      ..investors = projectDetail.value.investors
+      ..landAddress = projectDetail.value.landAddress
+      ..projectId = projectDetail.value.projectId
+      ..projectName = projectDetail.value.projectName
+      ..projectPrice = projectDetail.value.projectPrice
+      ..returnInvestmentRate = projectDetail.value.returnInvestmentRate
+      ..status = projectDetail.value.status
+      ..submissionDate = projectDetail.value.submissionDate
+      ..volume = projectDetail.value.volume;
+
+    Get.to(() => InvestmentScreen(detailData: data));
   }
 }

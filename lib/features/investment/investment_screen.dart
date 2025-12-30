@@ -7,9 +7,11 @@ import 'package:stomata_app/core/global_widget/total_cash_widget.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/investment/controller/investment_controller.dart';
+import 'package:stomata_app/features/investment/model/investment_model.dart';
 
 class InvestmentScreen extends StatefulWidget {
-  const InvestmentScreen({super.key});
+  final InvestmentModel detailData;
+  const InvestmentScreen({super.key, required this.detailData});
 
   @override
   State<InvestmentScreen> createState() => _InvestmentScreenState();
@@ -109,7 +111,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                   ),
                                 ),
                                 Text(
-                                  "20 Pieces",
+                                  "${widget.detailData.volume ?? "-"} Pieces",
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: ColorUtils.primaryColors,
@@ -127,7 +129,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                   ),
                                 ),
                                 Text(
-                                  "Coffee Bean",
+                                  widget.detailData.commodity ?? "-",
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: ColorUtils.primaryColors,
@@ -145,7 +147,10 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                   ),
                                 ),
                                 Text(
-                                  "27 January 2026",
+                                  Helpers.formatDate(
+                                    widget.detailData.submissionDate ??
+                                        DateTime.now(),
+                                  ),
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: ColorUtils.primaryColors,
@@ -163,7 +168,10 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                   ),
                                 ),
                                 Text(
-                                  "27 January 2026",
+                                  Helpers.formatDate(
+                                    widget.detailData.deliveryDate ??
+                                        DateTime.now(),
+                                  ),
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: ColorUtils.primaryColors,
@@ -189,7 +197,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                       bottom: 2,
                                     ),
                                     child: Text(
-                                      "Rp 500.000.000 / Rp 10.000.000.000",
+                                      "Rp ${widget.detailData.currentFundingPrice} / Rp ${widget.detailData.fundingPrice}",
                                       style: TextStyle(fontSize: 10),
                                     ),
                                   ),
@@ -197,10 +205,17 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                 const SizedBox(height: 12),
                                 LinearProgressBar(
                                   minHeight: 5,
-                                  maxSteps: 1000000000,
+                                  maxSteps: int.parse(
+                                    (widget.detailData.fundingPrice ?? "0")
+                                        .replaceAll('.', ''),
+                                  ),
                                   progressType:
                                       LinearProgressBar.progressTypeLinear,
-                                  currentStep: 500000000,
+                                  currentStep: int.parse(
+                                    (widget.detailData.currentFundingPrice ??
+                                            "0")
+                                        .replaceAll('.', ''),
+                                  ),
                                   progressColor: ColorUtils.primaryColors,
                                   backgroundColor: Colors.grey,
                                   borderRadius: BorderRadius.circular(10),
@@ -210,7 +225,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        "12 Investor",
+                                        "${widget.detailData.investors} Investor",
                                         style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                         ),
@@ -236,7 +251,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                               bottom: 2,
                                             ),
                                             child: Text(
-                                              "50%",
+                                              "${widget.detailData.returnInvestmentRate}%",
                                               style: TextStyle(
                                                 fontSize: 15,
                                                 color: Colors.black,
@@ -260,7 +275,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                   ),
                                 ),
                                 Text(
-                                  "Rp. 20.000.000.000",
+                                  "Rp ${widget.detailData.projectPrice}",
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: ColorUtils.primaryColors,
@@ -278,7 +293,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                   ),
                                 ),
                                 Text(
-                                  "Rp. 10.000.000.000",
+                                  "Rp ${widget.detailData.fundingPrice}",
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: ColorUtils.primaryColors,
@@ -296,7 +311,7 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                                   ),
                                 ),
                                 Text(
-                                  "Rp. 500.000.000",
+                                  "Rp ${widget.detailData.currentFundingPrice}",
                                   style: TextStyle(
                                     fontSize: 15,
                                     color: ColorUtils.primaryColors,

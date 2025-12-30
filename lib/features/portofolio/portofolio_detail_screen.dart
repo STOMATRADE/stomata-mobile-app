@@ -530,7 +530,7 @@ class _PortofolioDetailScreenState extends State<PortofolioDetailScreen> {
                   Expanded(
                     child: CustomButton(
                       onPressed: controller.startInvest,
-                      titleButton: "Invest",
+                      titleButton: "Invest More",
                       borderRadius: 30,
                       backgroundColors: ColorUtils.primaryColors,
                     ),
