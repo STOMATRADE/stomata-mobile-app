@@ -4,14 +4,15 @@ import 'package:flutter_package/source/custom_button.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
+import 'package:stomata_app/features/investment/model/investment_model.dart';
 
 class ConfirmationTransaction extends StatelessWidget {
-  final int amount;
+  final InvestmentModel investmentData;
   final VoidCallback onConfirm;
   const ConfirmationTransaction({
     super.key,
     required this.onConfirm,
-    required this.amount,
+    required this.investmentData,
   });
 
   @override
@@ -69,7 +70,9 @@ class ConfirmationTransaction extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           CText(
-                            text: Helpers.formatAmount(amount),
+                            text: Helpers.formatAmount(
+                              int.parse(investmentData.nominalAmount ?? "0"),
+                            ),
                             fontSize: 20,
                             textColor: ColorUtils.white,
                             fontWeight: FontWeight.bold,
@@ -110,7 +113,7 @@ class ConfirmationTransaction extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "20 Pieces",
+                          "${investmentData.volume} Pieces",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -128,7 +131,7 @@ class ConfirmationTransaction extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Coffee Bean",
+                          "${investmentData.commodity}",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -146,7 +149,9 @@ class ConfirmationTransaction extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "27 January 2026",
+                          Helpers.formatDate(
+                            investmentData.submissionDate ?? DateTime.now(),
+                          ),
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -164,7 +169,9 @@ class ConfirmationTransaction extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "27 January 2026",
+                          Helpers.formatDate(
+                            investmentData.deliveryDate ?? DateTime.now(),
+                          ),
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -181,7 +188,7 @@ class ConfirmationTransaction extends StatelessWidget {
               onPressed: () {
                 onConfirm();
               },
-              titleButton: "Confirm",
+              titleButton: "Confirm Transaction",
               borderRadius: 30,
               backgroundColors: ColorUtils.primaryColors,
             ),

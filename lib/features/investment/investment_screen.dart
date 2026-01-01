@@ -348,7 +348,10 @@ class _InvestmentScreenState extends State<InvestmentScreen> {
                 ),
                 child: Obx(
                   () => CustomButton(
-                    onPressed: () => controller.confirmTransaction(context),
+                    onPressed: () => controller.confirmTransaction(
+                      context,
+                      widget.detailData,
+                    ),
                     titleButton: "Payment",
                     borderRadius: 30,
                     enableButton: controller.enableButton.value,

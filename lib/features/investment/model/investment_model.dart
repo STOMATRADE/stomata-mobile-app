@@ -17,6 +17,7 @@ class InvestmentModel {
   String? image;
   String? landAddress;
   String? gradeQuality;
+  String? nominalAmount;
 
   InvestmentModel({
     this.volume,

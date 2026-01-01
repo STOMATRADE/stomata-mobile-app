@@ -5,6 +5,7 @@ import 'package:stomata_app/core/global_widget/snackbar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/logging.dart';
+import 'package:stomata_app/features/investment/model/investment_model.dart';
 import 'package:stomata_app/features/investment/pin_screen.dart';
 import 'package:stomata_app/features/investment/widget/confirmation_transaction.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
@@ -70,7 +71,9 @@ class InvestmentController extends GetxController with CacheManager {
     }
   }
 
-  void confirmTransaction(context) {
+  void confirmTransaction(context, InvestmentModel data) {
+    data.nominalAmount = textEditingController.text;
+
     Get.bottomSheet(
       Container(
         height: Helpers.getFullHeight(context) * 0.9,
@@ -82,16 +85,16 @@ class InvestmentController extends GetxController with CacheManager {
           color: ColorUtils.secondaryBgColors,
         ),
         child: ConfirmationTransaction(
-          amount: int.parse(textEditingController.text),
+          investmentData: data,
           onConfirm: () {
-            gotoPin();
+            gotoPin(data);
           },
         ),
       ),
     );
   }
 
-  void gotoPin() {
-    Get.to(() => PinScreen());
+  void gotoPin(InvestmentModel data) {
+    Get.to(() => PinScreen(investmentData: data));
   }
 }

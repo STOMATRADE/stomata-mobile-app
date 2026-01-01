@@ -6,9 +6,11 @@ import 'package:stomata_app/core/global_widget/loading/loading_screen.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/investment/controller/pin_controller.dart';
+import 'package:stomata_app/features/investment/model/investment_model.dart';
 
 class PinScreen extends StatefulWidget {
-  const PinScreen({super.key});
+  final InvestmentModel investmentData;
+  const PinScreen({super.key, required this.investmentData});
 
   @override
   State<PinScreen> createState() => _PinScreenState();
@@ -55,7 +57,11 @@ class _PinScreenState extends State<PinScreen> {
                       enabled: false,
                       controller: controller.textController,
                       validator: (value) {
-                        controller.confirmPin(value ?? "", context);
+                        controller.confirmPin(
+                          value: value ?? "",
+                          context: context,
+                          investmentData: widget.investmentData,
+                        );
                         return null;
                       },
                     ),
