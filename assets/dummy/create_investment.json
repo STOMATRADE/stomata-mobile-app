@@ -4,5 +4,17 @@
     "message": "Success",
     "timestamp": "2026-01-01T10:10:06.095Z"
   },
-  "data": {}
+  "data": {
+    "id": "inv-uuid-123",
+    "amount": "10000",
+    "receiptTokenId": 4001,
+    "message": "Investment Successfully",
+    "investedAt": "2026-01-02T10:30:00.000Z",
+    "project": {
+      "id": "project-uuid-1",
+      "commodity": "Rice",
+      "farmerName": "Pak Budi",
+      "targetAmount": "1000"
+    }
+  }
 }

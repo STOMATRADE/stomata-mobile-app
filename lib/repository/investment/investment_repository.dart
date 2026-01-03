@@ -8,6 +8,9 @@ import 'package:stomata_app/core/config/services/model/base_response_model.dart'
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/investment/request/create_investment_request.dart';
+import 'package:stomata_app/repository/investment/response/create_investment_response.dart';
+import 'package:stomata_app/repository/investment/view/create_investment_view_model.dart';
+import 'package:stomata_app/repository/investment/view/investment_project_view_model.dart';
 
 class InvestmentRepository extends BaseServices with CacheManager {
   Future<BaseResponseModel> createInvestment(
@@ -38,7 +41,32 @@ class InvestmentRepository extends BaseServices with CacheManager {
         baseResponseModel = BaseResponseModel.fromJson(response.data);
       }
 
-      return baseResponseModel;
+      if (baseResponseModel.data != null) {
+        CreateInvestmentResponse createInvestmentResponse =
+            CreateInvestmentResponse.fromJson(baseResponseModel.data);
+
+        InvestmentProjectViewModel investmentProject =
+            InvestmentProjectViewModel()
+              ..commodity = createInvestmentResponse.project?.commodity
+              ..farmerName = createInvestmentResponse.project?.farmerName
+              ..id = createInvestmentResponse.project?.id
+              ..targetAmount = createInvestmentResponse.project?.targetAmount;
+
+        CreateInvestmentViewModel createInvestmentViewModel =
+            CreateInvestmentViewModel()
+              ..amount = createInvestmentResponse.amount
+              ..id = createInvestmentResponse.id
+              ..investedAt = createInvestmentResponse.investedAt
+              ..message = createInvestmentResponse.message
+              ..receiptTokenId = createInvestmentResponse.receiptTokenId
+              ..project = investmentProject;
+
+        baseResponseModel.data = createInvestmentViewModel;
+
+        return baseResponseModel;
+      } else {
+        return baseResponseModel;
+      }
     } catch (e) {
       printLog("error : $e");
       rethrow;

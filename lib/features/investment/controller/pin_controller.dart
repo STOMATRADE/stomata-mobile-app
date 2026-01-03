@@ -8,6 +8,7 @@ import 'package:stomata_app/features/main/main_screen.dart';
 import 'package:stomata_app/repository/auth/view/user_view_model.dart';
 import 'package:stomata_app/repository/investment/investment_repository.dart';
 import 'package:stomata_app/repository/investment/request/create_investment_request.dart';
+import 'package:stomata_app/repository/investment/view/create_investment_view_model.dart';
 
 class PinController extends GetxController with CacheManager {
   RxBool isLoading = false.obs;
@@ -65,9 +66,11 @@ class PinController extends GetxController with CacheManager {
 
       isLoading.value = false;
       if (response.header.statusCode == 200) {
+        CreateInvestmentViewModel createInvestmentViewModel = response.data;
+
         SnackbarComponent.showSuccesSnackbar(
           context: context,
-          message: 'Your Transaction has been processed successfully',
+          message: createInvestmentViewModel.message,
         );
 
         Get.offAll(() => MainScreen());
