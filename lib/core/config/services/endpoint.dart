@@ -19,4 +19,11 @@ class Endpoint {
   static getSourceOfFundEndpoint(String userId) {
     return "/user-dashboard/$userId/cash";
   }
+
+  static getPortofolioDetail({
+    required String userId,
+    required String projectId,
+  }) {
+    return "/portfolios/user/$userId/$projectId/detail";
+  }
 }

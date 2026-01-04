@@ -1,0 +1,31 @@
+{
+  "header": {
+    "statusCode": 200,
+    "message": "Request processed successfully",
+    "timestamp": "2026-01-04T15:08:40.083Z"
+  },
+  "data": {
+    "projectId": "95da48fa-7cfb-4520-aa3c-b82057aee248",
+    "volume": 4500,
+    "commodity": "Corn",
+    "submissionDate": "2025-12-29T15:49:33.467Z",
+    "deliveryDate": "2026-05-10T00:00:00.000Z",
+    "projectPrice": "90000",
+    "fundingPrice": "60000",
+    "currentFundingPrice": "130000",
+    "returnInvestmentRate": 20,
+    "projectName": "Sweet Corn Organic Harvest 2026",
+    "collectorName": "PT Pertanian Sejahtera",
+    "farmerName": "Ahmad Hidayat",
+    "investors": 3,
+    "status": "ACTIVE",
+    "fundingPercentage": 216.67,
+    "image": "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?w=800",
+    "landAddress": "Perkebunan Kopi Blok C, Desa Sejahtera, Bogor",
+    "gradeQuality": null,
+    "assets": "100000",
+    "returnRate": 8,
+    "return": "8000",
+    "cumulativeAsset": "108000"
+  }
+}
