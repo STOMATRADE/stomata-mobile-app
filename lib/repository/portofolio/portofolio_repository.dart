@@ -24,7 +24,7 @@ class PortofolioRepository extends BaseServices with CacheManager {
 
       if (useDummyData) {
         final String dummyRes = await rootBundle.loadString(
-          DummyData.portofolioAmmount,
+          DummyData.portofolioAmount,
         );
         final Map<String, dynamic> jsonMap = jsonDecode(dummyRes);
 
@@ -73,7 +73,7 @@ class PortofolioRepository extends BaseServices with CacheManager {
 
       if (useDummyData) {
         final String dummyRes = await rootBundle.loadString(
-          DummyData.portofolioAmmount,
+          DummyData.portofolioSummary,
         );
         final Map<String, dynamic> jsonMap = jsonDecode(dummyRes);
 
@@ -93,6 +93,8 @@ class PortofolioRepository extends BaseServices with CacheManager {
       if (baseResponseModel.data != null) {
         PortofolioSummaryResponse portofolioSummaryResponse =
             PortofolioSummaryResponse.fromJson(baseResponseModel.data);
+
+        printLog("response: ${jsonEncode(portofolioSummaryResponse)}");
 
         List<PortofolioItemViewModel> listPortofolio = [];
 
@@ -158,7 +160,7 @@ class PortofolioRepository extends BaseServices with CacheManager {
 
       if (useDummyData) {
         final String dummyRes = await rootBundle.loadString(
-          DummyData.portofolioAmmount,
+          DummyData.portofolioDetail,
         );
         final Map<String, dynamic> jsonMap = jsonDecode(dummyRes);
 

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
@@ -76,6 +78,8 @@ class PortofolioController extends GetxController with CacheManager {
       loadingPortofolio.value = false;
       if (response.header.statusCode == 200) {
         PortofolioSummaryViewModel portofolioSummary = response.data;
+
+        printLog("data porto: ${jsonEncode(portofolioSummary.investments)}");
 
         listPortofolio.addAll(portofolioSummary.investments ?? []);
       } else {

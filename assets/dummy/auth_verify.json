@@ -1,0 +1,15 @@
+{
+  "header": {
+    "statusCode": 201,
+    "message": "Resource created successfully",
+    "timestamp": "2026-01-04T15:07:33.566Z"
+  },
+  "data": {
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjYTFmYzgzZC1hYWI1LTQwMjItYjE4YS1kZDViNjMzZmMwYzYiLCJ3YWxsZXRBZGRyZXNzIjoiMHhiMmEyMTMyMGRlYmE1YWNjNjQzZWQxYWIzMTMyZDhiNTQ5ZjBiZWYxIiwicm9sZSI6IklOVkVTVE9SIiwiaWF0IjoxNzY3NTM5MjUzLCJleHAiOjE3NjgxNDQwNTN9.k_wNlh-xEc1rWmzoujl4ipwumx5VYJ2xHQteeiMpEjc",
+    "user": {
+      "id": "ca1fc83d-aab5-4022-b18a-dd5b633fc0c6",
+      "walletAddress": "0xb2a21320deba5acc643ed1ab3132d8b549f0bef1",
+      "role": "INVESTOR"
+    }
+  }
+}
