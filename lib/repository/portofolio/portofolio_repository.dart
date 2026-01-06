@@ -98,15 +98,22 @@ class PortofolioRepository extends BaseServices with CacheManager {
 
         portofolioSummaryResponse.investments?.forEach((element) {
           PortofolioItemViewModel data = PortofolioItemViewModel();
-          data.amount = element.amount;
-          data.farmerName = element.farmerName;
           data.id = element.id;
+          data.projectId = element.projectId;
+          data.projectName = element.projectName;
+          data.farmerName = element.farmerName;
+          data.amount = element.amount;
+          data.receiptTokenId = element.receiptTokenId;
           data.investedAt = element.investedAt;
           data.profitClaimed = element.profitClaimed;
           data.profitClaimsCount = element.profitClaimsCount;
-          data.projectId = element.projectId;
-          data.projectName = element.projectName;
-          data.receiptTokenId = element.receiptTokenId;
+          data.image = element.image;
+          data.collectorName = element.collectorName;
+          data.cumulativeAsset = element.cumulativeAsset;
+          data.returnAsset = element.returnAsset;
+          data.margin = element.margin;
+          data.fundingPrice = element.fundingPrice;
+          data.totalFunding = element.totalFunding;
 
           listPortofolio.add(data);
         });

@@ -13,6 +13,13 @@ class PortofolioItemResponse {
   final DateTime? investedAt;
   final String? profitClaimed;
   final int? profitClaimsCount;
+  final String? fundingPrice;
+  final String? totalFunding;
+  final int? margin;
+  final String? returnAsset;
+  final String? cumulativeAsset;
+  final String? image;
+  final String? collectorName;
 
   PortofolioItemResponse({
     this.id,
@@ -24,6 +31,13 @@ class PortofolioItemResponse {
     this.investedAt,
     this.profitClaimed,
     this.profitClaimsCount,
+    this.fundingPrice,
+    this.totalFunding,
+    this.margin,
+    this.returnAsset,
+    this.cumulativeAsset,
+    this.image,
+    this.collectorName,
   });
 
   factory PortofolioItemResponse.fromJson(Map<String, dynamic> json) =>

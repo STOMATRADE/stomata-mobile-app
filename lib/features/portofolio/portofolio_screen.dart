@@ -136,10 +136,15 @@ class _PortofolioScreenState extends State<PortofolioScreen> {
 
           return PortofolioItem(
             onTap: controller.goToDetail,
-            imageUrl:
-                'https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg',
-            projectName: data.projectName,
-            releaserName: "PT. Makmur Sejahtera",
+            imageUrl: data.image ?? "-",
+            projectName: data.projectName ?? "-",
+            releaserName: data.collectorName ?? "-",
+            totalFunding: data.totalFunding ?? "0",
+            fundingGoal: data.fundingPrice ?? "0",
+            totalAsset: data.amount ?? "0",
+            margin: data.margin.toString(),
+            returnAsset: data.returnAsset ?? "0",
+            cumulativeAssetValue: data.cumulativeAsset ?? "0",
           );
         },
       );

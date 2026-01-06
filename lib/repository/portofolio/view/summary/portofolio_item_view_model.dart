@@ -13,6 +13,13 @@ class PortofolioItemViewModel {
   DateTime? investedAt;
   String? profitClaimed;
   int? profitClaimsCount;
+  String? fundingPrice;
+  String? totalFunding;
+  int? margin;
+  String? returnAsset;
+  String? cumulativeAsset;
+  String? image;
+  String? collectorName;
 
   PortofolioItemViewModel({
     this.id,
@@ -24,6 +31,13 @@ class PortofolioItemViewModel {
     this.investedAt,
     this.profitClaimed,
     this.profitClaimsCount,
+    this.fundingPrice,
+    this.totalFunding,
+    this.margin,
+    this.returnAsset,
+    this.cumulativeAsset,
+    this.image,
+    this.collectorName,
   });
 
   factory PortofolioItemViewModel.fromJson(Map<String, dynamic> json) =>

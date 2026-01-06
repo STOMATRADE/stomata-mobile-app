@@ -20,6 +20,13 @@ PortofolioItemResponse _$PortofolioItemResponseFromJson(
       : DateTime.parse(json['investedAt'] as String),
   profitClaimed: json['profitClaimed'] as String?,
   profitClaimsCount: (json['profitClaimsCount'] as num?)?.toInt(),
+  fundingPrice: json['fundingPrice'] as String?,
+  totalFunding: json['totalFunding'] as String?,
+  margin: (json['margin'] as num?)?.toInt(),
+  returnAsset: json['returnAsset'] as String?,
+  cumulativeAsset: json['cumulativeAsset'] as String?,
+  image: json['image'] as String?,
+  collectorName: json['collectorName'] as String?,
 );
 
 Map<String, dynamic> _$PortofolioItemResponseToJson(
@@ -34,4 +41,11 @@ Map<String, dynamic> _$PortofolioItemResponseToJson(
   'investedAt': instance.investedAt?.toIso8601String(),
   'profitClaimed': instance.profitClaimed,
   'profitClaimsCount': instance.profitClaimsCount,
+  'fundingPrice': instance.fundingPrice,
+  'totalFunding': instance.totalFunding,
+  'margin': instance.margin,
+  'returnAsset': instance.returnAsset,
+  'cumulativeAsset': instance.cumulativeAsset,
+  'image': instance.image,
+  'collectorName': instance.collectorName,
 };

@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
 
 class PortofolioItem extends StatelessWidget {
-  final String? imageUrl;
-  final String? projectName;
-  final String? releaserName;
+  final String imageUrl;
+  final String projectName;
+  final String releaserName;
+  final String totalFunding;
+  final String fundingGoal;
+  final String totalAsset;
+  final String margin;
+  final String returnAsset;
+  final String cumulativeAssetValue;
+
   final VoidCallback onTap;
 
   const PortofolioItem({
     super.key,
-    this.imageUrl,
-    this.projectName,
-    this.releaserName,
+    required this.imageUrl,
+    required this.projectName,
+    required this.releaserName,
     required this.onTap,
+    required this.totalFunding,
+    required this.fundingGoal,
+    required this.totalAsset,
+    required this.margin,
+    required this.returnAsset,
+    required this.cumulativeAssetValue,
   });
 
   @override
@@ -29,11 +43,7 @@ class PortofolioItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
-                child: Image.network(
-                  imageUrl ??
-                      "https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg",
-                  fit: BoxFit.cover,
-                ),
+                child: Image.network(imageUrl, fit: BoxFit.cover),
               ),
               const SizedBox(height: 10),
               Padding(
@@ -42,7 +52,7 @@ class PortofolioItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      projectName ?? "",
+                      projectName,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -61,7 +71,7 @@ class PortofolioItem extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          releaserName ?? "",
+                          releaserName,
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
@@ -88,7 +98,7 @@ class PortofolioItem extends StatelessWidget {
                               bottom: 2,
                             ),
                             child: Text(
-                              "Rp 500.000.000 / Rp 10.000.000.000",
+                              "Rp ${Helpers.formatAmount(int.parse(totalFunding))} / Rp ${Helpers.formatAmount(int.parse(fundingGoal))}",
                               style: TextStyle(fontSize: 10),
                             ),
                           ),
@@ -96,9 +106,9 @@ class PortofolioItem extends StatelessWidget {
                         const SizedBox(height: 8),
                         LinearProgressBar(
                           minHeight: 5,
-                          maxSteps: 1000000000,
+                          maxSteps: int.parse(fundingGoal),
                           progressType: LinearProgressBar.progressTypeLinear,
-                          currentStep: 500000000,
+                          currentStep: int.parse(totalFunding),
                           progressColor: ColorUtils.primaryColors,
                           backgroundColor: Colors.grey,
                           borderRadius: BorderRadius.circular(10),
@@ -112,7 +122,7 @@ class PortofolioItem extends StatelessWidget {
                           child: Text("Price", style: TextStyle(fontSize: 15)),
                         ),
                         Text(
-                          "Rp 10.000.000.000",
+                          "Rp ${Helpers.formatAmount(int.parse(fundingGoal))}",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -130,7 +140,7 @@ class PortofolioItem extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Rp 500.000.000",
+                          "Rp ${Helpers.formatAmount(int.parse(totalAsset))}",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,
@@ -157,7 +167,7 @@ class PortofolioItem extends StatelessWidget {
                               bottom: 2,
                             ),
                             child: Text(
-                              "50%",
+                              "$margin%",
                               style: TextStyle(
                                 fontSize: 15,
                                 color: Colors.black,
@@ -176,7 +186,7 @@ class PortofolioItem extends StatelessWidget {
                           child: Text("Return", style: TextStyle(fontSize: 15)),
                         ),
                         Text(
-                          "Rp 250.000.000 (+25%)",
+                          "Rp ${Helpers.formatAmount(int.parse(returnAsset))} (+$margin%)",
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -208,7 +218,7 @@ class PortofolioItem extends StatelessWidget {
                               bottom: 2,
                             ),
                             child: Text(
-                              "Rp 750.000.000",
+                              "Rp ${Helpers.formatAmount(int.parse(cumulativeAssetValue))}",
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.bold,
