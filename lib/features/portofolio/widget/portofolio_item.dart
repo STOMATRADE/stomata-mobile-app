@@ -43,7 +43,10 @@ class PortofolioItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
-                child: Image.network(imageUrl, fit: BoxFit.cover),
+                child: Hero(
+                  tag: projectName,
+                  child: Image.network(imageUrl, fit: BoxFit.cover),
+                ),
               ),
               const SizedBox(height: 10),
               Padding(

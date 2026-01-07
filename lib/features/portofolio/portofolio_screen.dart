@@ -135,7 +135,9 @@ class _PortofolioScreenState extends State<PortofolioScreen> {
           var data = controller.listPortofolio[index];
 
           return PortofolioItem(
-            onTap: controller.goToDetail,
+            onTap: () {
+              controller.goToDetail(data);
+            },
             imageUrl: data.image ?? "-",
             projectName: data.projectName ?? "-",
             releaserName: data.collectorName ?? "-",

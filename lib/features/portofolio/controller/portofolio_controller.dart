@@ -98,7 +98,7 @@ class PortofolioController extends GetxController with CacheManager {
     }
   }
 
-  void goToDetail() {
-    Get.to(() => PortofolioDetailScreen());
+  void goToDetail(PortofolioItemViewModel data) {
+    Get.to(() => PortofolioDetailScreen(portofolioData: data));
   }
 }

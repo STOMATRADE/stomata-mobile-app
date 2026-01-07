@@ -5,8 +5,29 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/features/investment/investment_screen.dart';
 import 'package:stomata_app/features/investment/model/investment_model.dart';
+import 'package:stomata_app/repository/portofolio/view/summary/portofolio_item_view_model.dart';
 
 class PortofolioDetailController extends GetxController {
+  BuildContext? context;
+  RxBool loadingDetail = false.obs;
+
+  final PortofolioItemViewModel portofolioItemViewModel;
+
+  PortofolioDetailController({
+    required this.context,
+    required this.portofolioItemViewModel,
+  });
+
+  @override
+  void onInit() {
+    getDetailPortofolio(context);
+    super.onInit();
+  }
+
+  void getDetailPortofolio(context) {
+    try {} catch (e) {}
+  }
+
   void showCompanyDetail(context) {
     Get.bottomSheet(
       Container(

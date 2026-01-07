@@ -5,9 +5,11 @@ import 'package:get/instance_manager.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/features/portofolio/controller/portofolio_detail_controller.dart';
+import 'package:stomata_app/repository/portofolio/view/summary/portofolio_item_view_model.dart';
 
 class PortofolioDetailScreen extends StatefulWidget {
-  const PortofolioDetailScreen({super.key});
+  final PortofolioItemViewModel portofolioData;
+  const PortofolioDetailScreen({super.key, required this.portofolioData});
 
   @override
   State<PortofolioDetailScreen> createState() => _PortofolioDetailScreenState();
@@ -18,7 +20,12 @@ class _PortofolioDetailScreenState extends State<PortofolioDetailScreen> {
 
   @override
   void initState() {
-    controller = Get.put(PortofolioDetailController());
+    controller = Get.put(
+      PortofolioDetailController(
+        context: context,
+        portofolioItemViewModel: widget.portofolioData,
+      ),
+    );
     super.initState();
   }
 
@@ -43,9 +50,13 @@ class _PortofolioDetailScreenState extends State<PortofolioDetailScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
-                  child: Image.network(
-                    "https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg",
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: widget.portofolioData.projectName ?? "",
+                    child: Image.network(
+                      widget.portofolioData.image ??
+                          "https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 const SizedBox(height: 10),
