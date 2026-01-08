@@ -86,7 +86,26 @@ class PortofolioDetailController extends GetxController with CacheManager {
   }
 
   void startInvest() {
-    InvestmentModel data = InvestmentModel();
+    InvestmentModel data = InvestmentModel()
+      ..collectorName = portofolioDetail.value.collectorName
+      ..commodity = portofolioDetail.value.commodity
+      ..currentFundingPrice = portofolioDetail.value.currentFundingPrice
+      ..deliveryDate = portofolioDetail.value.deliveryDate
+      ..farmerName = portofolioDetail.value.farmerName
+      ..fundingPercentage = portofolioDetail.value.fundingPercentage?.toInt()
+      ..fundingPrice = portofolioDetail.value.fundingPrice
+      ..gradeQuality = portofolioDetail.value.gradeQuality
+      ..image = portofolioDetail.value.image
+      ..investors = portofolioDetail.value.investors
+      ..landAddress = portofolioDetail.value.landAddress
+      ..projectId = portofolioDetail.value.projectId
+      ..projectName = portofolioDetail.value.projectName
+      ..projectPrice = portofolioDetail.value.projectPrice
+      ..returnInvestmentRate = portofolioDetail.value.returnInvestmentRate
+      ..status = portofolioDetail.value.status
+      ..submissionDate = portofolioDetail.value.submissionDate
+      ..volume = portofolioDetail.value.volume;
+
     Get.to(() => InvestmentScreen(detailData: data));
   }
 }
