@@ -20,8 +20,8 @@
     "investments": [
       {
         "id": "6005eab6-dcaf-409e-926f-7fa569ba162a",
-        "projectId": "1dfb73bf-b7f6-4204-8154-3a382151dd80",
-        "projectName": "Coffee",
+        "projectId": "89410088-7d5b-43ba-982a-6992d23314d0",
+        "projectName": "Sweet Corn Organic Harvest 2026",
         "farmerName": "Siti Rahayu",
         "amount": "200000",
         "receiptTokenId": 6002,
@@ -38,8 +38,8 @@
       },
       {
         "id": "6005eab6-dcaf-409e-926f-7fa569ba162a",
-        "projectId": "1dfb73bf-b7f6-4204-8154-3a382151dd80",
-        "projectName": "Coffee",
+        "projectId": "be00be09-5c96-4270-a170-261bfe3f2fa3",
+        "projectName": "Arabica Coffee Premium Harvest 2026",
         "farmerName": "Siti Rahayu",
         "amount": "200000",
         "receiptTokenId": 6002,
@@ -51,13 +51,13 @@
         "margin": 4,
         "returnAsset": "8000",
         "cumulativeAsset": "208000",
-        "image": "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?w=800",
+        "image": "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800",
         "collectorName": "PT Pertanian Sejahtera"
       },
       {
         "id": "6005eab6-dcaf-409e-926f-7fa569ba162a",
-        "projectId": "1dfb73bf-b7f6-4204-8154-3a382151dd80",
-        "projectName": "Coffee",
+        "projectId": "ba315db9-6269-436e-b38e-9c9cea7d716f",
+        "projectName": "Rice Premium Grade A Harvest Q1 2026",
         "farmerName": "Siti Rahayu",
         "amount": "200000",
         "receiptTokenId": 6002,
@@ -69,7 +69,7 @@
         "margin": 4,
         "returnAsset": "8000",
         "cumulativeAsset": "208000",
-        "image": "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?w=800",
+        "image": "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800",
         "collectorName": "PT Pertanian Sejahtera"
       }
     ]

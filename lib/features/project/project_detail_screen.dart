@@ -54,7 +54,7 @@ class _ProjectDetailScreenState extends State<ProjectDetailScreen> {
               children: [
                 ClipRRect(
                   child: Hero(
-                    tag: widget.projectData.projectName ?? "",
+                    tag: widget.projectData.projectId ?? "",
                     child: Image.network(
                       widget.projectData.image ??
                           "https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg",

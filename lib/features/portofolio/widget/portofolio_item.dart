@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
+import 'package:stomata_app/core/global_widget/loading/skeleton_loading_v2.dart';
 import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 
 class PortofolioItem extends StatelessWidget {
   final String imageUrl;
   final String projectName;
+  final String projectId;
   final String releaserName;
   final String totalFunding;
   final String fundingGoal;
@@ -28,6 +30,7 @@ class PortofolioItem extends StatelessWidget {
     required this.margin,
     required this.returnAsset,
     required this.cumulativeAssetValue,
+    required this.projectId,
   });
 
   @override
@@ -44,8 +47,15 @@ class PortofolioItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Hero(
-                  tag: projectName,
-                  child: Image.network(imageUrl, fit: BoxFit.cover),
+                  tag: projectId,
+                  child: Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return SkeletonLoadingV2(height: 200);
+                    },
+                  ),
                 ),
               ),
               const SizedBox(height: 10),

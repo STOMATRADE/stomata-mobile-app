@@ -5,27 +5,29 @@ import 'package:stomata_app/core/utils/colors_utils.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
 
 class CardItem extends StatelessWidget {
-  final String? imageUrl;
-  final String? projectName;
-  final String? releaserName;
-  final double? totalFunding;
-  final double? fundingGoal;
-  final int? investor;
-  final int? margin;
-  final int? percentageFunded;
+  final String imageUrl;
+  final String projectName;
+  final String projectId;
+  final String releaserName;
+  final double totalFunding;
+  final double fundingGoal;
+  final int investor;
+  final int margin;
+  final int percentageFunded;
   final VoidCallback onTap;
 
   const CardItem({
     super.key,
-    this.projectName,
-    this.releaserName,
-    this.imageUrl,
+    required this.projectName,
+    required this.releaserName,
+    required this.projectId,
+    required this.imageUrl,
     required this.onTap,
-    this.totalFunding = 0,
-    this.fundingGoal = 0,
-    this.investor = 0,
-    this.margin = 0,
-    this.percentageFunded = 0,
+    required this.totalFunding,
+    required this.fundingGoal,
+    required this.investor,
+    required this.margin,
+    required this.percentageFunded,
   });
 
   @override
@@ -42,10 +44,9 @@ class CardItem extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: Hero(
-                  tag: projectName ?? "",
+                  tag: projectId,
                   child: Image.network(
-                    imageUrl ??
-                        "https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg",
+                    imageUrl,
                     fit: BoxFit.cover,
                     loadingBuilder: (context, child, loadingProgress) {
                       if (loadingProgress == null) return child;
@@ -61,7 +62,7 @@ class CardItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      projectName ?? "",
+                      projectName,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
@@ -80,7 +81,7 @@ class CardItem extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          releaserName ?? "",
+                          releaserName,
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
@@ -107,7 +108,7 @@ class CardItem extends StatelessWidget {
                               bottom: 2,
                             ),
                             child: Text(
-                              "Rp ${Helpers.formatAmount((totalFunding ?? 0).toInt())} / Rp ${Helpers.formatAmount((fundingGoal ?? 0).toInt())}",
+                              "Rp ${Helpers.formatAmount((totalFunding).toInt())} / Rp ${Helpers.formatAmount((fundingGoal).toInt())}",
                               style: TextStyle(fontSize: 10),
                             ),
                           ),
@@ -115,9 +116,9 @@ class CardItem extends StatelessWidget {
                         const SizedBox(height: 8),
                         LinearProgressBar(
                           minHeight: 5,
-                          maxSteps: fundingGoal?.toInt(),
+                          maxSteps: fundingGoal.toInt(),
                           progressType: LinearProgressBar.progressTypeLinear,
-                          currentStep: totalFunding?.toInt(),
+                          currentStep: totalFunding.toInt(),
                           progressColor: ColorUtils.primaryColors,
                           backgroundColor: Colors.grey,
                           borderRadius: BorderRadius.circular(10),
@@ -131,7 +132,7 @@ class CardItem extends StatelessWidget {
                           child: Text("Price", style: TextStyle(fontSize: 15)),
                         ),
                         Text(
-                          "Rp. ${Helpers.formatAmount((fundingGoal ?? 0).toInt())}",
+                          "Rp. ${Helpers.formatAmount((fundingGoal).toInt())}",
                           style: TextStyle(
                             fontSize: 15,
                             color: ColorUtils.primaryColors,

@@ -138,6 +138,7 @@ class _PortofolioScreenState extends State<PortofolioScreen> {
             onTap: () {
               controller.goToDetail(data);
             },
+            projectId: data.projectId ?? "",
             imageUrl: data.image ?? "-",
             projectName: data.projectName ?? "-",
             releaserName: data.collectorName ?? "-",

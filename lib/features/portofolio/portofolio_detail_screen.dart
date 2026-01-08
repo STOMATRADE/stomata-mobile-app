@@ -55,7 +55,7 @@ class _PortofolioDetailScreenState extends State<PortofolioDetailScreen> {
               children: [
                 ClipRRect(
                   child: Hero(
-                    tag: widget.portofolioData.projectName ?? "",
+                    tag: widget.portofolioData.projectId ?? "",
                     child: Image.network(
                       widget.portofolioData.image ??
                           "https://www.sadakoffie.com/wp-content/uploads/2018/05/Carrboro-Coffee-Roasters.jpg",

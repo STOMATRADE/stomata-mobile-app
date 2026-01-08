@@ -219,7 +219,9 @@ class PortofolioRepository extends BaseServices with CacheManager {
               ..status = portofolioDetailResponse.status
               ..submissionDate = portofolioDetailResponse.submissionDate
               ..volume = portofolioDetailResponse.volume
-              ..returnAsset = portofolioDetailResponse.returnAsset;
+              ..returnAsset = Helpers.formatAmount(
+                int.parse(portofolioDetailResponse.returnAsset ?? ""),
+              ).toString();
 
         baseResponseModel.data = portofolioDetailViewModel;
 
