@@ -6,6 +6,7 @@ import 'package:stomata_app/core/config/services/endpoint.dart';
 import 'package:stomata_app/core/config/services/model/base_response_model.dart';
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/config/services/dummy_data/dummy_data.dart';
+import 'package:stomata_app/core/utils/helpers.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/portofolio/response/amount/portofolio_amount_response.dart';
 import 'package:stomata_app/repository/portofolio/response/detail/portofolio_detail_response.dart';
@@ -184,30 +185,41 @@ class PortofolioRepository extends BaseServices with CacheManager {
         PortofolioDetailResponse portofolioDetailResponse =
             PortofolioDetailResponse.fromJson(baseResponseModel.data);
 
-        PortofolioDetailViewModel
-        portofolioDetailViewModel = PortofolioDetailViewModel()
-          ..assets = portofolioDetailResponse.assets
-          ..collectorName = portofolioDetailResponse.collectorName
-          ..commodity = portofolioDetailResponse.commodity
-          ..cumulativeAsset = portofolioDetailResponse.cumulativeAsset
-          ..currentFundingPrice = portofolioDetailResponse.currentFundingPrice
-          ..deliveryDate = portofolioDetailResponse.deliveryDate
-          ..farmerName = portofolioDetailResponse.farmerName
-          ..fundingPercentage = portofolioDetailResponse.fundingPercentage
-          ..fundingPrice = portofolioDetailResponse.fundingPrice
-          ..gradeQuality = portofolioDetailResponse.gradeQuality
-          ..image = portofolioDetailResponse.image
-          ..investors = portofolioDetailResponse.investors
-          ..landAddress = portofolioDetailResponse.landAddress
-          ..projectId = portofolioDetailResponse.projectId
-          ..projectName = portofolioDetailResponse.projectName
-          ..projectPrice = portofolioDetailResponse.projectPrice
-          ..returnInvestmentRate = portofolioDetailResponse.returnInvestmentRate
-          ..returnRate = portofolioDetailResponse.returnRate
-          ..status = portofolioDetailResponse.status
-          ..submissionDate = portofolioDetailResponse.submissionDate
-          ..volume = portofolioDetailResponse.volume
-          ..welcomeReturn = portofolioDetailResponse.welcomeReturn;
+        PortofolioDetailViewModel portofolioDetailViewModel =
+            PortofolioDetailViewModel()
+              ..assets = Helpers.formatAmount(
+                int.parse(portofolioDetailResponse.assets ?? "0"),
+              ).toString()
+              ..collectorName = portofolioDetailResponse.collectorName
+              ..commodity = portofolioDetailResponse.commodity
+              ..cumulativeAsset = Helpers.formatAmount(
+                int.parse(portofolioDetailResponse.cumulativeAsset ?? "0"),
+              ).toString()
+              ..currentFundingPrice = Helpers.formatAmount(
+                int.parse(portofolioDetailResponse.currentFundingPrice ?? "0"),
+              ).toString()
+              ..deliveryDate = portofolioDetailResponse.deliveryDate
+              ..farmerName = portofolioDetailResponse.farmerName
+              ..fundingPercentage = portofolioDetailResponse.fundingPercentage
+              ..fundingPrice = Helpers.formatAmount(
+                int.parse(portofolioDetailResponse.fundingPrice ?? "0"),
+              ).toString()
+              ..gradeQuality = portofolioDetailResponse.gradeQuality
+              ..image = portofolioDetailResponse.image
+              ..investors = portofolioDetailResponse.investors
+              ..landAddress = portofolioDetailResponse.landAddress
+              ..projectId = portofolioDetailResponse.projectId
+              ..projectName = portofolioDetailResponse.projectName
+              ..projectPrice = Helpers.formatAmount(
+                int.parse(portofolioDetailResponse.projectPrice ?? ""),
+              ).toString()
+              ..returnInvestmentRate =
+                  portofolioDetailResponse.returnInvestmentRate
+              ..returnRate = portofolioDetailResponse.returnRate
+              ..status = portofolioDetailResponse.status
+              ..submissionDate = portofolioDetailResponse.submissionDate
+              ..volume = portofolioDetailResponse.volume
+              ..returnAsset = portofolioDetailResponse.returnAsset;
 
         baseResponseModel.data = portofolioDetailViewModel;
 

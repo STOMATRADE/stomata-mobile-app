@@ -25,7 +25,7 @@
     "gradeQuality": null,
     "assets": "100000",
     "returnRate": 8,
-    "return": "8000",
+    "returnAsset": "8000",
     "cumulativeAsset": "108000"
   }
 }

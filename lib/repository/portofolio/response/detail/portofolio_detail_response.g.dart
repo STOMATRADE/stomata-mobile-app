@@ -33,7 +33,7 @@ PortofolioDetailResponse _$PortofolioDetailResponseFromJson(
   gradeQuality: json['gradeQuality'] as String?,
   assets: json['assets'] as String?,
   returnRate: (json['returnRate'] as num?)?.toInt(),
-  welcomeReturn: json['welcomeReturn'] as String?,
+  returnAsset: json['returnAsset'] as String?,
   cumulativeAsset: json['cumulativeAsset'] as String?,
 );
 
@@ -60,6 +60,6 @@ Map<String, dynamic> _$PortofolioDetailResponseToJson(
   'gradeQuality': instance.gradeQuality,
   'assets': instance.assets,
   'returnRate': instance.returnRate,
-  'welcomeReturn': instance.welcomeReturn,
+  'returnAsset': instance.returnAsset,
   'cumulativeAsset': instance.cumulativeAsset,
 };

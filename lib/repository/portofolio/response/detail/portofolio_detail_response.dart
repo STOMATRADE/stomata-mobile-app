@@ -24,7 +24,7 @@ class PortofolioDetailResponse {
   final String? gradeQuality;
   final String? assets;
   final int? returnRate;
-  final String? welcomeReturn;
+  final String? returnAsset;
   final String? cumulativeAsset;
 
   PortofolioDetailResponse({
@@ -48,7 +48,7 @@ class PortofolioDetailResponse {
     this.gradeQuality,
     this.assets,
     this.returnRate,
-    this.welcomeReturn,
+    this.returnAsset,
     this.cumulativeAsset,
   });
 

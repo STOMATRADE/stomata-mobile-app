@@ -33,9 +33,8 @@ PortofolioDetailViewModel _$PortofolioDetailViewModelFromJson(
   gradeQuality: json['gradeQuality'] as String?,
   assets: json['assets'] as String?,
   returnRate: (json['returnRate'] as num?)?.toInt(),
-  welcomeReturn: json['welcomeReturn'] as String?,
   cumulativeAsset: json['cumulativeAsset'] as String?,
-);
+)..returnAsset = json['returnAsset'] as String?;
 
 Map<String, dynamic> _$PortofolioDetailViewModelToJson(
   PortofolioDetailViewModel instance,
@@ -59,7 +58,7 @@ Map<String, dynamic> _$PortofolioDetailViewModelToJson(
   'landAddress': instance.landAddress,
   'gradeQuality': instance.gradeQuality,
   'assets': instance.assets,
+  'returnAsset': instance.returnAsset,
   'returnRate': instance.returnRate,
-  'welcomeReturn': instance.welcomeReturn,
   'cumulativeAsset': instance.cumulativeAsset,
 };

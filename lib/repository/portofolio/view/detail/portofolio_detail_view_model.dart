@@ -23,8 +23,8 @@ class PortofolioDetailViewModel {
   String? landAddress;
   String? gradeQuality;
   String? assets;
+  String? returnAsset;
   int? returnRate;
-  String? welcomeReturn;
   String? cumulativeAsset;
 
   PortofolioDetailViewModel({
@@ -48,7 +48,6 @@ class PortofolioDetailViewModel {
     this.gradeQuality,
     this.assets,
     this.returnRate,
-    this.welcomeReturn,
     this.cumulativeAsset,
   });
 
