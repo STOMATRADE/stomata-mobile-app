@@ -13,4 +13,8 @@ class ImageUtils {
   // BACKGROUNDS
   static const String background = '${_background}background.png';
   static const String ringBg = '${_background}ring-bg.png';
+
+  // EMPTY IMAGE
+  static const String emptyImage =
+      'https://www.diw.co.id/images/image-not-available.png';
 }

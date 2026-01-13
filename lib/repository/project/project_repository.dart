@@ -7,6 +7,7 @@ import 'package:stomata_app/core/config/services/endpoint.dart';
 import 'package:stomata_app/core/config/services/model/base_response_model.dart';
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
+import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/global_query_param/pagination_query.dart';
 import 'package:stomata_app/repository/project/response/detail/project_detail_response.dart';
@@ -58,7 +59,8 @@ class ProjectRepository extends BaseServices with CacheManager {
           projectItemViewModel.fundingPercentage =
               projectItemResponse.fundingPercentage;
           projectItemViewModel.fundingPrice = projectItemResponse.fundingPrice;
-          projectItemViewModel.image = projectItemResponse.image;
+          projectItemViewModel.image =
+              projectItemResponse.image ?? ImageUtils.emptyImage;
           projectItemViewModel.investors = projectItemResponse.investors;
           projectItemViewModel.margin = projectItemResponse.margin;
           projectItemViewModel.projectCompany =
@@ -166,7 +168,8 @@ class ProjectRepository extends BaseServices with CacheManager {
         projectDetailViewModel.status = projectDetailResponse.status;
         projectDetailViewModel.fundingPercentage =
             projectDetailResponse.fundingPercentage;
-        projectDetailViewModel.image = projectDetailResponse.image;
+        projectDetailViewModel.image =
+            projectDetailResponse.image ?? ImageUtils.emptyImage;
         projectDetailViewModel.landAddress = projectDetailResponse.landAddress;
         projectDetailViewModel.gradeQuality =
             projectDetailResponse.gradeQuality;

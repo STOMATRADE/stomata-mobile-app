@@ -7,6 +7,7 @@ import 'package:stomata_app/core/config/services/model/base_response_model.dart'
 import 'package:stomata_app/core/config/storage/cache_manager.dart';
 import 'package:stomata_app/core/config/services/dummy_data/dummy_data.dart';
 import 'package:stomata_app/core/utils/helpers.dart';
+import 'package:stomata_app/core/utils/image_utils.dart';
 import 'package:stomata_app/core/utils/logging.dart';
 import 'package:stomata_app/repository/portofolio/response/amount/portofolio_amount_response.dart';
 import 'package:stomata_app/repository/portofolio/response/detail/portofolio_detail_response.dart';
@@ -110,7 +111,7 @@ class PortofolioRepository extends BaseServices with CacheManager {
           data.investedAt = element.investedAt;
           data.profitClaimed = element.profitClaimed;
           data.profitClaimsCount = element.profitClaimsCount;
-          data.image = element.image;
+          data.image = element.image ?? ImageUtils.emptyImage;
           data.collectorName = element.collectorName;
           data.cumulativeAsset = element.cumulativeAsset;
           data.returnAsset = element.returnAsset;
@@ -205,7 +206,7 @@ class PortofolioRepository extends BaseServices with CacheManager {
                 int.parse(portofolioDetailResponse.fundingPrice ?? "0"),
               ).toString()
               ..gradeQuality = portofolioDetailResponse.gradeQuality
-              ..image = portofolioDetailResponse.image
+              ..image = portofolioDetailResponse.image ?? ImageUtils.emptyImage
               ..investors = portofolioDetailResponse.investors
               ..landAddress = portofolioDetailResponse.landAddress
               ..projectId = portofolioDetailResponse.projectId
